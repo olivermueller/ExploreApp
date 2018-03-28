@@ -1,0 +1,34 @@
+PODS:
+  - Alamofire (4.7.0)
+  - CHIPageControl (0.1.5):
+    - CHIPageControl/Aji (= 0.1.5)
+    - CHIPageControl/Aleppo (= 0.1.5)
+    - CHIPageControl/Chimayo (= 0.1.5)
+    - CHIPageControl/Fresno (= 0.1.5)
+    - CHIPageControl/Jalapeno (= 0.1.5)
+    - CHIPageControl/Jaloro (= 0.1.5)
+    - CHIPageControl/Paprika (= 0.1.5)
+    - CHIPageControl/Puya (= 0.1.5)
+  - CHIPageControl/Aji (0.1.5)
+  - CHIPageControl/Aleppo (0.1.5)
+  - CHIPageControl/Chimayo (0.1.5)
+  - CHIPageControl/Fresno (0.1.5)
+  - CHIPageControl/Jalapeno (0.1.5)
+  - CHIPageControl/Jaloro (0.1.5)
+  - CHIPageControl/Paprika (0.1.5)
+  - CHIPageControl/Puya (0.1.5)
+  - MBCircularProgressBar (0.3.5)
+
+DEPENDENCIES:
+  - Alamofire (~> 4.7)
+  - CHIPageControl (~> 0.1.3)
+  - MBCircularProgressBar
+
+SPEC CHECKSUMS:
+  Alamofire: 907e0a98eb68cdb7f9d1f541a563d6ac5dc77b25
+  CHIPageControl: 79d19a8ee2e35fa3c1da6533adb5364c77b5cfea
+  MBCircularProgressBar: 0b795b722a5eb5b0923822f90474e2576a1a7855
+
+PODFILE CHECKSUM: 70bce6a20c729a44db88c92066189f6074c1fa63
+
+COCOAPODS: 1.4.0
