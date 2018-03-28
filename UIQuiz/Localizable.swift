@@ -68,10 +68,10 @@ enum Language: String {
             //NOTE: do not localize storboards
             //After the app restart all labels/images will be set
             //see extension String below
-            UIApplication.shared.windows[0].rootViewController = UIStoryboard(
-                name: "Main",
-                bundle: nil
-                ).instantiateInitialViewController()
+            //UIApplication.shared.windows[0].rootViewController = UIStoryboard(
+              //  name: "Main",
+                //bundle: nil
+                //).instantiateInitialViewController()
         }
     }
 }

@@ -10,6 +10,9 @@
 "main_page_change_language" = "Skift sprog";
 "main_page_change_theme" = "Skift tema";
 "main_page_current_theme" = "Nuværende tema";
+"Quiz" = "Quiz";
+"Explore" = "Udforsk";
+"Options" = "Valgmuligheder";
 
 "alert_change_language_title" = "Skift sprog til";
 "alert_change_theme_title" = "Skift tema til";
@@ -17,3 +20,4 @@
 "en" = "Engelsk";
 "da" = "Dansk";
 "de" = "Tysk";
+"ar" = "Arabisk";

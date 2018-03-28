@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		127018D14B5C159F0FB5498B /* Pods_UIQuiz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A203B0CE7A578CB4D17CE3D0 /* Pods_UIQuiz.framework */; };
 		8012C691206B9826007564EB /* LRSSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8012C690206B9826007564EB /* LRSSender.swift */; };
+		8012C694206B9C1B007564EB /* ar.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 8012C693206B9C1B007564EB /* ar.lproj */; };
 		8020D19C205BE5450096A578 /* Food101.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 8020D19B205BE5450096A578 /* Food101.mlmodel */; };
 		8020D19E205BE56E0096A578 /* Resnet50.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 8020D19D205BE56E0096A578 /* Resnet50.mlmodel */; };
 		8021D4962053E355003CA4DB /* SqueezeNet.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 8021D4952053E354003CA4DB /* SqueezeNet.mlmodel */; };
@@ -31,6 +32,8 @@
 /* Begin PBXFileReference section */
 		280D3AE67B5399ED0EA43700 /* Pods-UIQuiz.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UIQuiz.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UIQuiz/Pods-UIQuiz.debug.xcconfig"; sourceTree = "<group>"; };
 		8012C690206B9826007564EB /* LRSSender.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LRSSender.swift; sourceTree = "<group>"; };
+		8012C693206B9C1B007564EB /* ar.lproj */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ar.lproj; sourceTree = SOURCE_ROOT; };
+		8012C695206B9C2D007564EB /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Localizable.strings; sourceTree = "<group>"; };
 		8020D19B205BE5450096A578 /* Food101.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Food101.mlmodel; sourceTree = "<group>"; };
 		8020D19D205BE56E0096A578 /* Resnet50.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Resnet50.mlmodel; sourceTree = "<group>"; };
 		8021D4952053E354003CA4DB /* SqueezeNet.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = SqueezeNet.mlmodel; sourceTree = "<group>"; };
@@ -110,6 +113,7 @@
 			isa = PBXGroup;
 			children = (
 				8012C690206B9826007564EB /* LRSSender.swift */,
+				8012C693206B9C1B007564EB /* ar.lproj */,
 				80334DC8206B76FC00078E64 /* da.lproj */,
 				80334DC9206B76FC00078E64 /* de.lproj */,
 				80334DCA206B76FC00078E64 /* en.lproj */,
@@ -185,6 +189,7 @@
 				Base,
 				da,
 				de,
+				ar,
 			);
 			mainGroup = 80F136272052BC3400E3E19D;
 			productRefGroup = 80F136312052BC3400E3E19D /* Products */;
@@ -201,6 +206,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8012C694206B9C1B007564EB /* ar.lproj in Resources */,
 				80334DCD206B76FC00078E64 /* en.lproj in Resources */,
 				80F136402052BC3400E3E19D /* LaunchScreen.storyboard in Resources */,
 				80334DC1206B72F800078E64 /* Localizable.strings in Resources */,
@@ -299,6 +305,7 @@
 				80334DC2206B72F800078E64 /* en */,
 				80334DC4206B736400078E64 /* da */,
 				80334DC5206B738300078E64 /* de */,
+				8012C695206B9C2D007564EB /* ar */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";

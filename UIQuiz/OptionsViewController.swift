@@ -69,13 +69,14 @@ class OptionsViewController: UIViewController{
                     style: UIAlertActionStyle.default,
                     handler: { _ in
                         Language.language = language
-                        self.currentLanguageLabel.text = "main_page_language".localized
+                        self.setupUI()
                 })
             )
         }
         addActionLanguage(language: Language.english)
         addActionLanguage(language: Language.danish)
         addActionLanguage(language: Language.german)
+        addActionLanguage(language: Language.arabic)
         
         alert.addAction(
             UIAlertAction(
@@ -87,6 +88,9 @@ class OptionsViewController: UIViewController{
         present(alert, animated: true, completion: nil)
     }
     private func setupUI() {
+        tabBarController?.viewControllers![0].title = "Explore".localized
+        tabBarController?.viewControllers![1].title = "Quiz".localized
+        tabBarController?.viewControllers![2].title = "Options".localized
         currentLanguageLabel.text = "main_page_language".localized
         flag.image = "flag".localizedImage
         languagebtn.setTitle(

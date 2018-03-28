@@ -10,6 +10,9 @@
 "main_page_change_language" = "Sprache ändern";
 "main_page_change_theme" = "Thema wechseln";
 "main_page_current_theme" = "Aktuelles Thema";
+"Quiz" = "Quiz";
+"Explore" = "Erkunden";
+"Options" = "Optionen";
 
 "alert_change_language_title" = "Sprache ändern zu";
 "alert_change_theme_title" = "Thema ändern zu";
@@ -17,3 +20,4 @@
 "en" = "Englisch";
 "da" = "Dänisch";
 "de" = "Deutsch";
+"ar" = "Arabisch";
