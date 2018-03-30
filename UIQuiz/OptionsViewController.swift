@@ -9,7 +9,7 @@
 import UIKit
 
 class OptionsViewController: UIViewController{
-    
+
     @IBOutlet weak var flag: UIImageView!
     @IBOutlet weak var languagebtn: UIButton!
     @IBOutlet weak var currentLanguageLabel: UILabel!

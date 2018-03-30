@@ -56,6 +56,9 @@ class ExploreViewController: UIViewController , AVCaptureVideoDataOutputSampleBu
         LRSSender.currentActivityName = "MLQuiz"
         //LRSSender.sendDataToLRS(verbId: LRSSender.VerbIdInitialized, verbDisplay: "Started", activityId: LRSSender.ObjectIdMLQuiz, activityName: "MLQuiz", activityDescription: "Student started app")
         setupAV()
+        tabBarController?.viewControllers![0].title = "Explore".localized
+        tabBarController?.viewControllers![1].title = "Quiz".localized
+        tabBarController?.viewControllers![2].title = "Options".localized
     }
     private func setupAV(){
         captureSession = AVCaptureSession()
