@@ -18,19 +18,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let standardDefaults = UserDefaults.standard
         standardDefaults.register(defaults: ["Progress":0])
         standardDefaults.register(defaults: ["Level":1])
-        standardDefaults.register(defaults: [Theme.ThemeKey : "general"])
+        standardDefaults.register(defaults: [Theme.ThemeKey : Theme.general.rawValue])
         standardDefaults.register(defaults: ["UUID" : ""])
         print("After: " + standardDefaults.string(forKey: "UUID")!)
         // Uncomment to reset score
-        standardDefaults.setValue("place", forKey: Theme.ThemeKey)
+        //standardDefaults.setValue(Theme.place.rawValue, forKey: Theme.ThemeKey)
         //standardDefaults.setValue(0, forKey: "Progress")
         //standardDefaults.setValue(1, forKey: "Level")
         
         switch standardDefaults.string(forKey: Theme.ThemeKey)! {
-        case "general":
+        case Theme.general.rawValue:
             Theme.theme = Theme.general
-        case "place":
+        case Theme.place.rawValue:
             Theme.theme = Theme.place
+        case Theme.food.rawValue:
+            Theme.theme = Theme.food
         default:
             Theme.theme = Theme.general
         }

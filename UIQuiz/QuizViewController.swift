@@ -26,9 +26,6 @@ class QuizViewController: UIViewController , AVCaptureVideoDataOutputSampleBuffe
         // Do any additional setup after loading the view, typically from a nib.
     }
     @IBAction func QuizButtonPress(_ sender: Any) {
-        for item in res! {
-            print(item.identifier)
-        }
         print("Quiz pressed!")
         captureSession.stopRunning()
         let alert = UIAlertController(

@@ -10,11 +10,10 @@ import UIKit
 import Vision
 
 enum Theme : String {
-    case place = "place"
-    case general = "general"
-    case food = "food"
-    case squeezeNet = "SqueezeNet"
-    static var themeString:String = "general"
+    case place = "theme_place"
+    case general = "theme_general"
+    case food = "theme_food"
+    static var themeString:String = "theme_general"
     static let ThemeKey:String = "Theme"
     static var theme: Theme {
         get {
@@ -41,8 +40,6 @@ enum Theme : String {
             return try! VNCoreMLModel(for: GoogLeNetPlaces().model)
         case Theme.food:
             return try! VNCoreMLModel(for:Food101().model)
-        case Theme.squeezeNet:
-            return try! VNCoreMLModel(for:SqueezeNet().model)
         default:
             return try! VNCoreMLModel(for: SqueezeNet().model)
         }

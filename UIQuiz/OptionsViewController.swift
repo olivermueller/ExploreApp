@@ -43,7 +43,6 @@ class OptionsViewController: UIViewController{
         addActionTheme(theme: Theme.food)
         addActionTheme(theme: Theme.general)
         addActionTheme(theme: Theme.place)
-        addActionTheme(theme: Theme.squeezeNet)
         
         alert.addAction(
             UIAlertAction(
