@@ -14,10 +14,16 @@
 "Explore" = "يكتشف";
 "Options" = "خيارات";
 
+"alert_select_quiz_answer" = "اختر الكائن الصحيح";
 "alert_change_language_title" = "تغيير اللغة الى";
 "alert_change_theme_title" = "تغيير الموضوع ل";
 "alert_cancel" = "إلغاء";
+"alert_correct" = "صيح";
+"alert_incorrect" = "غير صحيح";
+"alert_okay" = "حسنا";
 "en" = "الإنجليزية";
 "da" = "دانماركي";
 "de" = "ألمانية";
 "ar" = "عربى";
+
+
