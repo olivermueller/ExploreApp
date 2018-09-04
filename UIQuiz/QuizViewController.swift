@@ -11,6 +11,7 @@ import MBCircularProgressBar
 import AVKit
 import Vision
 import AVFoundation
+import WikipediaKit
 
 class QuizViewController: UIViewController , AVCaptureVideoDataOutputSampleBufferDelegate {
     @IBOutlet weak var MaxProgressBar: MBCircularProgressBarView!
@@ -19,14 +20,44 @@ class QuizViewController: UIViewController , AVCaptureVideoDataOutputSampleBuffe
     var res:[VNClassificationObservation]?
     @IBOutlet weak var subview: UIView!
     
+    @IBOutlet weak var imagewiki: UIImageView!
+    @IBOutlet weak var wikiview: UITextView!
     override func viewDidLoad() {
         super.viewDidLoad()
         setupAV()
-        
         // Do any additional setup after loading the view, typically from a nib.
+    }
+    func wikiSearch(){
+        WikipediaNetworking.appAuthorEmailForAPI = "nies@itu.dk"
+        let language = WikipediaLanguage("en")
+        
+        let _ = Wikipedia.shared.requestOptimizedSearchResults(language: language, term: (self.res?[0].identifier.localized)!) { (searchResults, error) in
+            
+            guard error == nil else { return }
+            guard let searchResults = searchResults else { return }
+            self.wikiview.text = searchResults.results[0].displayText
+            self.downloadImage(from: searchResults.results[0].imageURL!)
+        }
+    }
+    func getData(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
+        URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
+    }
+    func downloadImage(from url: URL) {
+        print("Download Started")
+        getData(from: url) { data, response, error in
+            guard let data = data, error == nil else { return }
+            print(response?.suggestedFilename ?? url.lastPathComponent)
+            print("Download Finished")
+            DispatchQueue.main.async() {
+                self.imagewiki.image = UIImage(data: data)
+            }
+        }
     }
     @IBAction func QuizButtonPress(_ sender: Any) {
         print("Quiz pressed!")
+        wikiSearch()
+        LRSSender.sendDataToLRS(verbId: LRSSender.VerbIdInitialized, verbDisplay: "started", activityId: LRSSender.ObjectIdMLQuiz, activityName: "quiz", activityDescription: "started quiz")
+        //LRSSender.sendDataToLRS(verbId: LRSSender.VerbWhatIdAccept, verbDisplay: "clicked", activityId: LRSSender.WhereActivityIdExploreQuizApp, activityName: "explore quiz app", activityDescription: "clicked percentage", object: (self.res?[0].identifier)!, score: Float((self.res?[0].confidence)! ))
         captureSession.stopRunning()
         let alert = UIAlertController(
             title: "alert_select_quiz_answer".localized,
@@ -41,7 +72,19 @@ class QuizViewController: UIViewController , AVCaptureVideoDataOutputSampleBuffe
                     style: UIAlertActionStyle.default,
                     handler: { _ in
                         //Language.language = language
-                        self.alertMessage(correct: (answer == self.res?[0].identifier), answer: answer)
+                        let isCorrect = (answer == self.res?[0].identifier)
+                        self.alertMessage(correct: isCorrect , answer: answer)
+                        
+                        if isCorrect == true
+                        {
+                            LRSSender.sendDataToLRS(verbId: LRSSender.VerbIdPassed, verbDisplay: "passed", activityId: LRSSender.ObjectIdMLQuiz, activityName: "quiz", activityDescription: "Selected: " + answer + " options were: " + (self.res?[0].identifier)! + "; " + (self.res?[1].identifier)! + "; " + (self.res?[2].identifier)! + "; " + (self.res?[3].identifier)! + " correct was: " + (self.res?[0].identifier)!)
+                        }
+                        else
+                        {
+                            LRSSender.sendDataToLRS(verbId: LRSSender.VerbIdFailed, verbDisplay: "failed", activityId: LRSSender.ObjectIdMLQuiz, activityName: "quiz", activityDescription: "Selected: " + answer + " options were: " + (self.res?[0].identifier)! + "; " + (self.res?[1].identifier)! + "; " + (self.res?[2].identifier)! + "; " + (self.res?[3].identifier)! + " correct was: " + (self.res?[0].identifier)!)
+                        }
+ 
+                        //LRSSender.sendDataToLRS(verbId: LRSSender.VerbWhatIdIdentified, verbDisplay: "selected", activityId: LRSSender.WhereActivityIdExploreQuizApp, activityName: "explore quiz app", activityDescription: "selected identifier", activityTypeId: LRSSender.TypeActivityIdItem, object: (self.res?[0].identifier)!, success: isCorrect)
                         self.captureSession.startRunning()
                 })
             )
@@ -96,10 +139,12 @@ class QuizViewController: UIViewController , AVCaptureVideoDataOutputSampleBuffe
             captureSession.startRunning()
         }
         isRunning = true
+        LRSSender.sendDataToLRS(verbId: LRSSender.VerbIdResumed, verbDisplay: "started", activityId: LRSSender.ObjectIdMLQuiz, activityName: "quiz mode", activityDescription: "started quiz mode")
     }
     override func viewDidDisappear(_ animated: Bool) {
         print("Quiz view disappeared")
         captureSession.stopRunning()
+        LRSSender.sendDataToLRS(verbId: LRSSender.VerbIdSuspended, verbDisplay: "stopped", activityId: LRSSender.ObjectIdMLQuiz, activityName: "quiz mode", activityDescription: "stopped quiz mode")
     }
     private func setupAV(){
         captureSession = AVCaptureSession()

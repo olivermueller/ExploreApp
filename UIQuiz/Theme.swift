@@ -13,6 +13,7 @@ enum Theme : String {
     case place = "theme_place"
     case general = "theme_general"
     case food = "theme_food"
+    case flowers = "theme_flowers"
     static var themeString:String = "theme_general"
     static let ThemeKey:String = "Theme"
     static var theme: Theme {
@@ -40,6 +41,8 @@ enum Theme : String {
             return try! VNCoreMLModel(for: GoogLeNetPlaces().model)
         case Theme.food:
             return try! VNCoreMLModel(for:Food101().model)
+        case Theme.flowers:
+            return try! VNCoreMLModel(for:Oxford102().model)
         default:
             return try! VNCoreMLModel(for: SqueezeNet().model)
         }
