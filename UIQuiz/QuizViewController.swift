@@ -55,7 +55,7 @@ class QuizViewController: UIViewController , AVCaptureVideoDataOutputSampleBuffe
     }
     @IBAction func QuizButtonPress(_ sender: Any) {
         print("Quiz pressed!")
-        wikiSearch()
+        //wikiSearch()
         LRSSender.sendDataToLRS(verbId: LRSSender.VerbIdInitialized, verbDisplay: "started", activityId: LRSSender.ObjectIdMLQuiz, activityName: "quiz", activityDescription: "started quiz")
         //LRSSender.sendDataToLRS(verbId: LRSSender.VerbWhatIdAccept, verbDisplay: "clicked", activityId: LRSSender.WhereActivityIdExploreQuizApp, activityName: "explore quiz app", activityDescription: "clicked percentage", object: (self.res?[0].identifier)!, score: Float((self.res?[0].confidence)! ))
         captureSession.stopRunning()
