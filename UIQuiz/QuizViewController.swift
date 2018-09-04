@@ -11,7 +11,6 @@ import MBCircularProgressBar
 import AVKit
 import Vision
 import AVFoundation
-import WikipediaKit
 
 class QuizViewController: UIViewController , AVCaptureVideoDataOutputSampleBufferDelegate {
     @IBOutlet weak var MaxProgressBar: MBCircularProgressBarView!
@@ -20,38 +19,10 @@ class QuizViewController: UIViewController , AVCaptureVideoDataOutputSampleBuffe
     var res:[VNClassificationObservation]?
     @IBOutlet weak var subview: UIView!
     
-    @IBOutlet weak var imagewiki: UIImageView!
-    @IBOutlet weak var wikiview: UITextView!
     override func viewDidLoad() {
         super.viewDidLoad()
         setupAV()
         // Do any additional setup after loading the view, typically from a nib.
-    }
-    func wikiSearch(){
-        WikipediaNetworking.appAuthorEmailForAPI = "nies@itu.dk"
-        let language = WikipediaLanguage("en")
-        
-        let _ = Wikipedia.shared.requestOptimizedSearchResults(language: language, term: (self.res?[0].identifier.localized)!) { (searchResults, error) in
-            
-            guard error == nil else { return }
-            guard let searchResults = searchResults else { return }
-            self.wikiview.text = searchResults.results[0].displayText
-            self.downloadImage(from: searchResults.results[0].imageURL!)
-        }
-    }
-    func getData(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
-        URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
-    }
-    func downloadImage(from url: URL) {
-        print("Download Started")
-        getData(from: url) { data, response, error in
-            guard let data = data, error == nil else { return }
-            print(response?.suggestedFilename ?? url.lastPathComponent)
-            print("Download Finished")
-            DispatchQueue.main.async() {
-                self.imagewiki.image = UIImage(data: data)
-            }
-        }
     }
     @IBAction func QuizButtonPress(_ sender: Any) {
         print("Quiz pressed!")
