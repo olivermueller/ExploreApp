@@ -8,10 +8,18 @@
 
 /* Begin PBXBuildFile section */
 		127018D14B5C159F0FB5498B /* Pods_UIQuiz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A203B0CE7A578CB4D17CE3D0 /* Pods_UIQuiz.framework */; };
-		1568755321399C6F00759515 /* WikipediaKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1568754721399ACD00759515 /* WikipediaKit.framework */; };
-		1568755421399C6F00759515 /* WikipediaKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1568754721399ACD00759515 /* WikipediaKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		1556598521468DD500465B7E /* en.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 1556598121468DD500465B7E /* en.lproj */; };
+		1556598621468DD500465B7E /* de.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 1556598221468DD500465B7E /* de.lproj */; };
+		1556598721468DD500465B7E /* da.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 1556598321468DD500465B7E /* da.lproj */; };
+		1556598821468DD500465B7E /* ar.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 1556598421468DD500465B7E /* ar.lproj */; };
+		1556598A2146946F00465B7E /* ModelDataContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 155659892146946F00465B7E /* ModelDataContainer.swift */; };
+		155659952146B7F700465B7E /* test.json in Resources */ = {isa = PBXBuildFile; fileRef = 155659942146B7F700465B7E /* test.json */; };
+		155659992146C2CE00465B7E /* Oxford102.json in Resources */ = {isa = PBXBuildFile; fileRef = 155659982146C2CE00465B7E /* Oxford102.json */; };
+		1556599B2146C37E00465B7E /* Food101.json in Resources */ = {isa = PBXBuildFile; fileRef = 1556599A2146C37E00465B7E /* Food101.json */; };
+		1556599F2146C40C00465B7E /* GoogLeNetPlaces.json in Resources */ = {isa = PBXBuildFile; fileRef = 1556599E2146C40C00465B7E /* GoogLeNetPlaces.json */; };
+		155659A12146C43100465B7E /* SqueezeNet.json in Resources */ = {isa = PBXBuildFile; fileRef = 155659A02146C43100465B7E /* SqueezeNet.json */; };
+		1578314D21466F7800232063 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1578314C21466F7800232063 /* DetailViewController.swift */; };
 		8012C691206B9826007564EB /* LRSSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8012C690206B9826007564EB /* LRSSender.swift */; };
-		8012C694206B9C1B007564EB /* ar.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 8012C693206B9C1B007564EB /* ar.lproj */; };
 		8020D19C205BE5450096A578 /* Food101.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 8020D19B205BE5450096A578 /* Food101.mlmodel */; };
 		8020D19E205BE56E0096A578 /* Resnet50.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 8020D19D205BE56E0096A578 /* Resnet50.mlmodel */; };
 		8021D4962053E355003CA4DB /* SqueezeNet.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 8021D4952053E354003CA4DB /* SqueezeNet.mlmodel */; };
@@ -19,9 +27,6 @@
 		8021D49B2053E433003CA4DB /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8021D49A2053E433003CA4DB /* Theme.swift */; };
 		80334DBC206B71ED00078E64 /* Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80334DBB206B71EC00078E64 /* Localizable.swift */; };
 		80334DC1206B72F800078E64 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 80334DC3206B72F800078E64 /* Localizable.strings */; };
-		80334DCB206B76FC00078E64 /* da.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 80334DC8206B76FC00078E64 /* da.lproj */; };
-		80334DCC206B76FC00078E64 /* de.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 80334DC9206B76FC00078E64 /* de.lproj */; };
-		80334DCD206B76FC00078E64 /* en.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 80334DCA206B76FC00078E64 /* en.lproj */; };
 		809F88FF207B6A0E00E16004 /* Oxford102.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 809F88FE207B6A0E00E16004 /* Oxford102.mlmodel */; };
 		80F136342052BC3400E3E19D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80F136332052BC3400E3E19D /* AppDelegate.swift */; };
 		80F136362052BC3400E3E19D /* ExploreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80F136352052BC3400E3E19D /* ExploreViewController.swift */; };
@@ -32,51 +37,6 @@
 		80F136482052C16900E3E19D /* OptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80F136472052C16900E3E19D /* OptionsViewController.swift */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		1568754421399ACD00759515 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 1568753C21399ACD00759515 /* WikipediaKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 27E365081E81757500F39F78;
-			remoteInfo = "WikipediaKit-macOS";
-		};
-		1568754621399ACD00759515 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 1568753C21399ACD00759515 /* WikipediaKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 27E365471E81AC6A00F39F78;
-			remoteInfo = "WikipediaKit-iOS";
-		};
-		1568754821399ACD00759515 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 1568753C21399ACD00759515 /* WikipediaKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 27E3658A1E81C95D00F39F78;
-			remoteInfo = "WikipediaKit-watchOS";
-		};
-		1568754A21399ACD00759515 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 1568753C21399ACD00759515 /* WikipediaKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 27E365AC1E81C9E300F39F78;
-			remoteInfo = "WikipediaKit-tvOS";
-		};
-		1568754C21399ACD00759515 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 1568753C21399ACD00759515 /* WikipediaKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 274EFCDD1EB899E90047428B;
-			remoteInfo = WikipediaKitTests;
-		};
-		1568755521399C6F00759515 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 1568753C21399ACD00759515 /* WikipediaKit.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 27E365461E81AC6A00F39F78;
-			remoteInfo = "WikipediaKit-iOS";
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXCopyFilesBuildPhase section */
 		1568755721399C6F00759515 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -84,7 +44,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				1568755421399C6F00759515 /* WikipediaKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -92,11 +51,21 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1556598121468DD500465B7E /* en.lproj */ = {isa = PBXFileReference; lastKnownFileType = folder; name = en.lproj; path = UIQuiz/en.lproj; sourceTree = SOURCE_ROOT; };
+		1556598221468DD500465B7E /* de.lproj */ = {isa = PBXFileReference; lastKnownFileType = folder; name = de.lproj; path = UIQuiz/de.lproj; sourceTree = SOURCE_ROOT; };
+		1556598321468DD500465B7E /* da.lproj */ = {isa = PBXFileReference; lastKnownFileType = folder; name = da.lproj; path = UIQuiz/da.lproj; sourceTree = SOURCE_ROOT; };
+		1556598421468DD500465B7E /* ar.lproj */ = {isa = PBXFileReference; lastKnownFileType = folder; name = ar.lproj; path = UIQuiz/ar.lproj; sourceTree = SOURCE_ROOT; };
+		155659892146946F00465B7E /* ModelDataContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelDataContainer.swift; sourceTree = "<group>"; };
+		1556598E2146A50900465B7E /* ModelData */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ModelData; sourceTree = SOURCE_ROOT; };
+		155659942146B7F700465B7E /* test.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = test.json; sourceTree = "<group>"; };
+		155659982146C2CE00465B7E /* Oxford102.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Oxford102.json; sourceTree = "<group>"; };
+		1556599A2146C37E00465B7E /* Food101.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Food101.json; sourceTree = "<group>"; };
+		1556599E2146C40C00465B7E /* GoogLeNetPlaces.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = GoogLeNetPlaces.json; sourceTree = "<group>"; };
+		155659A02146C43100465B7E /* SqueezeNet.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = SqueezeNet.json; sourceTree = "<group>"; };
 		156875222139975500759515 /* WikipediaKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = WikipediaKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		1568753C21399ACD00759515 /* WikipediaKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = WikipediaKit.xcodeproj; path = "../../../../../../../Downloads/WikipediaKit-master-2/WikipediaKit.xcodeproj"; sourceTree = "<group>"; };
+		1578314C21466F7800232063 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		280D3AE67B5399ED0EA43700 /* Pods-UIQuiz.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UIQuiz.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UIQuiz/Pods-UIQuiz.debug.xcconfig"; sourceTree = "<group>"; };
 		8012C690206B9826007564EB /* LRSSender.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LRSSender.swift; sourceTree = "<group>"; };
-		8012C693206B9C1B007564EB /* ar.lproj */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ar.lproj; sourceTree = SOURCE_ROOT; };
 		8012C695206B9C2D007564EB /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Localizable.strings; sourceTree = "<group>"; };
 		8020D19B205BE5450096A578 /* Food101.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Food101.mlmodel; sourceTree = "<group>"; };
 		8020D19D205BE56E0096A578 /* Resnet50.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Resnet50.mlmodel; sourceTree = "<group>"; };
@@ -107,9 +76,6 @@
 		80334DC2206B72F800078E64 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		80334DC4206B736400078E64 /* da */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = da; path = da.lproj/Localizable.strings; sourceTree = "<group>"; };
 		80334DC5206B738300078E64 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
-		80334DC8206B76FC00078E64 /* da.lproj */ = {isa = PBXFileReference; lastKnownFileType = folder; path = da.lproj; sourceTree = SOURCE_ROOT; };
-		80334DC9206B76FC00078E64 /* de.lproj */ = {isa = PBXFileReference; lastKnownFileType = folder; path = de.lproj; sourceTree = SOURCE_ROOT; };
-		80334DCA206B76FC00078E64 /* en.lproj */ = {isa = PBXFileReference; lastKnownFileType = folder; path = en.lproj; sourceTree = SOURCE_ROOT; };
 		809F88FE207B6A0E00E16004 /* Oxford102.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Oxford102.mlmodel; sourceTree = "<group>"; };
 		80F136302052BC3400E3E19D /* UIQuiz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UIQuiz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		80F136332052BC3400E3E19D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -130,25 +96,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				127018D14B5C159F0FB5498B /* Pods_UIQuiz.framework in Frameworks */,
-				1568755321399C6F00759515 /* WikipediaKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1568753D21399ACD00759515 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				1568754521399ACD00759515 /* WikipediaKit.framework */,
-				1568754721399ACD00759515 /* WikipediaKit.framework */,
-				1568754921399ACD00759515 /* WikipediaKit.framework */,
-				1568754B21399ACD00759515 /* WikipediaKit.framework */,
-				1568754D21399ACD00759515 /* WikipediaKitTests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		1B7112BC545652D8F7958460 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -173,7 +126,6 @@
 		80F136272052BC3400E3E19D = {
 			isa = PBXGroup;
 			children = (
-				1568753C21399ACD00759515 /* WikipediaKit.xcodeproj */,
 				80F136322052BC3400E3E19D /* UIQuiz */,
 				80F136312052BC3400E3E19D /* Products */,
 				1B7112BC545652D8F7958460 /* Pods */,
@@ -192,23 +144,31 @@
 		80F136322052BC3400E3E19D /* UIQuiz */ = {
 			isa = PBXGroup;
 			children = (
+				1556598E2146A50900465B7E /* ModelData */,
 				8012C690206B9826007564EB /* LRSSender.swift */,
-				8012C693206B9C1B007564EB /* ar.lproj */,
-				80334DC8206B76FC00078E64 /* da.lproj */,
-				80334DC9206B76FC00078E64 /* de.lproj */,
-				80334DCA206B76FC00078E64 /* en.lproj */,
 				80334DC3206B72F800078E64 /* Localizable.strings */,
+				1556598421468DD500465B7E /* ar.lproj */,
+				1556598321468DD500465B7E /* da.lproj */,
+				1556598221468DD500465B7E /* de.lproj */,
+				1556598121468DD500465B7E /* en.lproj */,
 				8021D4942053E345003CA4DB /* Models */,
 				80F136332052BC3400E3E19D /* AppDelegate.swift */,
 				80334DBB206B71EC00078E64 /* Localizable.swift */,
 				8021D49A2053E433003CA4DB /* Theme.swift */,
 				80F136352052BC3400E3E19D /* ExploreViewController.swift */,
+				155659892146946F00465B7E /* ModelDataContainer.swift */,
 				80F136372052BC3400E3E19D /* QuizViewController.swift */,
+				1578314C21466F7800232063 /* DetailViewController.swift */,
 				80F136472052C16900E3E19D /* OptionsViewController.swift */,
 				80F136392052BC3400E3E19D /* Main.storyboard */,
 				80F1363C2052BC3400E3E19D /* Assets.xcassets */,
 				80F1363E2052BC3400E3E19D /* LaunchScreen.storyboard */,
 				80F136412052BC3400E3E19D /* Info.plist */,
+				155659982146C2CE00465B7E /* Oxford102.json */,
+				1556599A2146C37E00465B7E /* Food101.json */,
+				1556599E2146C40C00465B7E /* GoogLeNetPlaces.json */,
+				155659A02146C43100465B7E /* SqueezeNet.json */,
+				155659942146B7F700465B7E /* test.json */,
 			);
 			path = UIQuiz;
 			sourceTree = "<group>";
@@ -240,7 +200,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				1568755621399C6F00759515 /* PBXTargetDependency */,
 			);
 			name = UIQuiz;
 			productName = UIQuiz;
@@ -277,12 +236,6 @@
 			mainGroup = 80F136272052BC3400E3E19D;
 			productRefGroup = 80F136312052BC3400E3E19D /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 1568753D21399ACD00759515 /* Products */;
-					ProjectRef = 1568753C21399ACD00759515 /* WikipediaKit.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				80F1362F2052BC3400E3E19D /* UIQuiz */,
@@ -290,57 +243,24 @@
 		};
 /* End PBXProject section */
 
-/* Begin PBXReferenceProxy section */
-		1568754521399ACD00759515 /* WikipediaKit.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = WikipediaKit.framework;
-			remoteRef = 1568754421399ACD00759515 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		1568754721399ACD00759515 /* WikipediaKit.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = WikipediaKit.framework;
-			remoteRef = 1568754621399ACD00759515 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		1568754921399ACD00759515 /* WikipediaKit.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = WikipediaKit.framework;
-			remoteRef = 1568754821399ACD00759515 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		1568754B21399ACD00759515 /* WikipediaKit.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = WikipediaKit.framework;
-			remoteRef = 1568754A21399ACD00759515 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		1568754D21399ACD00759515 /* WikipediaKitTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = WikipediaKitTests.xctest;
-			remoteRef = 1568754C21399ACD00759515 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
-
 /* Begin PBXResourcesBuildPhase section */
 		80F1362E2052BC3400E3E19D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8012C694206B9C1B007564EB /* ar.lproj in Resources */,
-				80334DCD206B76FC00078E64 /* en.lproj in Resources */,
+				1556599B2146C37E00465B7E /* Food101.json in Resources */,
+				1556598821468DD500465B7E /* ar.lproj in Resources */,
 				80F136402052BC3400E3E19D /* LaunchScreen.storyboard in Resources */,
 				80334DC1206B72F800078E64 /* Localizable.strings in Resources */,
 				80F1363D2052BC3400E3E19D /* Assets.xcassets in Resources */,
-				80334DCB206B76FC00078E64 /* da.lproj in Resources */,
-				80334DCC206B76FC00078E64 /* de.lproj in Resources */,
+				155659A12146C43100465B7E /* SqueezeNet.json in Resources */,
+				155659992146C2CE00465B7E /* Oxford102.json in Resources */,
+				1556598521468DD500465B7E /* en.lproj in Resources */,
+				1556598621468DD500465B7E /* de.lproj in Resources */,
+				1556599F2146C40C00465B7E /* GoogLeNetPlaces.json in Resources */,
+				155659952146B7F700465B7E /* test.json in Resources */,
 				80F1363B2052BC3400E3E19D /* Main.storyboard in Resources */,
+				1556598721468DD500465B7E /* da.lproj in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -409,10 +329,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1578314D21466F7800232063 /* DetailViewController.swift in Sources */,
 				80F136382052BC3400E3E19D /* QuizViewController.swift in Sources */,
 				8020D19E205BE56E0096A578 /* Resnet50.mlmodel in Sources */,
 				80334DBC206B71ED00078E64 /* Localizable.swift in Sources */,
 				8020D19C205BE5450096A578 /* Food101.mlmodel in Sources */,
+				1556598A2146946F00465B7E /* ModelDataContainer.swift in Sources */,
 				80F136342052BC3400E3E19D /* AppDelegate.swift in Sources */,
 				8021D4962053E355003CA4DB /* SqueezeNet.mlmodel in Sources */,
 				809F88FF207B6A0E00E16004 /* Oxford102.mlmodel in Sources */,
@@ -425,14 +347,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		1568755621399C6F00759515 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "WikipediaKit-iOS";
-			targetProxy = 1568755521399C6F00759515 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		80334DC3206B72F800078E64 /* Localizable.strings */ = {

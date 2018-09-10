@@ -10,6 +10,7 @@ import UIKit
 import MBCircularProgressBar
 import AVKit
 import Vision
+import os.log
 class ExploreViewController: UIViewController , AVCaptureVideoDataOutputSampleBufferDelegate{
     @IBOutlet weak var MaxProgressBar: MBCircularProgressBarView!
     @IBOutlet weak var MaxProgressLabel: UILabel!
@@ -20,7 +21,9 @@ class ExploreViewController: UIViewController , AVCaptureVideoDataOutputSampleBu
     
     var captureSession:AVCaptureSession!
     var isRunning = true
-    
+    var labels:[ModelDataContainer] = [ModelDataContainer]()
+    var labelsDict: [String: ModelDataContainer] = [:]
+    var results: [VNClassificationObservation]?
     
     @IBOutlet weak var subview: UIView!
     let identifierLabel: UILabel = {
@@ -136,11 +139,17 @@ class ExploreViewController: UIViewController , AVCaptureVideoDataOutputSampleBu
             
             //            print(finishedReq.results)
             
-            guard let results = finishedReq.results as? [VNClassificationObservation] else { return }
+            self.results = finishedReq.results as? [VNClassificationObservation]
+            if self.results == nil {return}
+            if self.labels.count==0{
+                for result in self.results! {
+                    self.labels.append(ModelDataContainer(keyName: result.identifier, description: "TODO", pictureFileURL: URL (string: "https://i0.wp.com/manualbasen.dk/wp-content/uploads/2017/03/refer-instruction-manual-iso-sign-is-1015.png")!))
+                }
+            }
             
-            guard let firstObservation = results.first else { return }
-            let secondObservation = results[1]
-            let thirdObservation = results[2]
+            guard let firstObservation = self.results?.first else { return }
+            let secondObservation = self.results![1]
+            let thirdObservation = self.results![2]
             //print(firstObservation.identifier, firstObservation.confidence)
             
             DispatchQueue.main.async {
@@ -161,5 +170,54 @@ class ExploreViewController: UIViewController , AVCaptureVideoDataOutputSampleBu
         
         
     }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        super.prepare(for: segue, sender: sender)
+        
+        switch(segue.identifier ?? "") {
+            
+        case "detailSegue":
+            os_log("detail segue", log: OSLog.default, type: .debug)
+            let destinationNavigationController = segue.destination as! UINavigationController
+            guard let detailViewController = destinationNavigationController.topViewController as? DetailViewController else {
+                fatalError("Unexpected destination: \(segue.destination)")
+            }
+            detailViewController.titleString = self.results![0].identifier
+        default:
+            os_log("not detail", log: OSLog.default, type: .debug)
+        }
+       
+        
+    }
+    @IBAction func SaveLabels(_ sender: Any) {
+        for label in labels{
+            labelsDict[label.keyName] = label
+        }
+
+        let jsonEncoder = JSONEncoder()
+        do{
+            let jsondata = try jsonEncoder.encode(labelsDict)
+            let json = String(data: jsondata, encoding: String.Encoding.utf8)
+            print(json!)
+        }
+        catch{
+            print("lol")
+        }
+//        let decoder = JSONDecoder()
+//        do {
+//            let products = try decoder.decode([ModelDataContainer].self, from: json)
+//            print("The following products are available:")
+//            for product in products {
+//                print("\t\(product.keyName) (\(product.description) points)")
+//            }
+//        } catch {
+//            print("Shit")
+//        }
+        
+        
+        
+       
+    }
+    
 }
 
