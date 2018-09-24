@@ -45,6 +45,7 @@ class OptionsViewController: UIViewController{
         }
         addActionTheme(theme: Theme.signs)
         addActionTheme(theme: Theme.flowers)
+        addActionTheme(theme: Theme.firesigns)
         
         alert.addAction(
             UIAlertAction(

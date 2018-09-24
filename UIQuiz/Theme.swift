@@ -12,6 +12,7 @@ import Vision
 enum Theme : String {
     case flowers = "theme_flowers"
     case signs = "theme_signs"
+    case firesigns = "theme_fire_signs"
     static var themeString:String = "theme_general"
     static let ThemeKey:String = "Theme"
     static var theme: Theme {
@@ -35,6 +36,8 @@ enum Theme : String {
         switch theme {
         case Theme.flowers:
             return try! VNCoreMLModel(for: oxford102().model)
+        case Theme.firesigns:
+            return try! VNCoreMLModel(for: fir_signs().model)
         case Theme.signs:
             return try! VNCoreMLModel(for: bobby().model)
         default:
@@ -48,7 +51,9 @@ enum Theme : String {
             case Theme.flowers:
                 return LoadModelData(name: "oxford102")
             case Theme.signs:
-                return LoadModelData(name: "signs")
+                return LoadModelData(name: "bobby")
+            case Theme.firesigns:
+                return LoadModelData(name: "fir_signs")
             default:
                 return LoadModelData(name: "oxford102")
         }

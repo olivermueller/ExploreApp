@@ -1,0 +1,62 @@
+{
+    "ISO_7010_F001": {
+        "optional": "optional",
+        "pictureName": "ISO_7010_F001",
+        "wrongAnswerDescription": "Wrong, the forklift and transport vehicles danger sign is a yellow triangle with a black border and a black forklift.",
+        "title": "Fire extinguisher",
+        "coreDescription": "core",
+        "key": "forklift_sign",
+        "description": "This sign indicates danger of moving forklifts or transport vehicles. It means you have to take care to not be run over when walking.",
+        "correctAnswerDescription": "Correct, this sign indicates danger for moving forklifts and transport vehicles."
+    },
+    "ISO_7010_F002": {
+        "optional": "optional",
+        "pictureName": "ISO_7010_F002",
+        "wrongAnswerDescription": "Wrong, the hanging loads danger sign is a yellow triangle with a black border and a black hanging box.",
+        "title": "Fire hose reel",
+        "coreDescription": "core",
+        "key": "load_sign",
+        "description": "This sign indicates danger for hanging or suspended loads. This can be for example trusses or fly bars.",
+        "correctAnswerDescription": "Correct, this sign indicates danger for hanging or suspended loads."
+    },
+    "ISO_7010_F003": {
+        "optional": "optional",
+        "pictureName": "ISO_7010_F003",
+        "wrongAnswerDescription": "Wrong, the electricity danger sign is a yellow triangle with a black border and a black lightning bolt.",
+        "title": "Fire ladder",
+        "coreDescription": "core",
+        "key": "electricity_sign",
+        "description": "This sign indicates danger for electricity. It means there are (touchable) electrical connections present. The sign is mostly combined with an indication of the tension.",
+        "correctAnswerDescription": "Correct, this sign indicates danger for electricity."
+    },
+    "ISO_7010_F004": {
+        "optional": "optional",
+        "pictureName": "ISO_7010_F004",
+        "wrongAnswerDescription": "Wrong, the general danger sign is a yellow triangle with a black border and a black exclamation mark.",
+        "title": "Collection of firefighting equipment",
+        "coreDescription": "core",
+        "key": "danger_sign",
+        "description": "This sign indicates a non-specified danger.",
+        "correctAnswerDescription": "Correct, this sign indicates a general danger."
+    },
+    "ISO_7010_F005": {
+        "optional": "optional",
+        "pictureName": "ISO_7010_F005",
+        "wrongAnswerDescription": "Wrong, the general danger sign is a yellow triangle with a black border and a black exclamation mark.",
+        "title": "Fire alarm call point",
+        "coreDescription": "core",
+        "key": "danger_sign",
+        "description": "This sign indicates a non-specified danger.",
+        "correctAnswerDescription": "Correct, this sign indicates a general danger."
+    },
+    "ISO_7010_F006": {
+        "optional": "optional",
+        "pictureName": "ISO_7010_F006",
+        "wrongAnswerDescription": "Wrong, the general danger sign is a yellow triangle with a black border and a black exclamation mark.",
+        "title": "Fire emergency telephone",
+        "coreDescription": "core",
+        "key": "danger_sign",
+        "description": "This sign indicates a non-specified danger.",
+        "correctAnswerDescription": "Correct, this sign indicates a general danger."
+    }
+}

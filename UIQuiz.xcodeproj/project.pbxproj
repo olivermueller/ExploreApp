@@ -13,13 +13,11 @@
 		1556598721468DD500465B7E /* da.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 1556598321468DD500465B7E /* da.lproj */; };
 		1556598821468DD500465B7E /* ar.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 1556598421468DD500465B7E /* ar.lproj */; };
 		1556598A2146946F00465B7E /* ModelDataContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 155659892146946F00465B7E /* ModelDataContainer.swift */; };
-		155659952146B7F700465B7E /* test.json in Resources */ = {isa = PBXBuildFile; fileRef = 155659942146B7F700465B7E /* test.json */; };
 		155659992146C2CE00465B7E /* Oxford102.json in Resources */ = {isa = PBXBuildFile; fileRef = 155659982146C2CE00465B7E /* Oxford102.json */; };
-		1556599B2146C37E00465B7E /* Food101.json in Resources */ = {isa = PBXBuildFile; fileRef = 1556599A2146C37E00465B7E /* Food101.json */; };
-		1556599F2146C40C00465B7E /* GoogLeNetPlaces.json in Resources */ = {isa = PBXBuildFile; fileRef = 1556599E2146C40C00465B7E /* GoogLeNetPlaces.json */; };
-		155659A12146C43100465B7E /* SqueezeNet.json in Resources */ = {isa = PBXBuildFile; fileRef = 155659A02146C43100465B7E /* SqueezeNet.json */; };
 		1578314D21466F7800232063 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1578314C21466F7800232063 /* DetailViewController.swift */; };
-		15DC447D2158FA24005352C7 /* signs.json in Resources */ = {isa = PBXBuildFile; fileRef = 15DC447C2158FA24005352C7 /* signs.json */; };
+		158A3DA421592C1000583728 /* fir_signs.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 158A3DA321592C1000583728 /* fir_signs.mlmodel */; };
+		158A3DA621592C8A00583728 /* fir_signs.json in Resources */ = {isa = PBXBuildFile; fileRef = 158A3DA521592C8A00583728 /* fir_signs.json */; };
+		15DC447D2158FA24005352C7 /* bobby.json in Resources */ = {isa = PBXBuildFile; fileRef = 15DC447C2158FA24005352C7 /* bobby.json */; };
 		15DC448421590E20005352C7 /* oxford102.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 15DC448221590E20005352C7 /* oxford102.mlmodel */; };
 		15DC448721590E66005352C7 /* bobby.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 15DC448621590E66005352C7 /* bobby.mlmodel */; };
 		8012C691206B9826007564EB /* LRSSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8012C690206B9826007564EB /* LRSSender.swift */; };
@@ -55,14 +53,12 @@
 		1556598421468DD500465B7E /* ar.lproj */ = {isa = PBXFileReference; lastKnownFileType = folder; name = ar.lproj; path = UIQuiz/ar.lproj; sourceTree = SOURCE_ROOT; };
 		155659892146946F00465B7E /* ModelDataContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelDataContainer.swift; sourceTree = "<group>"; };
 		1556598E2146A50900465B7E /* ModelData */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ModelData; sourceTree = SOURCE_ROOT; };
-		155659942146B7F700465B7E /* test.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = test.json; sourceTree = "<group>"; };
 		155659982146C2CE00465B7E /* Oxford102.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Oxford102.json; sourceTree = "<group>"; };
-		1556599A2146C37E00465B7E /* Food101.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Food101.json; sourceTree = "<group>"; };
-		1556599E2146C40C00465B7E /* GoogLeNetPlaces.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = GoogLeNetPlaces.json; sourceTree = "<group>"; };
-		155659A02146C43100465B7E /* SqueezeNet.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = SqueezeNet.json; sourceTree = "<group>"; };
 		156875222139975500759515 /* WikipediaKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = WikipediaKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1578314C21466F7800232063 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
-		15DC447C2158FA24005352C7 /* signs.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = signs.json; sourceTree = "<group>"; };
+		158A3DA321592C1000583728 /* fir_signs.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = fir_signs.mlmodel; sourceTree = "<group>"; };
+		158A3DA521592C8A00583728 /* fir_signs.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = fir_signs.json; sourceTree = "<group>"; };
+		15DC447C2158FA24005352C7 /* bobby.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = bobby.json; sourceTree = "<group>"; };
 		15DC448221590E20005352C7 /* oxford102.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = oxford102.mlmodel; sourceTree = "<group>"; };
 		15DC448621590E66005352C7 /* bobby.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = bobby.mlmodel; sourceTree = "<group>"; };
 		280D3AE67B5399ED0EA43700 /* Pods-UIQuiz.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UIQuiz.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UIQuiz/Pods-UIQuiz.debug.xcconfig"; sourceTree = "<group>"; };
@@ -110,6 +106,7 @@
 		8021D4942053E345003CA4DB /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				158A3DA321592C1000583728 /* fir_signs.mlmodel */,
 				15DC448621590E66005352C7 /* bobby.mlmodel */,
 				15DC448221590E20005352C7 /* oxford102.mlmodel */,
 			);
@@ -158,11 +155,8 @@
 				80F1363E2052BC3400E3E19D /* LaunchScreen.storyboard */,
 				80F136412052BC3400E3E19D /* Info.plist */,
 				155659982146C2CE00465B7E /* Oxford102.json */,
-				1556599A2146C37E00465B7E /* Food101.json */,
-				1556599E2146C40C00465B7E /* GoogLeNetPlaces.json */,
-				155659A02146C43100465B7E /* SqueezeNet.json */,
-				155659942146B7F700465B7E /* test.json */,
-				15DC447C2158FA24005352C7 /* signs.json */,
+				15DC447C2158FA24005352C7 /* bobby.json */,
+				158A3DA521592C8A00583728 /* fir_signs.json */,
 			);
 			path = UIQuiz;
 			sourceTree = "<group>";
@@ -242,18 +236,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				15DC447D2158FA24005352C7 /* signs.json in Resources */,
-				1556599B2146C37E00465B7E /* Food101.json in Resources */,
+				158A3DA621592C8A00583728 /* fir_signs.json in Resources */,
+				15DC447D2158FA24005352C7 /* bobby.json in Resources */,
 				1556598821468DD500465B7E /* ar.lproj in Resources */,
 				80F136402052BC3400E3E19D /* LaunchScreen.storyboard in Resources */,
 				80334DC1206B72F800078E64 /* Localizable.strings in Resources */,
 				80F1363D2052BC3400E3E19D /* Assets.xcassets in Resources */,
-				155659A12146C43100465B7E /* SqueezeNet.json in Resources */,
 				155659992146C2CE00465B7E /* Oxford102.json in Resources */,
 				1556598521468DD500465B7E /* en.lproj in Resources */,
 				1556598621468DD500465B7E /* de.lproj in Resources */,
-				1556599F2146C40C00465B7E /* GoogLeNetPlaces.json in Resources */,
-				155659952146B7F700465B7E /* test.json in Resources */,
 				80F1363B2052BC3400E3E19D /* Main.storyboard in Resources */,
 				1556598721468DD500465B7E /* da.lproj in Resources */,
 			);
@@ -325,6 +316,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1578314D21466F7800232063 /* DetailViewController.swift in Sources */,
+				158A3DA421592C1000583728 /* fir_signs.mlmodel in Sources */,
 				80F136382052BC3400E3E19D /* QuizViewController.swift in Sources */,
 				15DC448421590E20005352C7 /* oxford102.mlmodel in Sources */,
 				80334DBC206B71ED00078E64 /* Localizable.swift in Sources */,

@@ -35,6 +35,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             Theme.theme = Theme.signs
         case Theme.flowers.rawValue:
             Theme.theme = Theme.flowers
+        case Theme.firesigns.rawValue:
+            Theme.theme = Theme.firesigns
         default:
             Theme.theme = Theme.signs
         }
