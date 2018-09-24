@@ -21,11 +21,8 @@ class DetailViewController: UIViewController {
         let modelData = _data[titleString]
         titleLabel.text = modelData?.keyName.localized
         descriptionTextView.text = modelData?.description
-        downloadImage(from: (modelData?.pictureFileURL)!)
-//        if !(modelData?.pictureFileName.isEmpty)!{
-//            downloadImage(from: URL(string: (modelData?.pictureFileName)!)!)
-//        }
-//        print(data)
+        self.signImageView.image = UIImage(named: (modelData?.pictureName)!)
+        //downloadImage(from: (modelData?.pictureFileURL)!)
     }
 
     override func didReceiveMemoryWarning() {

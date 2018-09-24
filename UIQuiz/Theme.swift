@@ -36,7 +36,7 @@ enum Theme : String {
     static func GetModel() -> VNCoreMLModel{
         switch theme {
         case Theme.general:
-            return try! VNCoreMLModel(for: SqueezeNet().model)
+            return try! VNCoreMLModel(for: signs().model)
         case Theme.place:
             return try! VNCoreMLModel(for: GoogLeNetPlaces().model)
         case Theme.food:

@@ -30,6 +30,12 @@ class QuizViewController: UIViewController , AVCaptureVideoDataOutputSampleBuffe
         LRSSender.sendDataToLRS(verbId: LRSSender.VerbIdInitialized, verbDisplay: "started", activityId: LRSSender.ObjectIdMLQuiz, activityName: "quiz", activityDescription: "started quiz")
         //LRSSender.sendDataToLRS(verbId: LRSSender.VerbWhatIdAccept, verbDisplay: "clicked", activityId: LRSSender.WhereActivityIdExploreQuizApp, activityName: "explore quiz app", activityDescription: "clicked percentage", object: (self.res?[0].identifier)!, score: Float((self.res?[0].confidence)! ))
         captureSession.stopRunning()
+        var top4 = [VNClassificationObservation]()
+        top4.append((self.res?[0])!)
+        top4.append((self.res?[1])!)
+        top4.append((self.res?[2])!)
+        top4.append((self.res?[3])!)
+        top4.shuffle()
         let alert = UIAlertController(
             title: "alert_select_quiz_answer".localized,
             message: nil,
@@ -60,10 +66,11 @@ class QuizViewController: UIViewController , AVCaptureVideoDataOutputSampleBuffe
                 })
             )
         }
-        addActionAnswer(answer: (res?[0].identifier)!)
-        addActionAnswer(answer: (res?[1].identifier)!)
-        addActionAnswer(answer: (res?[2].identifier)!)
-        addActionAnswer(answer: (res?[3].identifier)!)
+        
+        addActionAnswer(answer: (top4[0].identifier))
+        addActionAnswer(answer: (top4[1].identifier))
+        addActionAnswer(answer: (top4[2].identifier))
+        addActionAnswer(answer: (top4[3].identifier))
         
         alert.addAction(
             UIAlertAction(
@@ -89,8 +96,10 @@ class QuizViewController: UIViewController , AVCaptureVideoDataOutputSampleBuffe
             title = "alert_incorrect".localized
             systemSoundID = 1332
         }
+        let _data = Theme.GetModelData()
+        let modelData = _data[answer]
         // create the alert
-        let alert = UIAlertController(title: title, message: "", preferredStyle: UIAlertControllerStyle.alert)
+        let alert = UIAlertController(title: title, message: modelData?.answerDescription, preferredStyle: UIAlertControllerStyle.alert)
         
         // add an action (button)
         alert.addAction(UIAlertAction(title: "alert_okay".localized, style: UIAlertActionStyle.default, handler: nil))
@@ -172,4 +181,14 @@ class QuizViewController: UIViewController , AVCaptureVideoDataOutputSampleBuffe
         
     }
 }
-
+extension Array
+{
+    /** Randomizes the order of an array's elements. */
+    mutating func shuffle()
+    {
+        for _ in 0..<10
+        {
+            sort { (_,_) in arc4random() < arc4random() }
+        }
+    }
+}

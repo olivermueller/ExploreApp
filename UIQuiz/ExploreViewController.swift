@@ -129,6 +129,8 @@ class ExploreViewController: UIViewController , AVCaptureVideoDataOutputSampleBu
         
         guard let pixelBuffer: CVPixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else { return }
         
+        
+        
         // !!!Important
         // make sure to go download the models at https://developer.apple.com/machine-learning/ scroll to the bottom
         //guard let model = try? VNCoreMLModel(for: SqueezeNet().model) else { return }
@@ -143,7 +145,7 @@ class ExploreViewController: UIViewController , AVCaptureVideoDataOutputSampleBu
             if self.results == nil {return}
             if self.labels.count==0{
                 for result in self.results! {
-                    self.labels.append(ModelDataContainer(keyName: result.identifier, description: "TODO", pictureFileURL: URL (string: "https://i0.wp.com/manualbasen.dk/wp-content/uploads/2017/03/refer-instruction-manual-iso-sign-is-1015.png")!))
+                    self.labels.append(ModelDataContainer(keyName: result.identifier, description: "This is the description", pictureName: "ISO_7010_E001", answerDescription: "This is the answer description", ISO: "ISO_7010_", title: "title"))
                 }
             }
             
@@ -176,13 +178,27 @@ class ExploreViewController: UIViewController , AVCaptureVideoDataOutputSampleBu
         
         switch(segue.identifier ?? "") {
             
-        case "detailSegue":
+        case "detailSegue1":
             os_log("detail segue", log: OSLog.default, type: .debug)
             let destinationNavigationController = segue.destination as! UINavigationController
             guard let detailViewController = destinationNavigationController.topViewController as? DetailViewController else {
                 fatalError("Unexpected destination: \(segue.destination)")
             }
             detailViewController.titleString = self.results![0].identifier
+        case "detailSegue2":
+            os_log("detail segue", log: OSLog.default, type: .debug)
+            let destinationNavigationController = segue.destination as! UINavigationController
+            guard let detailViewController = destinationNavigationController.topViewController as? DetailViewController else {
+                fatalError("Unexpected destination: \(segue.destination)")
+            }
+            detailViewController.titleString = self.results![1].identifier
+        case "detailSegue3":
+            os_log("detail segue", log: OSLog.default, type: .debug)
+            let destinationNavigationController = segue.destination as! UINavigationController
+            guard let detailViewController = destinationNavigationController.topViewController as? DetailViewController else {
+                fatalError("Unexpected destination: \(segue.destination)")
+            }
+            detailViewController.titleString = self.results![2].identifier
         default:
             os_log("not detail", log: OSLog.default, type: .debug)
         }

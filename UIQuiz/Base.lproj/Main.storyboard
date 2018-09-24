@@ -47,6 +47,32 @@
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PlI-DR-REg">
                                 <rect key="frame" x="0.0" y="536" width="414" height="151"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="taU-Ig-1Xu">
+                                        <rect key="frame" x="20" y="121" width="99" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="More"/>
+                                        <connections>
+                                            <segue destination="0tZ-vx-9gz" kind="show" identifier="detailSegue1" id="AwH-j0-ywG"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N76-Tt-CnL">
+                                        <rect key="frame" x="154" y="121" width="105" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="More"/>
+                                        <connections>
+                                            <segue destination="0tZ-vx-9gz" kind="show" identifier="detailSegue2" id="xVh-1u-WDD"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qZy-JZ-fdV">
+                                        <rect key="frame" x="295" y="121" width="99" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="More"/>
+                                        <connections>
+                                            <segue destination="0tZ-vx-9gz" kind="show" identifier="detailSegue3" id="t9H-3I-kWU"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <view opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WPb-z9-lgh" customClass="MBCircularProgressBarView">
@@ -95,14 +121,6 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HLm-89-Dac">
-                                <rect key="frame" x="20" y="536" width="99" height="117"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <connections>
-                                    <action selector="SaveLabels:" destination="9pv-A4-QxB" eventType="touchUpInside" id="7ev-gN-Use"/>
-                                    <segue destination="0tZ-vx-9gz" kind="show" identifier="detailSegue" id="7T7-I9-htZ"/>
-                                </connections>
-                            </button>
                             <view opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DFu-2G-Q0z" customClass="MBCircularProgressBarView">
                                 <rect key="frame" x="154" y="536" width="106" height="117"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
@@ -257,7 +275,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mlP-p9-7MM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3555.072463768116" y="-320.38043478260875"/>
+            <point key="canvasLocation" x="2165" y="-321"/>
         </scene>
         <!--Quiz-->
         <scene sceneID="wg7-f3-ORb">
@@ -336,7 +354,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="602.89855072463774" y="499.72826086956525"/>
+            <point key="canvasLocation" x="786" y="373"/>
         </scene>
         <!--Options-->
         <scene sceneID="Bwg-Ae-ptg">
@@ -420,7 +438,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bf9-LZ-z3n" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-46" y="502"/>
+            <point key="canvasLocation" x="-46" y="373"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ELN-4a-jyD">
@@ -438,7 +456,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9hX-cW-L5j" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2647.826086956522" y="-320.38043478260875"/>
+            <point key="canvasLocation" x="1483" y="-321"/>
         </scene>
     </scenes>
     <resources>
@@ -447,4 +465,7 @@
         <image name="hamburger" width="25" height="25"/>
         <image name="quiz" width="25" height="25"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="t9H-3I-kWU"/>
+    </inferredMetricsTieBreakers>
 </document>

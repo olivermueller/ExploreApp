@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		127018D14B5C159F0FB5498B /* Pods_UIQuiz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A203B0CE7A578CB4D17CE3D0 /* Pods_UIQuiz.framework */; };
+		1529AB66214FEA5B0041CE85 /* signs_v02.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 1529AB65214FEA5B0041CE85 /* signs_v02.mlmodel */; };
+		1529AB6A214FF1BE0041CE85 /* signs.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 1529AB69214FF1BE0041CE85 /* signs.mlmodel */; };
 		1556598521468DD500465B7E /* en.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 1556598121468DD500465B7E /* en.lproj */; };
 		1556598621468DD500465B7E /* de.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 1556598221468DD500465B7E /* de.lproj */; };
 		1556598721468DD500465B7E /* da.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 1556598321468DD500465B7E /* da.lproj */; };
@@ -51,6 +53,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1529AB65214FEA5B0041CE85 /* signs_v02.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = signs_v02.mlmodel; sourceTree = "<group>"; };
+		1529AB69214FF1BE0041CE85 /* signs.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = signs.mlmodel; sourceTree = "<group>"; };
 		1556598121468DD500465B7E /* en.lproj */ = {isa = PBXFileReference; lastKnownFileType = folder; name = en.lproj; path = UIQuiz/en.lproj; sourceTree = SOURCE_ROOT; };
 		1556598221468DD500465B7E /* de.lproj */ = {isa = PBXFileReference; lastKnownFileType = folder; name = de.lproj; path = UIQuiz/de.lproj; sourceTree = SOURCE_ROOT; };
 		1556598321468DD500465B7E /* da.lproj */ = {isa = PBXFileReference; lastKnownFileType = folder; name = da.lproj; path = UIQuiz/da.lproj; sourceTree = SOURCE_ROOT; };
@@ -114,6 +118,8 @@
 		8021D4942053E345003CA4DB /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				1529AB69214FF1BE0041CE85 /* signs.mlmodel */,
+				1529AB65214FEA5B0041CE85 /* signs_v02.mlmodel */,
 				809F88FE207B6A0E00E16004 /* Oxford102.mlmodel */,
 				8020D19D205BE56E0096A578 /* Resnet50.mlmodel */,
 				8020D19B205BE5450096A578 /* Food101.mlmodel */,
@@ -332,11 +338,13 @@
 				1578314D21466F7800232063 /* DetailViewController.swift in Sources */,
 				80F136382052BC3400E3E19D /* QuizViewController.swift in Sources */,
 				8020D19E205BE56E0096A578 /* Resnet50.mlmodel in Sources */,
+				1529AB66214FEA5B0041CE85 /* signs_v02.mlmodel in Sources */,
 				80334DBC206B71ED00078E64 /* Localizable.swift in Sources */,
 				8020D19C205BE5450096A578 /* Food101.mlmodel in Sources */,
 				1556598A2146946F00465B7E /* ModelDataContainer.swift in Sources */,
 				80F136342052BC3400E3E19D /* AppDelegate.swift in Sources */,
 				8021D4962053E355003CA4DB /* SqueezeNet.mlmodel in Sources */,
+				1529AB6A214FF1BE0041CE85 /* signs.mlmodel in Sources */,
 				809F88FF207B6A0E00E16004 /* Oxford102.mlmodel in Sources */,
 				80F136482052C16900E3E19D /* OptionsViewController.swift in Sources */,
 				80F136362052BC3400E3E19D /* ExploreViewController.swift in Sources */,

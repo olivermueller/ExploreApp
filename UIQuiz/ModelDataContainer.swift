@@ -7,18 +7,12 @@
 //
 
 import Foundation
-import UIKit
-struct ModelDataContainer : Codable {
+struct ModelDataContainer : Codable {'
     var keyName:String
     var description:String
-    var pictureFileURL:URL
-}
-struct FailableDecodable<Base : Decodable> : Decodable {
+    var pictureName:String
+    var answerDescription:String
+    var ISO:String
+    var title:String
     
-    let base: Base?
-    
-    init(from decoder: Decoder) throws {
-        let container = try decoder.singleValueContainer()
-        self.base = try? container.decode(Base.self)
-    }
 }
