@@ -1,0 +1,42 @@
+{
+    "forklift_sign": {
+        "optional": "optional",
+        "pictureName": "ISO_7010_W014",
+        "wrongAnswerDescription": "Wrong, the forklift and transport vehicles danger sign is a yellow triangle with a black border and a black forklift.",
+        "title": "Forklift and transport vehicles",
+        "coreDescription": "core",
+        "key": "forklift_sign",
+        "description": "This sign indicates danger of moving forklifts or transport vehicles. It means you have to take care to not be run over when walking.",
+        "correctAnswerDescription": "Correct, this sign indicates danger for moving forklifts and transport vehicles."
+    },
+    "load_sign": {
+        "optional": "optional",
+        "pictureName": "ISO_7010_W015",
+        "wrongAnswerDescription": "Wrong, the hanging loads danger sign is a yellow triangle with a black border and a black hanging box.",
+        "title": "Hanging loads",
+        "coreDescription": "core",
+        "key": "load_sign",
+        "description": "This sign indicates danger for hanging or suspended loads. This can be for example trusses or fly bars.",
+        "correctAnswerDescription": "Correct, this sign indicates danger for hanging or suspended loads."
+    },
+    "electricity_sign": {
+        "optional": "optional",
+        "pictureName": "ISO_7010_W012",
+        "wrongAnswerDescription": "Wrong, the electricity danger sign is a yellow triangle with a black border and a black lightning bolt.",
+        "title": "Electricity danger",
+        "coreDescription": "core",
+        "key": "electricity_sign",
+        "description": "This sign indicates danger for electricity. It means there are (touchable) electrical connections present. The sign is mostly combined with an indication of the tension.",
+        "correctAnswerDescription": "Correct, this sign indicates danger for electricity."
+    },
+    "danger_sign": {
+        "optional": "optional",
+        "pictureName": "ISO_7010_W001",
+        "wrongAnswerDescription": "Wrong, the general danger sign is a yellow triangle with a black border and a black exclamation mark.",
+        "title": "General danger",
+        "coreDescription": "core",
+        "key": "danger_sign",
+        "description": "This sign indicates a non-specified danger.",
+        "correctAnswerDescription": "Correct, this sign indicates a general danger."
+    }
+}

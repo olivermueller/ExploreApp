@@ -11,15 +11,14 @@ import UIKit
 class DetailViewController: UIViewController {
     //MARK: Properties
     @IBOutlet weak var titleLabel: UILabel!
-    var titleString = ""
-    
+    var key = ""
     @IBOutlet weak var signImageView: UIImageView!
     @IBOutlet weak var descriptionTextView: UITextView!
     override func viewDidLoad() {
         super.viewDidLoad()
         let _data = Theme.GetModelData()
-        let modelData = _data[titleString]
-        titleLabel.text = modelData?.keyName.localized
+        let modelData = _data[key]
+        titleLabel.text = modelData?.title
         descriptionTextView.text = modelData?.description
         self.signImageView.image = UIImage(named: (modelData?.pictureName)!)
         //downloadImage(from: (modelData?.pictureFileURL)!)

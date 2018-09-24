@@ -145,7 +145,7 @@ class ExploreViewController: UIViewController , AVCaptureVideoDataOutputSampleBu
             if self.results == nil {return}
             if self.labels.count==0{
                 for result in self.results! {
-                    self.labels.append(ModelDataContainer(keyName: result.identifier, description: "This is the description", pictureName: "ISO_7010_E001", answerDescription: "This is the answer description", ISO: "ISO_7010_", title: "title"))
+                    self.labels.append(ModelDataContainer(key: result.identifier, description: "This is the description", correctAnswerDescription: "correct", wrongAnswerDescription: "wrong", title: "title", pictureName: "ISO_7010_E001", coreDescription: "core", optional: "optional"))
                 }
             }
             
@@ -184,21 +184,21 @@ class ExploreViewController: UIViewController , AVCaptureVideoDataOutputSampleBu
             guard let detailViewController = destinationNavigationController.topViewController as? DetailViewController else {
                 fatalError("Unexpected destination: \(segue.destination)")
             }
-            detailViewController.titleString = self.results![0].identifier
+            detailViewController.key = self.results![0].identifier
         case "detailSegue2":
             os_log("detail segue", log: OSLog.default, type: .debug)
             let destinationNavigationController = segue.destination as! UINavigationController
             guard let detailViewController = destinationNavigationController.topViewController as? DetailViewController else {
                 fatalError("Unexpected destination: \(segue.destination)")
             }
-            detailViewController.titleString = self.results![1].identifier
+            detailViewController.key = self.results![1].identifier
         case "detailSegue3":
             os_log("detail segue", log: OSLog.default, type: .debug)
             let destinationNavigationController = segue.destination as! UINavigationController
             guard let detailViewController = destinationNavigationController.topViewController as? DetailViewController else {
                 fatalError("Unexpected destination: \(segue.destination)")
             }
-            detailViewController.titleString = self.results![2].identifier
+            detailViewController.key = self.results![2].identifier
         default:
             os_log("not detail", log: OSLog.default, type: .debug)
         }
@@ -207,7 +207,7 @@ class ExploreViewController: UIViewController , AVCaptureVideoDataOutputSampleBu
     }
     @IBAction func SaveLabels(_ sender: Any) {
         for label in labels{
-            labelsDict[label.keyName] = label
+            labelsDict[label.key] = label
         }
 
         let jsonEncoder = JSONEncoder()

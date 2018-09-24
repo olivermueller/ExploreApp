@@ -52,7 +52,7 @@ enum Theme : String {
         switch theme
         {
             case Theme.general:
-                return LoadModelData(name: "SqueezeNet")
+                return LoadModelData(name: "signs")
             case Theme.place:
                 return LoadModelData(name: "GoogLeNetPlaces")
             case Theme.food:

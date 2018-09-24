@@ -99,7 +99,10 @@ class QuizViewController: UIViewController , AVCaptureVideoDataOutputSampleBuffe
         let _data = Theme.GetModelData()
         let modelData = _data[answer]
         // create the alert
-        let alert = UIAlertController(title: title, message: modelData?.answerDescription, preferredStyle: UIAlertControllerStyle.alert)
+        let alert = UIAlertController(title: title, message: modelData?.correctAnswerDescription, preferredStyle: UIAlertControllerStyle.alert)
+        if !correct{
+            let alert = UIAlertController(title: title, message: modelData?.wrongAnswerDescription, preferredStyle: UIAlertControllerStyle.alert)
+        }
         
         // add an action (button)
         alert.addAction(UIAlertAction(title: "alert_okay".localized, style: UIAlertActionStyle.default, handler: nil))

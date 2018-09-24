@@ -7,12 +7,13 @@
 //
 
 import Foundation
-struct ModelDataContainer : Codable {'
-    var keyName:String
+struct ModelDataContainer : Codable {
+    var key:String
     var description:String
-    var pictureName:String
-    var answerDescription:String
-    var ISO:String
+    var correctAnswerDescription:String
+    var wrongAnswerDescription:String
     var title:String
-    
+    var pictureName:String
+    var coreDescription:String
+    var optional:String
 }
