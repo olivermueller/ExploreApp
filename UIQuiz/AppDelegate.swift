@@ -26,21 +26,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Uncomment to reset score
         standardDefaults.setValue("John", forKey: "Name")
         standardDefaults.setValue("John@johnson.com", forKey: "Email")
-        //standardDefaults.setValue(Theme.place.rawValue, forKey: Theme.ThemeKey)
+//        standardDefaults.setValue(Theme.signs.rawValue, forKey: Theme.ThemeKey)
         //standardDefaults.setValue(0, forKey: "Progress")
         //standardDefaults.setValue(1, forKey: "Level")
         
         switch standardDefaults.string(forKey: Theme.ThemeKey)! {
-        case Theme.general.rawValue:
-            Theme.theme = Theme.general
-        case Theme.place.rawValue:
-            Theme.theme = Theme.place
-        case Theme.food.rawValue:
-            Theme.theme = Theme.food
+        case Theme.signs.rawValue:
+            Theme.theme = Theme.signs
         case Theme.flowers.rawValue:
             Theme.theme = Theme.flowers
         default:
-            Theme.theme = Theme.general
+            Theme.theme = Theme.signs
         }
         return true
     }

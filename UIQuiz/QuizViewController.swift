@@ -50,7 +50,7 @@ class QuizViewController: UIViewController , AVCaptureVideoDataOutputSampleBuffe
                     handler: { _ in
                         //Language.language = language
                         let isCorrect = (answer == self.res?[0].identifier)
-                        self.alertMessage(correct: isCorrect , answer: answer)
+                        self.alertMessage(correct: isCorrect , answer: self.res?[0].identifier ?? "null")
                         
                         if isCorrect == true
                         {
@@ -99,13 +99,25 @@ class QuizViewController: UIViewController , AVCaptureVideoDataOutputSampleBuffe
         let _data = Theme.GetModelData()
         let modelData = _data[answer]
         // create the alert
-        let alert = UIAlertController(title: title, message: modelData?.correctAnswerDescription, preferredStyle: UIAlertControllerStyle.alert)
+        var alert = UIAlertController(title: title, message: modelData?.correctAnswerDescription, preferredStyle: UIAlertControllerStyle.alert)
         if !correct{
-            let alert = UIAlertController(title: title, message: modelData?.wrongAnswerDescription, preferredStyle: UIAlertControllerStyle.alert)
+            alert = UIAlertController(title: title, message: modelData?.wrongAnswerDescription, preferredStyle: UIAlertControllerStyle.alert)
         }
         
+        let uiImageAlertAction = UIAlertAction(title: "", style: .default, handler: nil)
+        let image = UIImage(named: (modelData?.pictureName)!)
+        
+        // size the image
+        let reSizedImage = resizeImage(image: image!, newWidth: 245)
+        
         // add an action (button)
-        alert.addAction(UIAlertAction(title: "alert_okay".localized, style: UIAlertActionStyle.default, handler: nil))
+        let action = UIAlertAction(title: "alert_okay".localized, style: UIAlertActionStyle.default, handler: nil)
+        
+        uiImageAlertAction.setValue(reSizedImage.withRenderingMode(UIImageRenderingMode.alwaysOriginal), forKey: "image")
+        uiImageAlertAction.isEnabled = false
+        alert.addAction(uiImageAlertAction)
+        alert.addAction(action)
+//        alert.view.addSubview(imageView)
         
         //AudioServicesPlaySystemSound (systemSoundID!)
         // show the alert
@@ -114,6 +126,17 @@ class QuizViewController: UIViewController , AVCaptureVideoDataOutputSampleBuffe
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    func resizeImage(image: UIImage, newWidth: CGFloat) -> UIImage {
+        
+        let scale = newWidth / image.size.width
+        let newHeight = image.size.height * scale
+        UIGraphicsBeginImageContext(CGSize(width: newWidth, height: newHeight))
+        image.draw(in: CGRect(x: 0, y: 0, width: newWidth, height: newHeight))
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return newImage!
     }
     override func viewDidAppear(_ animated: Bool) {
         print("Quiz view appeared")

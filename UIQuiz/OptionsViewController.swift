@@ -43,9 +43,7 @@ class OptionsViewController: UIViewController{
                 })
             )
         }
-        addActionTheme(theme: Theme.food)
-        addActionTheme(theme: Theme.general)
-        addActionTheme(theme: Theme.place)
+        addActionTheme(theme: Theme.signs)
         addActionTheme(theme: Theme.flowers)
         
         alert.addAction(
