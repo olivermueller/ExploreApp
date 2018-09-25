@@ -2,6 +2,49 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>UIApplicationShortcutItems</key>
+	<array>
+		<dict>
+			<key>UIApplicationShortcutItemIconFile</key>
+			<string>explore</string>
+			<key>UIApplicationShortcutItemSubtitle</key>
+			<string>Start exploring</string>
+			<key>UIApplicationShortcutItemTitle</key>
+			<string>Explore</string>
+			<key>UIApplicationShortcutItemType</key>
+			<string>OpenExplore</string>
+		</dict>
+		<dict>
+			<key>UIApplicationShortcutItemIconFile</key>
+			<string>quiz</string>
+			<key>UIApplicationShortcutItemSubtitle</key>
+			<string>Start quizzing</string>
+			<key>UIApplicationShortcutItemTitle</key>
+			<string>Quiz</string>
+			<key>UIApplicationShortcutItemType</key>
+			<string>OpenQuiz</string>
+		</dict>
+		<dict>
+			<key>UIApplicationShortcutItemIconFile</key>
+			<string>learn</string>
+			<key>UIApplicationShortcutItemSubtitle</key>
+			<string>Learn about signs</string>
+			<key>UIApplicationShortcutItemTitle</key>
+			<string>Learn</string>
+			<key>UIApplicationShortcutItemType</key>
+			<string>OpenLearn</string>
+		</dict>
+		<dict>
+			<key>UIApplicationShortcutItemIconFile</key>
+			<string>cog</string>
+			<key>UIApplicationShortcutItemSubtitle</key>
+			<string>Adjust settings</string>
+			<key>UIApplicationShortcutItemTitle</key>
+			<string>Settings</string>
+			<key>UIApplicationShortcutItemType</key>
+			<string>OpenSettings</string>
+		</dict>
+	</array>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>

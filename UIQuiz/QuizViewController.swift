@@ -21,6 +21,10 @@ class QuizViewController: UIViewController , AVCaptureVideoDataOutputSampleBuffe
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tabBarController?.viewControllers![0].title = "Explore".localized
+        tabBarController?.viewControllers![1].title = "Quiz".localized
+        tabBarController?.viewControllers![2].title = "Learn".localized
+        tabBarController?.viewControllers![3].title = "Options".localized
         setupAV()
         // Do any additional setup after loading the view, typically from a nib.
     }

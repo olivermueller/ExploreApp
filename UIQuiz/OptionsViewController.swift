@@ -133,7 +133,8 @@ class OptionsViewController: UIViewController{
     private func setupUI() {
         tabBarController?.viewControllers![0].title = "Explore".localized
         tabBarController?.viewControllers![1].title = "Quiz".localized
-        tabBarController?.viewControllers![2].title = "Options".localized
+        tabBarController?.viewControllers![2].title = "Learn".localized
+        tabBarController?.viewControllers![3].title = "Options".localized
         currentLanguageLabel.text = "main_page_language".localized
         flag.image = "flag".localizedImage
         languagebtn.setTitle(

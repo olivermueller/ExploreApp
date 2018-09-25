@@ -14,6 +14,8 @@
 		1556598821468DD500465B7E /* ar.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 1556598421468DD500465B7E /* ar.lproj */; };
 		1556598A2146946F00465B7E /* ModelDataContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 155659892146946F00465B7E /* ModelDataContainer.swift */; };
 		155659992146C2CE00465B7E /* Oxford102.json in Resources */ = {isa = PBXBuildFile; fileRef = 155659982146C2CE00465B7E /* Oxford102.json */; };
+		15664B43215A2E96004A75E8 /* ModelDataTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15664B42215A2E96004A75E8 /* ModelDataTableViewCell.swift */; };
+		15664B45215A3212004A75E8 /* ModelDataTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15664B44215A3212004A75E8 /* ModelDataTableViewController.swift */; };
 		1578314D21466F7800232063 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1578314C21466F7800232063 /* DetailViewController.swift */; };
 		158A3DA421592C1000583728 /* fir_signs.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 158A3DA321592C1000583728 /* fir_signs.mlmodel */; };
 		158A3DA621592C8A00583728 /* fir_signs.json in Resources */ = {isa = PBXBuildFile; fileRef = 158A3DA521592C8A00583728 /* fir_signs.json */; };
@@ -54,6 +56,8 @@
 		155659892146946F00465B7E /* ModelDataContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelDataContainer.swift; sourceTree = "<group>"; };
 		1556598E2146A50900465B7E /* ModelData */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ModelData; sourceTree = SOURCE_ROOT; };
 		155659982146C2CE00465B7E /* Oxford102.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Oxford102.json; sourceTree = "<group>"; };
+		15664B42215A2E96004A75E8 /* ModelDataTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelDataTableViewCell.swift; sourceTree = "<group>"; };
+		15664B44215A3212004A75E8 /* ModelDataTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelDataTableViewController.swift; sourceTree = "<group>"; };
 		156875222139975500759515 /* WikipediaKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = WikipediaKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1578314C21466F7800232063 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		158A3DA321592C1000583728 /* fir_signs.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = fir_signs.mlmodel; sourceTree = "<group>"; };
@@ -146,6 +150,8 @@
 				80334DBB206B71EC00078E64 /* Localizable.swift */,
 				8021D49A2053E433003CA4DB /* Theme.swift */,
 				80F136352052BC3400E3E19D /* ExploreViewController.swift */,
+				15664B42215A2E96004A75E8 /* ModelDataTableViewCell.swift */,
+				15664B44215A3212004A75E8 /* ModelDataTableViewController.swift */,
 				155659892146946F00465B7E /* ModelDataContainer.swift */,
 				80F136372052BC3400E3E19D /* QuizViewController.swift */,
 				1578314C21466F7800232063 /* DetailViewController.swift */,
@@ -326,6 +332,8 @@
 				80F136362052BC3400E3E19D /* ExploreViewController.swift in Sources */,
 				8012C691206B9826007564EB /* LRSSender.swift in Sources */,
 				15DC448721590E66005352C7 /* bobby.mlmodel in Sources */,
+				15664B45215A3212004A75E8 /* ModelDataTableViewController.swift in Sources */,
+				15664B43215A2E96004A75E8 /* ModelDataTableViewCell.swift in Sources */,
 				8021D49B2053E433003CA4DB /* Theme.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

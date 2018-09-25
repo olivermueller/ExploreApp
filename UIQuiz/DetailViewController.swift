@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import WebKit
 class DetailViewController: UIViewController {
     //MARK: Properties
     @IBOutlet weak var titleLabel: UILabel!
@@ -19,11 +19,11 @@ class DetailViewController: UIViewController {
         let _data = Theme.GetModelData()
         let modelData = _data[key]
         titleLabel.text = modelData?.title
+//        webview.loadHTMLString("<html><body><p>"+(modelData?.description)!+"</p></body></html>", baseURL: nil)
         descriptionTextView.text = modelData?.description
         self.signImageView.image = UIImage(named: (modelData?.pictureName)!)
         //downloadImage(from: (modelData?.pictureFileURL)!)
     }
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

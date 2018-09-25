@@ -16,4 +16,13 @@ struct ModelDataContainer : Codable {
     var pictureName:String
     var coreDescription:String
     var optional:String
+    var type:sign_type
+}
+enum sign_type : String, Codable
+{
+    case Safe_Condition = "Safe Condition"
+    case Fire_Protection = "Fire Protection"
+    case Mandatory = "Mandatory"
+    case Prohibition = "Prohibition"
+    case Warning = "Warning"
 }

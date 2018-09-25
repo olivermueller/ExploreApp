@@ -104,7 +104,8 @@ class ExploreViewController: UIViewController , AVCaptureVideoDataOutputSampleBu
         setupAV()
         tabBarController?.viewControllers![0].title = "Explore".localized
         tabBarController?.viewControllers![1].title = "Quiz".localized
-        tabBarController?.viewControllers![2].title = "Options".localized
+        tabBarController?.viewControllers![2].title = "Learn".localized
+        tabBarController?.viewControllers![3].title = "Options".localized
     }
     private func setupAV(){
         captureSession = AVCaptureSession()
@@ -145,7 +146,7 @@ class ExploreViewController: UIViewController , AVCaptureVideoDataOutputSampleBu
             if self.results == nil {return}
             if self.labels.count==0{
                 for result in self.results! {
-                    self.labels.append(ModelDataContainer(key: result.identifier, description: "This is the description", correctAnswerDescription: "correct", wrongAnswerDescription: "wrong", title: "title", pictureName: "ISO_7010_E001", coreDescription: "core", optional: "optional"))
+                    self.labels.append(ModelDataContainer(key: result.identifier, description: "This is the description", correctAnswerDescription: "correct", wrongAnswerDescription: "wrong", title: "title", pictureName: "ISO_7010_E001", coreDescription: "core", optional: "optional", type: sign_type.Fire_Protection))
                 }
             }
             
