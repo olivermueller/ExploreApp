@@ -26,10 +26,10 @@ class ModelDataTableViewController: UITableViewController, UISearchBarDelegate {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
     override func viewDidAppear(_ animated: Bool) {
-        searchBar.showsScopeBar = false
+//        searchBar.showsScopeBar = false
     }
     override func viewDidDisappear(_ animated: Bool) {
-        searchBar.showsScopeBar = true
+//        searchBar.showsScopeBar = true
     }
     //MARK: Private Methods
     private func setupSearchBar(){
@@ -50,6 +50,10 @@ class ModelDataTableViewController: UITableViewController, UISearchBarDelegate {
         searchBar.sizeToFit()
 //        searchBar.showsScopeBar = false // you can show/hide this dependant on your layout
         searchBar.placeholder = "Search..."
+//        searchBar.backgroundColor = UIColor.white
+//        searchBar.barTintColor = UIColor.white
+        let titleTextAttributesSelected = [NSAttributedStringKey.foregroundColor: UIColor.green]
+        UISegmentedControl.appearance().setTitleTextAttributes(titleTextAttributesSelected, for: .selected)
     }
     private func loadData() {
         let values = Theme.GetModelData().values.sorted(by: { $0.key > $1.key })
@@ -80,8 +84,14 @@ class ModelDataTableViewController: UITableViewController, UISearchBarDelegate {
         let dat = currentData[indexPath.row]
         
         cell.TitleLabel.text = dat.title
-        cell.ISOLabel.text = dat.key
-        cell.signImage.image = UIImage(named: dat.pictureName)
+        cell.ISOLabel.text = dat.pictureName
+        var image: UIImage? = UIImage(named: dat.pictureName)
+        if image == nil {
+            image = UIImage(named: "DefaultImage")
+        }
+        if image != nil{
+            cell.signImage.image = image
+        }
         return cell
     }
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
@@ -155,10 +165,10 @@ class ModelDataTableViewController: UITableViewController, UISearchBarDelegate {
         table.reloadData()
     }
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        searchBar.showsScopeBar = true
+//        searchBar.showsScopeBar = true
     }
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-        searchBar.showsScopeBar = false
+//        searchBar.showsScopeBar = false
     }
     /*
     // Override to support conditional editing of the table view.
@@ -216,7 +226,7 @@ class ModelDataTableViewController: UITableViewController, UISearchBarDelegate {
         guard let indexPath = tableView.indexPath(for: selectedMealCell) else {
             fatalError("The selected cell is not being displayed by the table")
         }
-        let selectedDat = data[indexPath.row]
+        let selectedDat = currentData[indexPath.row]
         modelDataDetailViewController.key = selectedDat.key
     }
     

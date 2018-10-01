@@ -17,6 +17,12 @@ struct ModelDataContainer : Codable {
     var coreDescription:String
     var optional:String
     var type:sign_type
+    var imageContentDescription:String
+    var category:String
+    var hazard:String
+    var behaviour:String
+    var relatedSigns:[String]
+    // var ISO:String
 }
 enum sign_type : String, Codable
 {

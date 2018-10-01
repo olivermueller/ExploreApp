@@ -144,11 +144,11 @@ class ExploreViewController: UIViewController , AVCaptureVideoDataOutputSampleBu
             
             self.results = finishedReq.results as? [VNClassificationObservation]
             if self.results == nil {return}
-            if self.labels.count==0{
-                for result in self.results! {
-                    self.labels.append(ModelDataContainer(key: result.identifier, description: "This is the description", correctAnswerDescription: "correct", wrongAnswerDescription: "wrong", title: "title", pictureName: "ISO_7010_E001", coreDescription: "core", optional: "optional", type: sign_type.Fire_Protection))
-                }
-            }
+//            if self.labels.count==0{
+//                for result in self.results! {
+//                    self.labels.append(ModelDataContainer(key: result.identifier, description: "This is the description", correctAnswerDescription: "correct", wrongAnswerDescription: "wrong", title: "title", pictureName: "ISO_7010_E001", coreDescription: "core", optional: "optional", type: sign_type.Fire_Protection))
+//                }
+//            }
             
             guard let firstObservation = self.results?.first else { return }
             let secondObservation = self.results![1]
