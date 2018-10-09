@@ -8,14 +8,38 @@ Contains the object recognition view controller for the Breakfast Finder.
 import UIKit
 import AVFoundation
 import Vision
+import FilesProvider
 
-class VisionObjectRecognitionViewController: ViewController {
+class VisionObjectRecognitionViewController: ViewController, FileProviderDelegate {
+    let server: URL = URL(string: "ftp://agoodturn.dk@linux153.unoeuro.com/")!
+    let username = "agoodturn.dk"
+    let password = "Nxl5Q0ZUcdYEX4QK"
+    
+    var webdav: FTPFileProvider?
+    private let context = CIContext()
+    private var saveImage = false
+    private var image:UIImage = UIImage()
+    var correct:String = ""
     override func viewDidLoad() {
         super.viewDidLoad()
         tabBarController?.viewControllers![0].title = "Explore".localized
         tabBarController?.viewControllers![1].title = "Quiz".localized
         tabBarController?.viewControllers![2].title = "Learn".localized
         tabBarController?.viewControllers![3].title = "Options".localized
+        let credential = URLCredential(user: username, password: password, persistence: .permanent)
+        
+        //        webdav = WebDAVFileProvider(baseURL: server, credential: credential)!
+        webdav = FTPFileProvider(baseURL: server, credential: credential)!
+        webdav?.delegate = self as FileProviderDelegate
+    }
+    func upload(_ filename: String, saveFolder:String) {
+        let localURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!.appendingPathComponent(filename)
+        let remotePath = "/GPOCST/"+saveFolder+"/"+filename
+        let progress = webdav?.copyItem(localFile: localURL, to: remotePath, completionHandler: nil)
+        //        uploadProgressView.observedProgress = progress
+    }
+    func getDocumentsDirectory() -> URL {
+        return FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
     }
     override func viewDidAppear(_ animated: Bool) {
         session.startRunning()
@@ -136,7 +160,7 @@ class VisionObjectRecognitionViewController: ViewController {
         guard let pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else {
             return
         }
-        
+        image = imageFromSampleBuffer(sampleBuffer: sampleBuffer)!
         let exifOrientation = exifOrientationFromDeviceOrientation()
         
         let imageRequestHandler = VNImageRequestHandler(cvPixelBuffer: pixelBuffer, orientation: exifOrientation, options: [:])
@@ -146,7 +170,12 @@ class VisionObjectRecognitionViewController: ViewController {
             print(error)
         }
     }
-    
+    private func imageFromSampleBuffer(sampleBuffer: CMSampleBuffer) -> UIImage? {
+        guard let imageBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else { return nil }
+        let ciImage = CIImage(cvPixelBuffer: imageBuffer)
+        guard let cgImage = context.createCGImage(ciImage, from: ciImage.extent) else { return nil }
+        return UIImage(cgImage: cgImage)
+    }
     override func setupAVCapture() {
         super.setupAVCapture()
         
@@ -220,6 +249,12 @@ class VisionObjectRecognitionViewController: ViewController {
             if let hitLayer = self.detectionOverlay.hitTest(point) {
                 if let name = hitLayer.name {
                     if hitLayer != detectionOverlay{
+                        let picturename = name+UUID().uuidString+".png"
+                        if let data = UIImagePNGRepresentation(self.image) {
+                            let filename = self.getDocumentsDirectory().appendingPathComponent(picturename)
+                            try? data.write(to: filename)
+                        }
+                        self.upload(picturename, saveFolder: name)
                         performSegue(withIdentifier: "objectsegue", sender: name)
                     }
                 }
@@ -247,7 +282,48 @@ class VisionObjectRecognitionViewController: ViewController {
         shapeLayer.cornerRadius = 7
         return shapeLayer
     }
+    func fileproviderSucceed(_ fileProvider: FileProviderOperations, operation: FileOperationType) {
+        switch operation {
+        case .copy(source: let source, destination: let dest):
+            print("\(source) copied to \(dest).")
+        case .remove(path: let path):
+            print("\(path) has been deleted.")
+        default:
+            if let destination = operation.destination {
+                print("\(operation.actionDescription) from \(operation.source) to \(destination) succeed.")
+            } else {
+                print("\(operation.actionDescription) on \(operation.source) succeed.")
+            }
+        }
+    }
     
+    func fileproviderFailed(_ fileProvider: FileProviderOperations, operation: FileOperationType, error: Error) {
+        switch operation {
+        case .copy(source: let source, destination: let dest):
+            print("copying \(source) to \(dest) has been failed.")
+        case .remove:
+            print("file can't be deleted.")
+        default:
+            if let destination = operation.destination {
+                print("\(operation.actionDescription) from \(operation.source) to \(destination) failed.")
+            } else {
+                print("\(operation.actionDescription) on \(operation.source) failed.")
+            }
+        }
+    }
+    
+    func fileproviderProgress(_ fileProvider: FileProviderOperations, operation: FileOperationType, progress: Float) {
+        switch operation {
+        case .copy(source: let source, destination: let dest) where dest.hasPrefix("file://"):
+            print("Downloading \(source) to \((dest as NSString).lastPathComponent): \(progress * 100) completed.")
+        case .copy(source: let source, destination: let dest) where source.hasPrefix("file://"):
+            print("Uploading \((source as NSString).lastPathComponent) to \(dest): \(progress * 100) completed.")
+        case .copy(source: let source, destination: let dest):
+            print("Copy \(source) to \(dest): \(progress * 100) completed.")
+        default:
+            break
+        }
+    }
 }
 extension String {
     func deletingPrefix(_ prefix: String) -> String {
