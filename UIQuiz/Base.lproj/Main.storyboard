@@ -9,6 +9,48 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Item-->
+        <scene sceneID="TKD-HX-23s">
+            <objects>
+                <viewController id="ocB-MS-cNa" customClass="FTPConnect" customModule="UIQuiz" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="5EG-3a-5Sm"/>
+                        <viewControllerLayoutGuide type="bottom" id="kIH-oV-Hqh"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="xU3-34-MLF">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gby-lj-EkK">
+                                <rect key="frame" x="162" y="144" width="90" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Create folder"/>
+                                <connections>
+                                    <action selector="createFolder:" destination="ocB-MS-cNa" eventType="touchUpInside" id="yue-R5-vCB"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZUA-hV-bsb">
+                                <rect key="frame" x="147" y="230" width="121" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Create upload file"/>
+                                <connections>
+                                    <action selector="createFile:" destination="ocB-MS-cNa" eventType="touchUpInside" id="Cih-Vp-60T"/>
+                                </connections>
+                            </button>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9hi-83-vL6">
+                                <rect key="frame" x="132" y="479" width="150" height="2"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </progressView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="DSd-Ca-Zyr"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uIc-rW-P5H" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1170" y="-742"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="hP5-ad-pGD">
             <objects>
@@ -23,6 +65,7 @@
                         <segue destination="fp8-yT-mPl" kind="relationship" relationship="viewControllers" id="gBV-Z4-4Z3"/>
                         <segue destination="2lV-Z5-3uF" kind="relationship" relationship="viewControllers" id="HeW-s9-SX3"/>
                         <segue destination="VWs-JZ-7B4" kind="relationship" relationship="viewControllers" id="Jgv-5w-amQ"/>
+                        <segue destination="ocB-MS-cNa" kind="relationship" relationship="viewControllers" id="c3H-Ex-YH6"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ueB-tR-KrC" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -393,7 +436,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <searchBar key="tableHeaderView" contentMode="redraw" placeholder="Search" showsScopeBar="YES" id="REI-pu-PGv">
-                            <rect key="frame" x="0.0" y="0.0" width="60" height="100"/>
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <textInputTraits key="textInputTraits" returnKeyType="search"/>
                             <scopeButtonTitles>

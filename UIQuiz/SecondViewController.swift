@@ -24,9 +24,9 @@ class SecondViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
     private let videoDataOutputQueue = DispatchQueue(label: "VideoDataOutput", qos: .userInitiated, attributes: [], autoreleaseFrequency: .workItem)
     
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
+        
         // to be implemented in the subclass
     }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupAVCapture()

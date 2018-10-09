@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		127018D14B5C159F0FB5498B /* Pods_UIQuiz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A203B0CE7A578CB4D17CE3D0 /* Pods_UIQuiz.framework */; };
-		1503C8F9216CA2D20080B021 /* FTPUpload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1503C8F8216CA2D20080B021 /* FTPUpload.swift */; };
+		1502C79F216CC83F00CDE514 /* FTPConnect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1502C79E216CC83F00CDE514 /* FTPConnect.swift */; };
 		1533B2AC2162191B006F8669 /* bobbyOld.json in Resources */ = {isa = PBXBuildFile; fileRef = 1533B2AB2162191B006F8669 /* bobbyOld.json */; };
 		15350488216B92290073BDCE /* ObjectQuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15350484216B92290073BDCE /* ObjectQuizViewController.swift */; };
 		15350489216B92290073BDCE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15350485216B92290073BDCE /* ViewController.swift */; };
@@ -61,7 +61,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		1503C8F8216CA2D20080B021 /* FTPUpload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTPUpload.swift; sourceTree = "<group>"; };
+		1502C79E216CC83F00CDE514 /* FTPConnect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTPConnect.swift; sourceTree = "<group>"; };
 		1533B2AB2162191B006F8669 /* bobbyOld.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = bobbyOld.json; sourceTree = "<group>"; };
 		15350484216B92290073BDCE /* ObjectQuizViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectQuizViewController.swift; sourceTree = "<group>"; };
 		15350485216B92290073BDCE /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -174,6 +174,7 @@
 				1556598121468DD500465B7E /* en.lproj */,
 				8021D4942053E345003CA4DB /* Models */,
 				80F136332052BC3400E3E19D /* AppDelegate.swift */,
+				1502C79E216CC83F00CDE514 /* FTPConnect.swift */,
 				80334DBB206B71EC00078E64 /* Localizable.swift */,
 				15350484216B92290073BDCE /* ObjectQuizViewController.swift */,
 				15350486216B92290073BDCE /* SecondViewController.swift */,
@@ -188,7 +189,6 @@
 				1578314C21466F7800232063 /* DetailViewController.swift */,
 				80F136472052C16900E3E19D /* OptionsViewController.swift */,
 				80F136392052BC3400E3E19D /* Main.storyboard */,
-				1503C8F8216CA2D20080B021 /* FTPUpload.swift */,
 				80F1363C2052BC3400E3E19D /* Assets.xcassets */,
 				80F1363E2052BC3400E3E19D /* LaunchScreen.storyboard */,
 				1533B2AB2162191B006F8669 /* bobbyOld.json */,
@@ -350,7 +350,6 @@
 				1578314D21466F7800232063 /* DetailViewController.swift in Sources */,
 				158A3DA421592C1000583728 /* fir_signs.mlmodel in Sources */,
 				80F136382052BC3400E3E19D /* QuizViewController.swift in Sources */,
-				1503C8F9216CA2D20080B021 /* FTPUpload.swift in Sources */,
 				80334DBC206B71ED00078E64 /* Localizable.swift in Sources */,
 				1556598A2146946F00465B7E /* ModelDataContainer.swift in Sources */,
 				1562AE36216BF8DB001BB7AA /* generatedmodel.mlmodel in Sources */,
@@ -363,6 +362,7 @@
 				B5FE0F11216CBFB100986D2F /* combined.mlmodel in Sources */,
 				8012C691206B9826007564EB /* LRSSender.swift in Sources */,
 				1535048A216B92290073BDCE /* SecondViewController.swift in Sources */,
+				1502C79F216CC83F00CDE514 /* FTPConnect.swift in Sources */,
 				1543A50C216B3EB8000422F2 /* FullMyCustomObjectDetector.mlmodel in Sources */,
 				15DC448721590E66005352C7 /* bobby.mlmodel in Sources */,
 				15664B45215A3212004A75E8 /* ModelDataTableViewController.swift in Sources */,
