@@ -10,10 +10,10 @@ import UIKit
 import Vision
 
 enum Theme : String {
-    case flowers = "theme_flowers"
     case signs = "theme_signs"
-    case firesigns = "theme_fire_signs"
-    static var themeString:String = "theme_general"
+    case augmentedsigns = "theme_augmented_signs"
+    case normalsigns = "theme_normal_signs"
+    static var themeString:String = "theme_signs"
     static let ThemeKey:String = "Theme"
     static var theme: Theme {
         get {
@@ -34,28 +34,28 @@ enum Theme : String {
     }
     static func GetModel() -> VNCoreMLModel{
         switch theme {
-        case Theme.flowers:
-            return try! VNCoreMLModel(for: oxford102().model)
-        case Theme.firesigns:
-            return try! VNCoreMLModel(for: fir_signs().model)
         case Theme.signs:
             return try! VNCoreMLModel(for: bobby().model)
+        case Theme.augmentedsigns:
+            return try! VNCoreMLModel(for: generatedmodel().model)
+        case Theme.normalsigns:
+            return try! VNCoreMLModel(for: MyCustomObjectDetector().model)
         default:
-            return try! VNCoreMLModel(for: oxford102().model)
+            return try! VNCoreMLModel(for: FullMyCustomObjectDetector().model)
         }
     }
     static func GetModelData() -> [String: ModelDataContainer]
     {
         switch theme
         {
-            case Theme.flowers:
-                return LoadModelData(name: "oxford102")
             case Theme.signs:
-                return LoadModelData(name: "bobby")
-            case Theme.firesigns:
-                return LoadModelData(name: "fir_signs")
+                return LoadModelData(name: "bobby"+Language.language.rawValue)
+            case Theme.augmentedsigns:
+                return LoadModelData(name: "bobby"+Language.language.rawValue)
+            case Theme.normalsigns:
+                return LoadModelData(name: "bobby"+Language.language.rawValue)
             default:
-                return LoadModelData(name: "oxford102")
+                return LoadModelData(name: "bobby"+Language.language.rawValue)
         }
     }
     static func LoadModelData(name : String) -> [String: ModelDataContainer]

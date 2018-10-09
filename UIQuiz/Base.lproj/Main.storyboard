@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -20,8 +19,8 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="9pv-A4-QxB" kind="relationship" relationship="viewControllers" id="mI5-RS-MUy"/>
-                        <segue destination="8rJ-Kc-sve" kind="relationship" relationship="viewControllers" id="UN9-f7-TdX"/>
+                        <segue destination="dJe-1P-4sx" kind="relationship" relationship="viewControllers" id="k53-ea-vNA"/>
+                        <segue destination="fp8-yT-mPl" kind="relationship" relationship="viewControllers" id="gBV-Z4-4Z3"/>
                         <segue destination="2lV-Z5-3uF" kind="relationship" relationship="viewControllers" id="HeW-s9-SX3"/>
                         <segue destination="VWs-JZ-7B4" kind="relationship" relationship="viewControllers" id="Jgv-5w-amQ"/>
                     </connections>
@@ -226,7 +225,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="785.50724637681162" y="-321.19565217391306"/>
+            <point key="canvasLocation" x="1483" y="-1268"/>
         </scene>
         <!--Detail View Controller-->
         <scene sceneID="vej-p6-9Qn">
@@ -268,9 +267,10 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <attributedString key="attributedText">
                                             <fragment>
-                                                <mutableString key="content">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
+                                                <string key="content">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                                 <attributes>
-                                                    <font key="NSFont" metaFont="system" size="14"/>
+                                                    <font key="NSFont" size="14" name=".AppleSystemUIFont"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                 </attributes>
                                             </fragment>
                                         </attributedString>
@@ -288,7 +288,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Ukg-id-oyc">
-                        <barButtonItem key="leftBarButtonItem" systemItem="done" id="yPt-X5-clh">
+                        <barButtonItem key="leftBarButtonItem" title="Done" id="yPt-X5-clh">
                             <connections>
                                 <action selector="done:" destination="N0W-zF-TAn" id="606-qm-TKF"/>
                             </connections>
@@ -298,6 +298,7 @@
                     <connections>
                         <outlet property="IconImage" destination="J2B-e0-JV0" id="tcb-n3-oz0"/>
                         <outlet property="TextViewContent" destination="yna-d4-B5s" id="aiF-A0-Uu2"/>
+                        <outlet property="doneButton" destination="yPt-X5-clh" id="Xah-JA-dUr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mlP-p9-7MM" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -381,7 +382,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1692.753623188406" y="372.554347826087"/>
+            <point key="canvasLocation" x="2588" y="-1211"/>
         </scene>
         <!--Model Data Table View Controller-->
         <scene sceneID="tyz-8G-68X">
@@ -392,7 +393,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <searchBar key="tableHeaderView" contentMode="redraw" placeholder="Search" showsScopeBar="YES" id="REI-pu-PGv">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
+                            <rect key="frame" x="0.0" y="0.0" width="60" height="100"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <textInputTraits key="textInputTraits" returnKeyType="search"/>
                             <scopeButtonTitles>
@@ -502,7 +503,7 @@
                             </imageView>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wPx-lg-0A9">
                                 <rect key="frame" x="62" y="376" width="290" height="296"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <subviews>
                                     <button opaque="NO" alpha="0.80000000000000004" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jmB-Ab-aqZ">
                                         <rect key="frame" x="20" y="20" width="250" height="70"/>
@@ -592,6 +593,62 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9hX-cW-L5j" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1483" y="-321"/>
+        </scene>
+        <!--Explore-->
+        <scene sceneID="WDy-Dc-iCd">
+            <objects>
+                <viewController id="dJe-1P-4sx" customClass="VisionObjectRecognitionViewController" customModule="UIQuiz" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="WVz-ch-GTo"/>
+                        <viewControllerLayoutGuide type="bottom" id="85B-4g-JbF"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="6FW-V9-t8v">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fc3-JI-rpd">
+                                <rect key="frame" x="184" y="353" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <segue destination="0tZ-vx-9gz" kind="show" identifier="objectsegue" id="I6X-JE-WO6"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Explore" image="explore" id="swY-C1-TA8"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="previewView" destination="6FW-V9-t8v" id="k18-Sg-f6i"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Z6J-kG-RtQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2375" y="-303"/>
+        </scene>
+        <!--Quiz-->
+        <scene sceneID="bCf-JB-CTW">
+            <objects>
+                <viewController id="fp8-yT-mPl" customClass="ObjectQuizViewController" customModule="UIQuiz" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="3xA-JF-c28"/>
+                        <viewControllerLayoutGuide type="bottom" id="d2M-0N-DJW"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="rmB-d7-Y3X">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Quiz" image="quiz" id="yyi-fG-urI"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="previewView" destination="rmB-d7-Y3X" id="6P5-mt-C7j"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NWS-KJ-2NZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2374" y="399"/>
         </scene>
         <!--Learn-->
         <scene sceneID="3kx-ii-Ep9">

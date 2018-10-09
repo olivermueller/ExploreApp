@@ -12,18 +12,15 @@ class DetailViewController: UIViewController {
     //MARK: Properties
     var key = ""
     @IBOutlet weak var IconImage: UIImageView!
-    @IBOutlet weak var TitleContent: UITextView!
-    @IBOutlet weak var CategoryContent: UITextView!
-    @IBOutlet weak var DescriptionContent: UITextView!
-    @IBOutlet weak var LearningContent: UITextView!
-    @IBOutlet weak var HazardContent: UITextView!
-    @IBOutlet weak var RelatedContent: UITextView!
+    
+    @IBOutlet weak var doneButton: UIBarButtonItem!
     
     @IBOutlet weak var TextViewContent: UITextView!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        doneButton.title = "Done".localized
         let _data = Theme.GetModelData()
         let modelData = _data[key]
 
@@ -44,27 +41,27 @@ class DetailViewController: UIViewController {
         let normalattribute = [ NSAttributedStringKey.foregroundColor: UIColor.black, NSAttributedStringKey.font: UIFont.systemFont(ofSize: 15) ]
         let combination = NSMutableAttributedString()
         
-        let Title = NSMutableAttributedString(string: "Title:\n", attributes: boldattribute)
+        let Title = NSMutableAttributedString(string: "Title".localized+":\n", attributes: boldattribute)
         combination.append(Title)
-        let TitleDisplay = NSMutableAttributedString(string: (modelData?.title ?? ""), attributes: normalattribute)
+        let TitleDisplay = NSMutableAttributedString(string: (modelData?.title.localized ?? ""), attributes: normalattribute)
         combination.append(TitleDisplay)
-        let Category = NSMutableAttributedString(string: "\n\nCategory:\n", attributes: boldattribute)
+        let Category = NSMutableAttributedString(string: "\n\n"+"Category".localized+":\n", attributes: boldattribute)
         combination.append(Category)
         let CategoryDisplay = NSMutableAttributedString(string: (modelData?.category ?? ""), attributes: normalattribute)
         combination.append(CategoryDisplay)
-        let Description = NSMutableAttributedString(string: "\n\nDescription:\n", attributes: boldattribute)
+        let Description = NSMutableAttributedString(string: "\n\n"+"Description".localized+":\n", attributes: boldattribute)
         combination.append(Description)
         let DescriptionDisplay = NSMutableAttributedString(string: (modelData?.description ?? ""), attributes: normalattribute)
         combination.append(DescriptionDisplay)
-        let Learning = NSMutableAttributedString(string: "\n\nIntended learning outcome:\n", attributes: boldattribute)
+        let Learning = NSMutableAttributedString(string: "\n\n"+"Intended learning outcome".localized+":\n", attributes: boldattribute)
         combination.append(Learning)
         let LearningDisplay = NSMutableAttributedString(string: (modelData?.behaviour ?? ""), attributes: normalattribute)
         combination.append(LearningDisplay)
-        let Hazard = NSMutableAttributedString(string: "\n\nHazard:\n", attributes: boldattribute)
+        let Hazard = NSMutableAttributedString(string: "\n\n"+"Hazard".localized+":\n", attributes: boldattribute)
         combination.append(Hazard)
         let HazardDisplay = NSMutableAttributedString(string: (modelData?.hazard ?? ""), attributes: normalattribute)
         combination.append(HazardDisplay)
-        let Related = NSMutableAttributedString(string: "\n\nRelated signs:\n", attributes: boldattribute)
+        let Related = NSMutableAttributedString(string: "\n\n"+"Related signs".localized+":\n", attributes: boldattribute)
         combination.append(Related)
         let RelatedDisplay = NSMutableAttributedString(string: list, attributes: normalattribute)
         combination.append(RelatedDisplay)

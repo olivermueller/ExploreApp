@@ -18,6 +18,8 @@
 "Quiz" =  "Quiz";
 "Explore" = "Explore";
 "Options" = "Options";
+"Done" = "Done";
+
 
 "alert_select_quiz_answer" = "Choose correct object";
 "alert_change_language_title" = "Change language to";

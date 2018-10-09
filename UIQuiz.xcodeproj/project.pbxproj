@@ -8,18 +8,29 @@
 
 /* Begin PBXBuildFile section */
 		127018D14B5C159F0FB5498B /* Pods_UIQuiz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A203B0CE7A578CB4D17CE3D0 /* Pods_UIQuiz.framework */; };
+		1503C8F9216CA2D20080B021 /* FTPUpload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1503C8F8216CA2D20080B021 /* FTPUpload.swift */; };
 		1533B2AC2162191B006F8669 /* bobbyOld.json in Resources */ = {isa = PBXBuildFile; fileRef = 1533B2AB2162191B006F8669 /* bobbyOld.json */; };
+		15350488216B92290073BDCE /* ObjectQuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15350484216B92290073BDCE /* ObjectQuizViewController.swift */; };
+		15350489216B92290073BDCE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15350485216B92290073BDCE /* ViewController.swift */; };
+		1535048A216B92290073BDCE /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15350486216B92290073BDCE /* SecondViewController.swift */; };
+		1535048B216B92290073BDCE /* VisionObjectRecognitionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15350487216B92290073BDCE /* VisionObjectRecognitionViewController.swift */; };
+		1535048D216BAB090073BDCE /* bobbyde.json in Resources */ = {isa = PBXBuildFile; fileRef = 1535048C216BAB090073BDCE /* bobbyde.json */; };
+		1535048F216BCA8C0073BDCE /* bobbyda.json in Resources */ = {isa = PBXBuildFile; fileRef = 1535048E216BCA8C0073BDCE /* bobbyda.json */; };
+		15350491216BCAA70073BDCE /* bobbyen.json in Resources */ = {isa = PBXBuildFile; fileRef = 15350490216BCAA70073BDCE /* bobbyen.json */; };
+		1543A50C216B3EB8000422F2 /* FullMyCustomObjectDetector.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 1543A50B216B3EB8000422F2 /* FullMyCustomObjectDetector.mlmodel */; };
 		1556598521468DD500465B7E /* en.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 1556598121468DD500465B7E /* en.lproj */; };
 		1556598621468DD500465B7E /* de.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 1556598221468DD500465B7E /* de.lproj */; };
 		1556598721468DD500465B7E /* da.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 1556598321468DD500465B7E /* da.lproj */; };
 		1556598821468DD500465B7E /* ar.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 1556598421468DD500465B7E /* ar.lproj */; };
 		1556598A2146946F00465B7E /* ModelDataContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 155659892146946F00465B7E /* ModelDataContainer.swift */; };
 		155659992146C2CE00465B7E /* Oxford102.json in Resources */ = {isa = PBXBuildFile; fileRef = 155659982146C2CE00465B7E /* Oxford102.json */; };
+		1562AE36216BF8DB001BB7AA /* generatedmodel.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 1562AE35216BF8DB001BB7AA /* generatedmodel.mlmodel */; };
 		15664B43215A2E96004A75E8 /* ModelDataTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15664B42215A2E96004A75E8 /* ModelDataTableViewCell.swift */; };
 		15664B45215A3212004A75E8 /* ModelDataTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15664B44215A3212004A75E8 /* ModelDataTableViewController.swift */; };
 		1578314D21466F7800232063 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1578314C21466F7800232063 /* DetailViewController.swift */; };
 		158A3DA421592C1000583728 /* fir_signs.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 158A3DA321592C1000583728 /* fir_signs.mlmodel */; };
 		158A3DA621592C8A00583728 /* fir_signs.json in Resources */ = {isa = PBXBuildFile; fileRef = 158A3DA521592C8A00583728 /* fir_signs.json */; };
+		15CF657B216C91B000A3BD2B /* MyCustomObjectDetector.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 15CF657A216C91B000A3BD2B /* MyCustomObjectDetector.mlmodel */; };
 		15DC447D2158FA24005352C7 /* bobby.json in Resources */ = {isa = PBXBuildFile; fileRef = 15DC447C2158FA24005352C7 /* bobby.json */; };
 		15DC448421590E20005352C7 /* oxford102.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 15DC448221590E20005352C7 /* oxford102.mlmodel */; };
 		15DC448721590E66005352C7 /* bobby.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 15DC448621590E66005352C7 /* bobby.mlmodel */; };
@@ -50,7 +61,16 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1503C8F8216CA2D20080B021 /* FTPUpload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTPUpload.swift; sourceTree = "<group>"; };
 		1533B2AB2162191B006F8669 /* bobbyOld.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = bobbyOld.json; sourceTree = "<group>"; };
+		15350484216B92290073BDCE /* ObjectQuizViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectQuizViewController.swift; sourceTree = "<group>"; };
+		15350485216B92290073BDCE /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		15350486216B92290073BDCE /* SecondViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		15350487216B92290073BDCE /* VisionObjectRecognitionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisionObjectRecognitionViewController.swift; sourceTree = "<group>"; };
+		1535048C216BAB090073BDCE /* bobbyde.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = bobbyde.json; sourceTree = "<group>"; };
+		1535048E216BCA8C0073BDCE /* bobbyda.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = bobbyda.json; sourceTree = "<group>"; };
+		15350490216BCAA70073BDCE /* bobbyen.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = bobbyen.json; sourceTree = "<group>"; };
+		1543A50B216B3EB8000422F2 /* FullMyCustomObjectDetector.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = FullMyCustomObjectDetector.mlmodel; sourceTree = "<group>"; };
 		1556598121468DD500465B7E /* en.lproj */ = {isa = PBXFileReference; lastKnownFileType = folder; name = en.lproj; path = UIQuiz/en.lproj; sourceTree = SOURCE_ROOT; };
 		1556598221468DD500465B7E /* de.lproj */ = {isa = PBXFileReference; lastKnownFileType = folder; name = de.lproj; path = UIQuiz/de.lproj; sourceTree = SOURCE_ROOT; };
 		1556598321468DD500465B7E /* da.lproj */ = {isa = PBXFileReference; lastKnownFileType = folder; name = da.lproj; path = UIQuiz/da.lproj; sourceTree = SOURCE_ROOT; };
@@ -58,12 +78,14 @@
 		155659892146946F00465B7E /* ModelDataContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelDataContainer.swift; sourceTree = "<group>"; };
 		1556598E2146A50900465B7E /* ModelData */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ModelData; sourceTree = SOURCE_ROOT; };
 		155659982146C2CE00465B7E /* Oxford102.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Oxford102.json; sourceTree = "<group>"; };
+		1562AE35216BF8DB001BB7AA /* generatedmodel.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = generatedmodel.mlmodel; sourceTree = "<group>"; };
 		15664B42215A2E96004A75E8 /* ModelDataTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelDataTableViewCell.swift; sourceTree = "<group>"; };
 		15664B44215A3212004A75E8 /* ModelDataTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelDataTableViewController.swift; sourceTree = "<group>"; };
 		156875222139975500759515 /* WikipediaKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = WikipediaKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1578314C21466F7800232063 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		158A3DA321592C1000583728 /* fir_signs.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = fir_signs.mlmodel; sourceTree = "<group>"; };
 		158A3DA521592C8A00583728 /* fir_signs.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = fir_signs.json; sourceTree = "<group>"; };
+		15CF657A216C91B000A3BD2B /* MyCustomObjectDetector.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = MyCustomObjectDetector.mlmodel; sourceTree = "<group>"; };
 		15DC447C2158FA24005352C7 /* bobby.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = bobby.json; sourceTree = "<group>"; };
 		15DC448221590E20005352C7 /* oxford102.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = oxford102.mlmodel; sourceTree = "<group>"; };
 		15DC448621590E66005352C7 /* bobby.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = bobby.mlmodel; sourceTree = "<group>"; };
@@ -112,6 +134,9 @@
 		8021D4942053E345003CA4DB /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				15CF657A216C91B000A3BD2B /* MyCustomObjectDetector.mlmodel */,
+				1562AE35216BF8DB001BB7AA /* generatedmodel.mlmodel */,
+				1543A50B216B3EB8000422F2 /* FullMyCustomObjectDetector.mlmodel */,
 				158A3DA321592C1000583728 /* fir_signs.mlmodel */,
 				15DC448621590E66005352C7 /* bobby.mlmodel */,
 				15DC448221590E20005352C7 /* oxford102.mlmodel */,
@@ -150,6 +175,10 @@
 				8021D4942053E345003CA4DB /* Models */,
 				80F136332052BC3400E3E19D /* AppDelegate.swift */,
 				80334DBB206B71EC00078E64 /* Localizable.swift */,
+				15350484216B92290073BDCE /* ObjectQuizViewController.swift */,
+				15350486216B92290073BDCE /* SecondViewController.swift */,
+				15350485216B92290073BDCE /* ViewController.swift */,
+				15350487216B92290073BDCE /* VisionObjectRecognitionViewController.swift */,
 				8021D49A2053E433003CA4DB /* Theme.swift */,
 				80F136352052BC3400E3E19D /* ExploreViewController.swift */,
 				15664B42215A2E96004A75E8 /* ModelDataTableViewCell.swift */,
@@ -159,12 +188,16 @@
 				1578314C21466F7800232063 /* DetailViewController.swift */,
 				80F136472052C16900E3E19D /* OptionsViewController.swift */,
 				80F136392052BC3400E3E19D /* Main.storyboard */,
+				1503C8F8216CA2D20080B021 /* FTPUpload.swift */,
 				80F1363C2052BC3400E3E19D /* Assets.xcassets */,
 				80F1363E2052BC3400E3E19D /* LaunchScreen.storyboard */,
 				1533B2AB2162191B006F8669 /* bobbyOld.json */,
 				80F136412052BC3400E3E19D /* Info.plist */,
+				1535048E216BCA8C0073BDCE /* bobbyda.json */,
+				15350490216BCAA70073BDCE /* bobbyen.json */,
 				155659982146C2CE00465B7E /* Oxford102.json */,
 				15DC447C2158FA24005352C7 /* bobby.json */,
+				1535048C216BAB090073BDCE /* bobbyde.json */,
 				158A3DA521592C8A00583728 /* fir_signs.json */,
 			);
 			path = UIQuiz;
@@ -251,12 +284,15 @@
 				80F136402052BC3400E3E19D /* LaunchScreen.storyboard in Resources */,
 				80334DC1206B72F800078E64 /* Localizable.strings in Resources */,
 				80F1363D2052BC3400E3E19D /* Assets.xcassets in Resources */,
+				15350491216BCAA70073BDCE /* bobbyen.json in Resources */,
 				155659992146C2CE00465B7E /* Oxford102.json in Resources */,
+				1535048F216BCA8C0073BDCE /* bobbyda.json in Resources */,
 				1556598521468DD500465B7E /* en.lproj in Resources */,
 				1556598621468DD500465B7E /* de.lproj in Resources */,
 				80F1363B2052BC3400E3E19D /* Main.storyboard in Resources */,
 				1533B2AC2162191B006F8669 /* bobbyOld.json in Resources */,
 				1556598721468DD500465B7E /* da.lproj in Resources */,
+				1535048D216BAB090073BDCE /* bobbyde.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -328,16 +364,24 @@
 				1578314D21466F7800232063 /* DetailViewController.swift in Sources */,
 				158A3DA421592C1000583728 /* fir_signs.mlmodel in Sources */,
 				80F136382052BC3400E3E19D /* QuizViewController.swift in Sources */,
+				1503C8F9216CA2D20080B021 /* FTPUpload.swift in Sources */,
 				15DC448421590E20005352C7 /* oxford102.mlmodel in Sources */,
 				80334DBC206B71ED00078E64 /* Localizable.swift in Sources */,
 				1556598A2146946F00465B7E /* ModelDataContainer.swift in Sources */,
+				1562AE36216BF8DB001BB7AA /* generatedmodel.mlmodel in Sources */,
+				1535048B216B92290073BDCE /* VisionObjectRecognitionViewController.swift in Sources */,
 				80F136342052BC3400E3E19D /* AppDelegate.swift in Sources */,
 				80F136482052C16900E3E19D /* OptionsViewController.swift in Sources */,
+				15350488216B92290073BDCE /* ObjectQuizViewController.swift in Sources */,
+				15350489216B92290073BDCE /* ViewController.swift in Sources */,
 				80F136362052BC3400E3E19D /* ExploreViewController.swift in Sources */,
 				8012C691206B9826007564EB /* LRSSender.swift in Sources */,
+				1535048A216B92290073BDCE /* SecondViewController.swift in Sources */,
+				1543A50C216B3EB8000422F2 /* FullMyCustomObjectDetector.mlmodel in Sources */,
 				15DC448721590E66005352C7 /* bobby.mlmodel in Sources */,
 				15664B45215A3212004A75E8 /* ModelDataTableViewController.swift in Sources */,
 				15664B43215A2E96004A75E8 /* ModelDataTableViewCell.swift in Sources */,
+				15CF657B216C91B000A3BD2B /* MyCustomObjectDetector.mlmodel in Sources */,
 				8021D49B2053E433003CA4DB /* Theme.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -493,7 +537,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = M9867W46VQ;
 				INFOPLIST_FILE = UIQuiz/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.GPOCST.ExploreQuiz;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -511,7 +555,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = M9867W46VQ;
 				INFOPLIST_FILE = UIQuiz/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.GPOCST.ExploreQuiz;
 				PRODUCT_NAME = "$(TARGET_NAME)";

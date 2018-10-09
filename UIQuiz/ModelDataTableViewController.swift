@@ -27,6 +27,9 @@ class ModelDataTableViewController: UITableViewController, UISearchBarDelegate {
     }
     override func viewDidAppear(_ animated: Bool) {
 //        searchBar.showsScopeBar = false
+        print("list appeared")
+        loadData()
+        table.reloadData()
     }
     override func viewDidDisappear(_ animated: Bool) {
 //        searchBar.showsScopeBar = true
@@ -56,7 +59,8 @@ class ModelDataTableViewController: UITableViewController, UISearchBarDelegate {
         UISegmentedControl.appearance().setTitleTextAttributes(titleTextAttributesSelected, for: .selected)
     }
     private func loadData() {
-        let values = Theme.GetModelData().values.sorted(by: { $0.key > $1.key })
+        data.removeAll()
+        let values = Theme.GetModelData().values.sorted(by: { $0.pictureName < $1.pictureName })
         data += values
         currentData = data
     }
@@ -83,7 +87,7 @@ class ModelDataTableViewController: UITableViewController, UISearchBarDelegate {
         // Configure the cell...
         let dat = currentData[indexPath.row]
         
-        cell.TitleLabel.text = dat.title
+        cell.TitleLabel.text = dat.title.localized
         cell.ISOLabel.text = dat.pictureName
         var image: UIImage? = UIImage(named: dat.pictureName)
         if image == nil {
@@ -99,26 +103,26 @@ class ModelDataTableViewController: UITableViewController, UISearchBarDelegate {
             switch searchBar.selectedScopeButtonIndex {
             case 0:
                 if searchText.isEmpty { return true }
-                return dat.title.lowercased().contains(searchText.lowercased())
+                return dat.title.lowercased().contains(searchText.lowercased())||dat.pictureName.lowercased().contains(searchText.lowercased())
             case 1:
                 if searchText.isEmpty { return dat.type == .Safe_Condition }
-                return dat.title.lowercased().contains(searchText.lowercased()) &&
+                return (dat.title.lowercased().contains(searchText.lowercased())||dat.pictureName.lowercased().contains(searchText.lowercased())) &&
                     dat.type == .Safe_Condition
             case 2:
                 if searchText.isEmpty { return dat.type == .Fire_Protection }
-                return dat.title.lowercased().contains(searchText.lowercased()) &&
+                return (dat.title.lowercased().contains(searchText.lowercased())||dat.pictureName.lowercased().contains(searchText.lowercased())) &&
                     dat.type == .Fire_Protection
             case 3:
                 if searchText.isEmpty { return dat.type == .Mandatory }
-                return dat.title.lowercased().contains(searchText.lowercased()) &&
+                return (dat.title.lowercased().contains(searchText.lowercased())||dat.pictureName.lowercased().contains(searchText.lowercased())) &&
                     dat.type == .Mandatory
             case 4:
                 if searchText.isEmpty { return dat.type == .Prohibition }
-                return dat.title.lowercased().contains(searchText.lowercased()) &&
+                return (dat.title.lowercased().contains(searchText.lowercased())||dat.pictureName.lowercased().contains(searchText.lowercased())) &&
                     dat.type == .Prohibition
             case 5:
                 if searchText.isEmpty { return dat.type == .Warning }
-                return dat.title.lowercased().contains(searchText.lowercased()) &&
+                return (dat.title.lowercased().contains(searchText.lowercased())||dat.pictureName.lowercased().contains(searchText.lowercased())) &&
                     dat.type == .Warning
             default:
                 return false
@@ -136,26 +140,26 @@ class ModelDataTableViewController: UITableViewController, UISearchBarDelegate {
             switch selectedScope {
             case 0:
                 if searchText.isEmpty { return true }
-                return dat.title.lowercased().contains(searchText.lowercased())
+                return (dat.title.lowercased().contains(searchText.lowercased())||dat.pictureName.lowercased().contains(searchText.lowercased()))
             case 1:
                 if searchText.isEmpty { return dat.type == .Safe_Condition }
-                return dat.title.lowercased().contains(searchText.lowercased()) &&
+                return (dat.title.lowercased().contains(searchText.lowercased())||dat.pictureName.lowercased().contains(searchText.lowercased())) &&
                     dat.type == .Safe_Condition
             case 2:
                 if searchText.isEmpty { return dat.type == .Fire_Protection }
-                return dat.title.lowercased().contains(searchText.lowercased()) &&
+                return (dat.title.lowercased().contains(searchText.lowercased())||dat.pictureName.lowercased().contains(searchText.lowercased())) &&
                     dat.type == .Fire_Protection
             case 3:
                 if searchText.isEmpty { return dat.type == .Mandatory }
-                return dat.title.lowercased().contains(searchText.lowercased()) &&
+                return (dat.title.lowercased().contains(searchText.lowercased())||dat.pictureName.lowercased().contains(searchText.lowercased())) &&
                     dat.type == .Mandatory
             case 4:
                 if searchText.isEmpty { return dat.type == .Prohibition }
-                return dat.title.lowercased().contains(searchText.lowercased()) &&
+                return (dat.title.lowercased().contains(searchText.lowercased())||dat.pictureName.lowercased().contains(searchText.lowercased())) &&
                     dat.type == .Prohibition
             case 5:
                 if searchText.isEmpty { return dat.type == .Warning }
-                return dat.title.lowercased().contains(searchText.lowercased()) &&
+                return (dat.title.lowercased().contains(searchText.lowercased())||dat.pictureName.lowercased().contains(searchText.lowercased())) &&
                     dat.type == .Warning
             default:
                 return false

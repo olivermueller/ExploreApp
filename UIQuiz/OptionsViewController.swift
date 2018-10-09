@@ -27,7 +27,7 @@ class OptionsViewController: UIViewController{
         let alert = UIAlertController(
             title: "alert_change_theme_title".localized,
             message: nil,
-            preferredStyle: .actionSheet
+            preferredStyle: .alert
         )
         
         func addActionTheme(theme: Theme) {
@@ -44,8 +44,8 @@ class OptionsViewController: UIViewController{
             )
         }
         addActionTheme(theme: Theme.signs)
-        addActionTheme(theme: Theme.flowers)
-        addActionTheme(theme: Theme.firesigns)
+        addActionTheme(theme: Theme.augmentedsigns)
+        addActionTheme(theme: Theme.normalsigns)
         
         alert.addAction(
             UIAlertAction(
@@ -54,6 +54,12 @@ class OptionsViewController: UIViewController{
                 handler: nil
             )
         )
+        
+//        if let popovercontroller = alert.popoverPresentationController{
+//            popovercontroller.sourceView = self.view
+//            popovercontroller.sourceRect = CGRect(x:self.view.bounds.size.width / 2.0, self.view.bounds.size.height / 2.0, 1.0, 1.0)
+//        }
+        
         present(alert, animated: true, completion: nil)
     }
     @IBAction func ChangeInfo(_ sender: Any) {
@@ -100,7 +106,7 @@ class OptionsViewController: UIViewController{
         let alert = UIAlertController(
             title: "alert_change_language_title".localized,
             message: nil,
-            preferredStyle: .actionSheet
+            preferredStyle: .alert
         )
         
         func addActionLanguage(language: Language) {

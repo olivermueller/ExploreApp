@@ -28,7 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let standardDefaults = UserDefaults.standard
         standardDefaults.register(defaults: ["Progress":0])
         standardDefaults.register(defaults: ["Level":1])
-        standardDefaults.register(defaults: [Theme.ThemeKey : Theme.flowers.rawValue])
+        standardDefaults.register(defaults: [Theme.ThemeKey : Theme.signs.rawValue])
         standardDefaults.register(defaults: ["UUID" : ""])
         standardDefaults.register(defaults: ["Name" : "John"])
         standardDefaults.register(defaults: ["Email" : "John@johnson.com"])
@@ -36,6 +36,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Uncomment to reset score
         standardDefaults.setValue("John", forKey: "Name")
         standardDefaults.setValue("John@johnson.com", forKey: "Email")
+        standardDefaults.setValue(Language.english.rawValue, forKey: "AppleLanguages")
 //        standardDefaults.setValue(Theme.signs.rawValue, forKey: Theme.ThemeKey)
         //standardDefaults.setValue(0, forKey: "Progress")
         //standardDefaults.setValue(1, forKey: "Level")
@@ -43,10 +44,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         switch standardDefaults.string(forKey: Theme.ThemeKey)! {
         case Theme.signs.rawValue:
             Theme.theme = Theme.signs
-        case Theme.flowers.rawValue:
-            Theme.theme = Theme.flowers
-        case Theme.firesigns.rawValue:
-            Theme.theme = Theme.firesigns
+        case Theme.augmentedsigns.rawValue:
+            Theme.theme = Theme.augmentedsigns
+        case Theme.normalsigns.rawValue:
+            Theme.theme = Theme.normalsigns
         default:
             Theme.theme = Theme.signs
         }

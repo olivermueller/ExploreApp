@@ -18,6 +18,14 @@
 "Quiz" = "Quiz";
 "Explore" = "Udforsk";
 "Options" = "Valgmuligheder";
+"Learn" = "Lær";
+"Title" = "Titel";
+"Category" = "Kategori";
+"Description" = "Beskrivelse";
+"Intended learning outcome" = "Læringsmål";
+"Hazard" = "Fare";
+"Related signs" = "Relaterede skilte";
+"Done" = "OK";
 
 "alert_select_quiz_answer" = "Vælg korrekt genstand";
 "alert_change_language_title" = "Skift sprog til";

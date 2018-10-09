@@ -8,7 +8,7 @@
 
 import UIKit
 
-private let appleLanguagesKey = "AppleLanguages"
+public let appleLanguagesKey = "AppleLanguages"
 
 enum Language: String {
     

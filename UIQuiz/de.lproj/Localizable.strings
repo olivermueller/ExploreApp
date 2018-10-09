@@ -18,6 +18,14 @@
 "Quiz" = "Quiz";
 "Explore" = "Erkunden";
 "Options" = "Optionen";
+"Learn" = "lernen";
+"Title" = "Titel";
+"Category" = "Kategorie";
+"Description" = "Beschreibung";
+"Intended learning outcome" = "Beabsichtigtes Lernergebnis";
+"Hazard" = "Gefahr";
+"Related signs" = "Ähnliche Zeichen";
+"Done" = "Fertig";
 
 "alert_select_quiz_answer" = "Wählen Sie das richtige Objekt";
 "alert_change_language_title" = "Sprache ändern zu";
