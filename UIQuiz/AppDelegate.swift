@@ -35,6 +35,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         print("After: " + standardDefaults.string(forKey: "UUID")!)
         // Uncomment to reset score
         standardDefaults.setValue("John", forKey: "Name")
+        standardDefaults.setValue(Theme.signs.rawValue, forKey: Theme.ThemeKey)
         standardDefaults.setValue("John@johnson.com", forKey: "Email")
         standardDefaults.setValue(Language.english.rawValue, forKey: "AppleLanguages")
 //        standardDefaults.setValue(Theme.signs.rawValue, forKey: Theme.ThemeKey)

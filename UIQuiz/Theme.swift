@@ -35,11 +35,11 @@ enum Theme : String {
     static func GetModel() -> VNCoreMLModel{
         switch theme {
         case Theme.signs:
-            return try! VNCoreMLModel(for: bobby().model)
+            return try! VNCoreMLModel(for: combined().model)//uses all data -> augmented and hand annotated
         case Theme.augmentedsigns:
-            return try! VNCoreMLModel(for: generatedmodel().model)
+            return try! VNCoreMLModel(for: generatedmodel().model)//augmented images
         case Theme.normalsigns:
-            return try! VNCoreMLModel(for: MyCustomObjectDetector().model)
+            return try! VNCoreMLModel(for: MyCustomObjectDetector().model)//hand annotated
         default:
             return try! VNCoreMLModel(for: FullMyCustomObjectDetector().model)
         }

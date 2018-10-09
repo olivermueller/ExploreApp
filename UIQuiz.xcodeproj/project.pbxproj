@@ -44,6 +44,7 @@
 		80F1363D2052BC3400E3E19D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 80F1363C2052BC3400E3E19D /* Assets.xcassets */; };
 		80F136402052BC3400E3E19D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 80F1363E2052BC3400E3E19D /* LaunchScreen.storyboard */; };
 		80F136482052C16900E3E19D /* OptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80F136472052C16900E3E19D /* OptionsViewController.swift */; };
+		B5FE0F11216CBFB100986D2F /* combined.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = B5FE0F10216CBFB100986D2F /* combined.mlmodel */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -105,6 +106,7 @@
 		80F136412052BC3400E3E19D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		80F136472052C16900E3E19D /* OptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsViewController.swift; sourceTree = "<group>"; };
 		A203B0CE7A578CB4D17CE3D0 /* Pods_UIQuiz.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UIQuiz.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B5FE0F10216CBFB100986D2F /* combined.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = combined.mlmodel; sourceTree = "<group>"; };
 		FC1C35C678E83B33F9E2A321 /* Pods-UIQuiz.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UIQuiz.release.xcconfig"; path = "Pods/Target Support Files/Pods-UIQuiz/Pods-UIQuiz.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -137,6 +139,7 @@
 				1543A50B216B3EB8000422F2 /* FullMyCustomObjectDetector.mlmodel */,
 				158A3DA321592C1000583728 /* fir_signs.mlmodel */,
 				15DC448621590E66005352C7 /* bobby.mlmodel */,
+				B5FE0F10216CBFB100986D2F /* combined.mlmodel */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -371,6 +374,7 @@
 				15350488216B92290073BDCE /* ObjectQuizViewController.swift in Sources */,
 				15350489216B92290073BDCE /* ViewController.swift in Sources */,
 				80F136362052BC3400E3E19D /* ExploreViewController.swift in Sources */,
+				B5FE0F11216CBFB100986D2F /* combined.mlmodel in Sources */,
 				8012C691206B9826007564EB /* LRSSender.swift in Sources */,
 				1535048A216B92290073BDCE /* SecondViewController.swift in Sources */,
 				1543A50C216B3EB8000422F2 /* FullMyCustomObjectDetector.mlmodel in Sources */,
