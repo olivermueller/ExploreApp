@@ -9,4 +9,5 @@ target 'UIQuiz' do
   pod "MBCircularProgressBar"
   pod 'CHIPageControl', '~> 0.1.3'
   pod 'Alamofire', '~> 4.7'
+  pod "FilesProvider"
 end

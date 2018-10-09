@@ -224,7 +224,6 @@
 				80F1362D2052BC3400E3E19D /* Frameworks */,
 				80F1362E2052BC3400E3E19D /* Resources */,
 				1B7B54C0DDA449AE7D2803A9 /* [CP] Embed Pods Frameworks */,
-				5FB40A8C9D165EBE4491D8EA /* [CP] Copy Pods Resources */,
 				1568755721399C6F00759515 /* Embed Frameworks */,
 			);
 			buildRules = (
@@ -308,32 +307,19 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-UIQuiz/Pods-UIQuiz-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/CHIPageControl/CHIPageControl.framework",
+				"${BUILT_PRODUCTS_DIR}/FilesProvider/FilesProvider.framework",
 				"${BUILT_PRODUCTS_DIR}/MBCircularProgressBar/MBCircularProgressBar.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CHIPageControl.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FilesProvider.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBCircularProgressBar.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-UIQuiz/Pods-UIQuiz-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		5FB40A8C9D165EBE4491D8EA /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-UIQuiz/Pods-UIQuiz-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		E421FEADEE264D885A5BEB11 /* [CP] Check Pods Manifest.lock */ = {
