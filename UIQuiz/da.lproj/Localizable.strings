@@ -26,6 +26,9 @@
 "Hazard" = "Fare";
 "Related signs" = "Relaterede skilte";
 "Done" = "OK";
+"theme_signs" = "Kombineret model";
+"theme_augmented_signs" = "Forbedret model";
+"theme_normal_signs" = "Normal model";
 
 "alert_select_quiz_answer" = "Vælg korrekt genstand";
 "alert_change_language_title" = "Skift sprog til";

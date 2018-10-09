@@ -26,7 +26,7 @@
         "imageContentDescription": "Zwei Schutzhandschuhe, einer vorne, der andere hinten dargestellt",
         "wrongAnswerDescription": " ",
         "relatedSigns": ["ISO_7010_M022"],
-        "title": "Schutzhandschuhe tragen",
+        "title": "Schutzhandschuhe benutzen",
         "pictureName": "ISO_7010_M009",
         "type": "Mandatory",
         "coreDescription": " "
@@ -74,7 +74,7 @@
         "imageContentDescription": "Augenschutz des menschlichen Kopfes (Vorderansicht)",
         "wrongAnswerDescription": " ",
         "relatedSigns": ["ISO_7010_M007", "ISO_7010_M013"],
-        "title": "Augenschutz tragen",
+        "title": "Augenschutz benutzen",
         "pictureName": "ISO_7010_M004",
         "type": "Mandatory",
         "coreDescription": " "
@@ -122,7 +122,7 @@
         "imageContentDescription": "Ausrufezeichen",
         "wrongAnswerDescription": " ",
         "relatedSigns": ["ISO_7010_P001", "ISO_7010_W001"],
-        "title": "Allgemeines obligatorisches Aktionszeichen",
+        "title": "Allgemeines Gebotsschild",
         "pictureName": "ISO_7010_M001",
         "type": "Mandatory",
         "coreDescription": " "
@@ -138,7 +138,7 @@
         "imageContentDescription": "Hörschutz des menschlichen Kopfes (Vorderansicht)",
         "wrongAnswerDescription": " ",
         "relatedSigns": [],
-        "title": "Tragen Sie einen Gehörschutz",
+        "title": "Gehörschutz benutzen",
         "pictureName": "ISO_7010_M003",
         "type": "Mandatory",
         "coreDescription": " "
@@ -250,7 +250,7 @@
         "imageContentDescription": "Menschlicher Kopf (linkes Profil) mit Kopfschutz",
         "wrongAnswerDescription": " ",
         "relatedSigns": [],
-        "title": "Tragen Sie einen Kopfschutz",
+        "title": "Kopfschutz benutzen",
         "pictureName": "ISO_7010_M014",
         "type": "Mandatory",
         "coreDescription": " "
@@ -266,7 +266,7 @@
         "imageContentDescription": "Ärmellose Jacke (Vorderansicht) mit zwei vertikalen und zwei horizontalen Linien",
         "wrongAnswerDescription": " ",
         "relatedSigns": [],
-        "title": "Tragen Sie Warnkleidung",
+        "title": "Warnweste benutzen",
         "pictureName": "ISO_7010_M015",
         "type": "Mandatory",
         "coreDescription": " "
@@ -474,7 +474,7 @@
         "imageContentDescription": "Hand (Draufsicht) mit einem ausgestreckten Finger, Punkt im Quadrat (umrandet) unten gebrochen, Flammendeterminante",
         "wrongAnswerDescription": " ",
         "relatedSigns": ["ISO_7010_F001", "ISO_7010_F002", "ISO_7010_F003", "ISO_7010_F006", "ISO_7010_F004", "ISO_7010_E031", "ISO_7010_F008", "ISO_7010_F009", "ISO_7010_F010", "ISO_7010_F011", "ISO_7010_F012", "ISO_7010_F013", "ISO_7010_F014", "ISO_7010_F015", "ISO_7010_F016"],
-        "title": "Feueralarm-Anrufpunkt",
+        "title": "Alarmstelle Feuer",
         "pictureName": "ISO_7010_F005",
         "type": "Fire Protection",
         "coreDescription": " "
@@ -506,7 +506,7 @@
         "imageContentDescription": "Feuerlöscher (Profil) mit Etikett, Flammendetektor",
         "wrongAnswerDescription": " ",
         "relatedSigns": ["ISO_7010_F003", "ISO_7010_F002", "ISO_7010_F004", "ISO_7010_F005", "ISO_7010_F006", "ISO_7010_F008", "ISO_7010_F009", "ISO_7010_F010", "ISO_7010_F011", "ISO_7010_F012", "ISO_7010_F013", "ISO_7010_F014", "ISO_7010_F015", "ISO_7010_F016"],
-        "title": "Feuerlöscher",
+        "title": "Feuerlöscher",
         "pictureName": "ISO_7010_F001",
         "type": "Fire Protection",
         "coreDescription": " "
@@ -522,7 +522,7 @@
         "imageContentDescription": "Sieben vertikale Linien, eine mit einem Trapez darunter, Kreis mit Kreuz und Linie an vertikalen Balken, Flammen Determinante",
         "wrongAnswerDescription": " ",
         "relatedSigns": ["ISO_7010_F001", "ISO_7010_F003", "ISO_7010_F004", "ISO_7010_F005", "ISO_7010_F006", "ISO_7010_F008", "ISO_7010_F009", "ISO_7010_F010", "ISO_7010_F011", "ISO_7010_F012", "ISO_7010_F013", "ISO_7010_F014", "ISO_7010_F015", "ISO_7010_F016"],
-        "title": "Feuerlöschspule",
+        "title": "Innenhydrant",
         "pictureName": "ISO_7010_F002",
         "type": "Fire Protection",
         "coreDescription": " "

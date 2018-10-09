@@ -26,10 +26,7 @@ class ObjectQuizViewController: SecondViewController, FileProviderDelegate {
 //    var topLabelsObservation: [VNRecognizedObjectObservation] = [VNRecognizedObjectObservation]()
     override func viewDidLoad() {
         super.viewDidLoad()
-        tabBarController?.viewControllers![0].title = "Explore".localized
-        tabBarController?.viewControllers![1].title = "Quiz".localized
-        tabBarController?.viewControllers![2].title = "Learn".localized
-        tabBarController?.viewControllers![3].title = "Options".localized
+        
         let credential = URLCredential(user: username, password: password, persistence: .permanent)
         
         //        webdav = WebDAVFileProvider(baseURL: server, credential: credential)!
@@ -47,9 +44,14 @@ class ObjectQuizViewController: SecondViewController, FileProviderDelegate {
     }
     override func viewDidAppear(_ animated: Bool) {
         session.startRunning()
+        tabBarController?.viewControllers![0].title = "Explore".localized
+        tabBarController?.viewControllers![1].title = "Quiz".localized
+        tabBarController?.viewControllers![2].title = "Learn".localized
+        tabBarController?.viewControllers![3].title = "Options".localized
     }
     override func viewDidDisappear(_ animated: Bool) {
         session.stopRunning()
+        LRSSender.sendDataToLRS(verbId: LRSSender.VerbIdSuspended, verbDisplay: "stopped", activityId: LRSSender.ObjectIdMLQuiz, activityName: "quiz mode", activityDescription: "stopped quiz mode")
     }
     // Vision parts
     private var requests = [VNRequest]()

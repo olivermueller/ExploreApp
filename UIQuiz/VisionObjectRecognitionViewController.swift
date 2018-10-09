@@ -19,9 +19,59 @@ class VisionObjectRecognitionViewController: ViewController {
     }
     override func viewDidAppear(_ animated: Bool) {
         session.startRunning()
+        tabBarController?.viewControllers![0].title = "Explore".localized
+        tabBarController?.viewControllers![1].title = "Quiz".localized
+        tabBarController?.viewControllers![2].title = "Learn".localized
+        tabBarController?.viewControllers![3].title = "Options".localized
+        let standardDefaults = UserDefaults.standard
+        if standardDefaults.string(forKey: "Name")==""||standardDefaults.string(forKey: "Email")=="'"
+        {
+            let alert = UIAlertController(title: "Contact information", message: "Please enter your name and e-mail", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addTextField(configurationHandler: {(textField: UITextField!) in
+                textField.placeholder = "Enter name"
+                textField.keyboardType = UIKeyboardType.namePhonePad
+                textField.addTarget(self, action:  #selector(self.alertTextFieldDidChange(_:)), for: .editingChanged)
+            })
+            alert.addTextField(configurationHandler: {(textField: UITextField!) in
+                textField.placeholder = "Enter e-mail address"
+                textField.keyboardType = UIKeyboardType.emailAddress
+                textField.addTarget(self, action:  #selector(self.alertTextFieldDidChange(_:)), for: .editingChanged)
+            })
+            let addAction = UIAlertAction(title: "Done", style: UIAlertActionStyle.default, handler: { _ in
+                let name = alert.textFields![0]
+                let email = alert.textFields![1]
+                standardDefaults.setValue(name.text!, forKey: "Name")
+                standardDefaults.setValue(email.text!, forKey: "Email")
+                LRSSender.sendDataToLRS(verbId: LRSSender.VerbIdRegistered, verbDisplay: "completed", activityId: LRSSender.ObjectIdWebpage, activityName: "registration form", activityDescription: "Webpage registration")
+                LRSSender.sendDataToLRS(verbId: LRSSender.VerbIdResumed, verbDisplay: "started", activityId: LRSSender.ObjectIdExplore, activityName: "exploring", activityDescription: "started exploring")
+                //LRSSender.sendDataToLRS(verbId: LRSSender.VerbWhatIdRegistered, verbDisplay: "registered", activityId: LRSSender.WhereActivityIdExploreQuizApp, activityName: "Explore quiz app", activityDescription: "explore quiz app registration", activityTypeId: LRSSender.TypeActivityIdUserProfile)
+            })
+            addAction.isEnabled = false
+            alert.addAction(addAction)
+            
+            self.present(alert, animated: true, completion: nil)
+        }
+        else{
+            LRSSender.sendDataToLRS(verbId: LRSSender.VerbIdResumed, verbDisplay: "started", activityId: LRSSender.ObjectIdExplore, activityName: "exploring", activityDescription: "started exploring")
+        }
+        
+    }
+    @objc func alertTextFieldDidChange(_ textField: UITextField) {
+        let alertController:UIAlertController = self.presentedViewController as! UIAlertController;
+        let nameTextField :UITextField  = alertController.textFields![0];
+        let emailTextField :UITextField  = alertController.textFields![1];
+        let addAction: UIAlertAction = alertController.actions[0];
+        addAction.isEnabled = (nameTextField.text?.count)! >= 2 && isValidEmail(testStr: emailTextField.text!);
+    }
+    func isValidEmail(testStr:String) -> Bool {
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        
+        let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        return emailTest.evaluate(with: testStr)
     }
     override func viewDidDisappear(_ animated: Bool) {
         session.stopRunning()
+        LRSSender.sendDataToLRS(verbId: LRSSender.VerbIdSuspended, verbDisplay: "stopped", activityId: LRSSender.ObjectIdExplore, activityName: "exploring", activityDescription: "stopped exploring")
     }
     private var detectionOverlay: CALayer! = nil
     
@@ -146,9 +196,12 @@ class VisionObjectRecognitionViewController: ViewController {
     func createTextSubLayerInBounds(_ bounds: CGRect, identifier: String, confidence: VNConfidence) -> CATextLayer {
         let textLayer = CATextLayer()
         textLayer.name = identifier
-        let formattedString = NSMutableAttributedString(string: String(format: "\(identifier.deletingPrefix("ISO_7010_"))\nConfidence:  %.2f", confidence))
-        let largeFont = UIFont(name: "Helvetica", size: 24.0)!
-        formattedString.addAttributes([NSAttributedString.Key.font: largeFont], range: NSRange(location: 0, length: identifier.count))
+        let modeldata = Theme.GetModelData()
+        let data = modeldata[identifier]
+        
+        let formattedString = NSMutableAttributedString(string: String(format: "\(data!.title)\nConfidence:  %.2f", confidence))
+        let largeFont = UIFont(name: "Helvetica", size: 12.0)!
+        formattedString.addAttributes([NSAttributedString.Key.font: largeFont], range: NSRange(location: 0, length: data!.title.count))
         textLayer.string = formattedString
         textLayer.bounds = CGRect(x: 0, y: 0, width: bounds.size.height - 10, height: bounds.size.width - 10)
         textLayer.position = CGPoint(x: bounds.midX, y: bounds.midY)

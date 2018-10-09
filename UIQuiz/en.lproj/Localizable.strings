@@ -19,7 +19,9 @@
 "Explore" = "Explore";
 "Options" = "Options";
 "Done" = "Done";
-
+"theme_signs" = "Combined model";
+"theme_augmented_signs" = "Augmented model";
+"theme_normal_signs" = "Normal model";
 
 "alert_select_quiz_answer" = "Choose correct object";
 "alert_change_language_title" = "Change language to";

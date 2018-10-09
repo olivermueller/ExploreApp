@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		127018D14B5C159F0FB5498B /* Pods_UIQuiz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A203B0CE7A578CB4D17CE3D0 /* Pods_UIQuiz.framework */; };
 		1502C79F216CC83F00CDE514 /* FTPConnect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1502C79E216CC83F00CDE514 /* FTPConnect.swift */; };
+		1502C7A1216CE64600CDE514 /* bobbyar.json in Resources */ = {isa = PBXBuildFile; fileRef = 1502C7A0216CE64600CDE514 /* bobbyar.json */; };
 		1533B2AC2162191B006F8669 /* bobbyOld.json in Resources */ = {isa = PBXBuildFile; fileRef = 1533B2AB2162191B006F8669 /* bobbyOld.json */; };
 		15350488216B92290073BDCE /* ObjectQuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15350484216B92290073BDCE /* ObjectQuizViewController.swift */; };
 		15350489216B92290073BDCE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15350485216B92290073BDCE /* ViewController.swift */; };
@@ -62,6 +63,7 @@
 
 /* Begin PBXFileReference section */
 		1502C79E216CC83F00CDE514 /* FTPConnect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTPConnect.swift; sourceTree = "<group>"; };
+		1502C7A0216CE64600CDE514 /* bobbyar.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = bobbyar.json; sourceTree = "<group>"; };
 		1533B2AB2162191B006F8669 /* bobbyOld.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = bobbyOld.json; sourceTree = "<group>"; };
 		15350484216B92290073BDCE /* ObjectQuizViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectQuizViewController.swift; sourceTree = "<group>"; };
 		15350485216B92290073BDCE /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -194,6 +196,7 @@
 				1533B2AB2162191B006F8669 /* bobbyOld.json */,
 				80F136412052BC3400E3E19D /* Info.plist */,
 				1535048E216BCA8C0073BDCE /* bobbyda.json */,
+				1502C7A0216CE64600CDE514 /* bobbyar.json */,
 				15350490216BCAA70073BDCE /* bobbyen.json */,
 				155659982146C2CE00465B7E /* Oxford102.json */,
 				15DC447C2158FA24005352C7 /* bobby.json */,
@@ -282,6 +285,7 @@
 				1556598821468DD500465B7E /* ar.lproj in Resources */,
 				80F136402052BC3400E3E19D /* LaunchScreen.storyboard in Resources */,
 				80334DC1206B72F800078E64 /* Localizable.strings in Resources */,
+				1502C7A1216CE64600CDE514 /* bobbyar.json in Resources */,
 				80F1363D2052BC3400E3E19D /* Assets.xcassets in Resources */,
 				15350491216BCAA70073BDCE /* bobbyen.json in Resources */,
 				155659992146C2CE00465B7E /* Oxford102.json in Resources */,
@@ -519,7 +523,7 @@
 			baseConfigurationReference = 280D3AE67B5399ED0EA43700 /* Pods-UIQuiz.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = M9867W46VQ;
 				INFOPLIST_FILE = UIQuiz/Info.plist;
@@ -537,7 +541,7 @@
 			baseConfigurationReference = FC1C35C678E83B33F9E2A321 /* Pods-UIQuiz.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = M9867W46VQ;
 				INFOPLIST_FILE = UIQuiz/Info.plist;
