@@ -32,7 +32,6 @@
 		158A3DA621592C8A00583728 /* fir_signs.json in Resources */ = {isa = PBXBuildFile; fileRef = 158A3DA521592C8A00583728 /* fir_signs.json */; };
 		15CF657B216C91B000A3BD2B /* MyCustomObjectDetector.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 15CF657A216C91B000A3BD2B /* MyCustomObjectDetector.mlmodel */; };
 		15DC447D2158FA24005352C7 /* bobby.json in Resources */ = {isa = PBXBuildFile; fileRef = 15DC447C2158FA24005352C7 /* bobby.json */; };
-		15DC448421590E20005352C7 /* oxford102.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 15DC448221590E20005352C7 /* oxford102.mlmodel */; };
 		15DC448721590E66005352C7 /* bobby.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 15DC448621590E66005352C7 /* bobby.mlmodel */; };
 		8012C691206B9826007564EB /* LRSSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8012C690206B9826007564EB /* LRSSender.swift */; };
 		8021D49B2053E433003CA4DB /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8021D49A2053E433003CA4DB /* Theme.swift */; };
@@ -87,7 +86,6 @@
 		158A3DA521592C8A00583728 /* fir_signs.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = fir_signs.json; sourceTree = "<group>"; };
 		15CF657A216C91B000A3BD2B /* MyCustomObjectDetector.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = MyCustomObjectDetector.mlmodel; sourceTree = "<group>"; };
 		15DC447C2158FA24005352C7 /* bobby.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = bobby.json; sourceTree = "<group>"; };
-		15DC448221590E20005352C7 /* oxford102.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = oxford102.mlmodel; sourceTree = "<group>"; };
 		15DC448621590E66005352C7 /* bobby.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = bobby.mlmodel; sourceTree = "<group>"; };
 		280D3AE67B5399ED0EA43700 /* Pods-UIQuiz.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UIQuiz.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UIQuiz/Pods-UIQuiz.debug.xcconfig"; sourceTree = "<group>"; };
 		8012C690206B9826007564EB /* LRSSender.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LRSSender.swift; sourceTree = "<group>"; };
@@ -139,7 +137,6 @@
 				1543A50B216B3EB8000422F2 /* FullMyCustomObjectDetector.mlmodel */,
 				158A3DA321592C1000583728 /* fir_signs.mlmodel */,
 				15DC448621590E66005352C7 /* bobby.mlmodel */,
-				15DC448221590E20005352C7 /* oxford102.mlmodel */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -365,7 +362,6 @@
 				158A3DA421592C1000583728 /* fir_signs.mlmodel in Sources */,
 				80F136382052BC3400E3E19D /* QuizViewController.swift in Sources */,
 				1503C8F9216CA2D20080B021 /* FTPUpload.swift in Sources */,
-				15DC448421590E20005352C7 /* oxford102.mlmodel in Sources */,
 				80334DBC206B71ED00078E64 /* Localizable.swift in Sources */,
 				1556598A2146946F00465B7E /* ModelDataContainer.swift in Sources */,
 				1562AE36216BF8DB001BB7AA /* generatedmodel.mlmodel in Sources */,
