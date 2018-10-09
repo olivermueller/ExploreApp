@@ -20,6 +20,7 @@ class VisionObjectRecognitionViewController: ViewController, FileProviderDelegat
     private var saveImage = false
     private var image:UIImage = UIImage()
     var correct:String = ""
+    var res:[VNRecognizedObjectObservation] = [VNRecognizedObjectObservation]()
     override func viewDidLoad() {
         super.viewDidLoad()
         tabBarController?.viewControllers![0].title = "Explore".localized
@@ -34,7 +35,7 @@ class VisionObjectRecognitionViewController: ViewController, FileProviderDelegat
     }
     func upload(_ filename: String, saveFolder:String) {
         let localURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!.appendingPathComponent(filename)
-        let remotePath = "/GPOCST/"+saveFolder+"/"+filename
+        let remotePath = "/GPOCST/"+saveFolder+"/"+filename+".png"
         let progress = webdav?.copyItem(localFile: localURL, to: remotePath, completionHandler: nil)
         //        uploadProgressView.observedProgress = progress
     }
@@ -133,10 +134,12 @@ class VisionObjectRecognitionViewController: ViewController, FileProviderDelegat
 //        {
 //            sub.removeFromSuperview()
 //        }
+        res.removeAll()
         for observation in results where observation is VNRecognizedObjectObservation {
             guard let objectObservation = observation as? VNRecognizedObjectObservation else {
                 continue
             }
+            res.append(objectObservation)
             // Select only the label with the highest confidence.
             let topLabelObservation = objectObservation.labels[0]
             let objectBounds = VNImageRectForNormalizedRect(objectObservation.boundingBox, Int(bufferSize.width), Int(bufferSize.height))
@@ -243,22 +246,41 @@ class VisionObjectRecognitionViewController: ViewController, FileProviderDelegat
         
         return textLayer
     }
+    func createFile(filename:String, content:String, savefolder:String) {
+        let data = content.data(using: .utf8)
+        let localURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!.appendingPathComponent(filename)
+        let remotePath = "/GPOCST/"+savefolder+"/annotation/"+filename+".txt"
+        webdav?.writeContents(path: remotePath, contents: data, atomically: true, overwrite: true, completionHandler: nil)
+    }
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        session.stopRunning()
         if let touch = touches.first{
             let point = touch.location(in: self.view)
-            if let hitLayer = self.detectionOverlay.hitTest(point) {
-                if let name = hitLayer.name {
-                    if hitLayer != detectionOverlay{
-                        let picturename = name+UUID().uuidString+".png"
-                        if let data = UIImagePNGRepresentation(self.image) {
-                            let filename = self.getDocumentsDirectory().appendingPathComponent(picturename)
-                            try? data.write(to: filename)
-                        }
-                        self.upload(picturename, saveFolder: name)
-                        performSegue(withIdentifier: "objectsegue", sender: name)
-                    }
-                }
+//            let hitboundingbox = res.first
+            print("point "+NSStringFromCGPoint(point))
+            let hitboundingbox = res.filter{VNImageRectForNormalizedRect(($0.boundingBox), Int(bufferSize.width), Int(bufferSize.height)).contains(point)}.first
+            if hitboundingbox == nil{
+                session.startRunning()
+                return
             }
+            let objectBounds = VNImageRectForNormalizedRect((hitboundingbox?.boundingBox)!, Int(bufferSize.width), Int(bufferSize.height))
+//            print("bounding box "+NSStringFromCGRect(objectBounds) )
+//            print("hit?"+objectBounds.contains(point).description)
+            let name = hitboundingbox?.labels.first?.identifier
+            let picturename = name!+UUID().uuidString
+            var annotation = ""
+            annotation.append(picturename+".png")
+            annotation.append(",1,"+name!)
+            annotation.append(",\(Int(objectBounds.minX)),\(Int(objectBounds.maxX)),\(Int(objectBounds.minY)),\(Int(objectBounds.maxY))")
+//            let another = "+","+objectBounds.maxX+","+objectBounds.minY+","+objectBounds.maxY
+            print(annotation)
+            if let data = UIImagePNGRepresentation(self.image) {
+                let filename = self.getDocumentsDirectory().appendingPathComponent(picturename)
+                try? data.write(to: filename)
+            }
+            self.createFile(filename: picturename, content: annotation, savefolder: name!)
+            self.upload(picturename, saveFolder: name!)
+            performSegue(withIdentifier: "objectsegue", sender: name)
         }
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
