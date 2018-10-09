@@ -18,6 +18,15 @@
 "Quiz" = "لغز";
 "Explore" = "يكتشف";
 "Options" = "خيارات";
+"Learn" = "تعلم";
+"Title" = "عنوان";
+"Category" = "الفئة";
+"Description" = "وصف";
+"Intended learning outcome" = "نتائج التعلم المقصود";
+"Hazard" = "خطر";
+"Related signs" = "علامات ذات صلة";
+"Done" = "فعله";
+
 
 "alert_select_quiz_answer" = "اختر الكائن الصحيح";
 "alert_change_language_title" = "تغيير اللغة الى";
