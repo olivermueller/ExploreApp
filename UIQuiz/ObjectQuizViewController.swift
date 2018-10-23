@@ -16,9 +16,8 @@ class ObjectQuizViewController: SecondViewController, FileProviderDelegate {
     private var saveImage = false
     private var image:UIImage = UIImage()
     private var detectionOverlay: CALayer! = nil
-    var res:[VNRecognizedObjectObservation] = [VNRecognizedObjectObservation]()
     var correct:String = ""
-//    var top4 = [ModelDataContainer]()
+    var top4 = [ModelDataContainer]()
     let server: URL = URL(string: "ftp://agoodturn.dk@linux153.unoeuro.com/")!
     let username = "agoodturn.dk"
     let password = "Nxl5Q0ZUcdYEX4QK"
@@ -36,7 +35,7 @@ class ObjectQuizViewController: SecondViewController, FileProviderDelegate {
     }
     func upload(_ filename: String, saveFolder:String) {
         let localURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!.appendingPathComponent(filename)
-        let remotePath = "/GPOCST/"+saveFolder+"/"+filename+".png"
+        let remotePath = "/GPOCST/"+saveFolder+"/"+filename
         let progress = webdav?.copyItem(localFile: localURL, to: remotePath, completionHandler: nil)
         //        uploadProgressView.observedProgress = progress
     }
@@ -85,12 +84,10 @@ class ObjectQuizViewController: SecondViewController, FileProviderDelegate {
         CATransaction.begin()
         CATransaction.setValue(kCFBooleanTrue, forKey: kCATransactionDisableActions)
         detectionOverlay.sublayers = nil // remove all the old recognized objects
-        res.removeAll()
         for observation in results where observation is VNRecognizedObjectObservation {
             guard let objectObservation = observation as? VNRecognizedObjectObservation else {
                 continue
             }
-            res.append(objectObservation)
             // Select only the label with the highest confidence.
             let topLabelObservation = objectObservation.labels[0]
 //            topLabelsObservation.append(objectObservation)
@@ -193,15 +190,15 @@ class ObjectQuizViewController: SecondViewController, FileProviderDelegate {
         return textLayer
     }
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        session.stopRunning()
         if let touch = touches.first{
             let point = touch.location(in: self.view)
-            let hitboundingbox = res.filter{VNImageRectForNormalizedRect(($0.boundingBox), Int(bufferSize.width), Int(bufferSize.height)).contains(point)}.first
-            if hitboundingbox == nil{
-                session.startRunning()
-                return
+            if let hitLayer = self.detectionOverlay.hitTest(point) {
+                if let name = hitLayer.name {
+                    if hitLayer != detectionOverlay{
+                        QuizButtonPress(selected: name)
+                    }
+                }
             }
-            QuizButtonPress(hitboundingbox: hitboundingbox!)
         }
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -225,56 +222,51 @@ class ObjectQuizViewController: SecondViewController, FileProviderDelegate {
         shapeLayer.cornerRadius = 7
         return shapeLayer
     }
-    func QuizButtonPress(hitboundingbox: VNRecognizedObjectObservation) {
+    func QuizButtonPress(selected:String) {
         print("Quiz pressed!")
         //wikiSearch()
-        let data = Theme.GetModelData()
-        var top4: [VNClassificationObservation] = [VNClassificationObservation]()
-        top4.append(hitboundingbox.labels[0])
-        top4.append(hitboundingbox.labels[1])
-        top4.append(hitboundingbox.labels[2])
-        top4.append(hitboundingbox.labels[3])
-        top4.shuffle()
         LRSSender.sendDataToLRS(verbId: LRSSender.VerbIdInitialized, verbDisplay: "started", activityId: LRSSender.ObjectIdMLQuiz, activityName: "quiz", activityDescription: "started quiz")
         //LRSSender.sendDataToLRS(verbId: LRSSender.VerbWhatIdAccept, verbDisplay: "clicked", activityId: LRSSender.WhereActivityIdExploreQuizApp, activityName: "explore quiz app", activityDescription: "clicked percentage", object: (self.res?[0].identifier)!, score: Float((self.res?[0].confidence)! ))
-//        session.stopRunning()
+        session.stopRunning()
+        var selectedSign = Theme.GetModelData()[selected]
+        correct = (selectedSign?.key)!
+        var signs = Theme.GetModelData().values.filter{ $0.type == selectedSign?.type && $0.key != selectedSign?.key }
+        signs.shuffle()
+        top4.removeAll()
+        top4.append(selectedSign!)
+        top4.append(signs[0])
+        top4.append(signs[1])
+        top4.append(signs[2])
+        top4.shuffle()
         let alert = UIAlertController(
             title: "alert_select_quiz_answer".localized,
             message: nil,
             preferredStyle: .alert
         )
         
-        func addActionAnswer(answer: String) {
+        func addActionAnswer(answer: ModelDataContainer) {
             alert.addAction(
                 UIAlertAction(
-                    title: answer.localized,
+                    title: answer.title.localized,
                     style: UIAlertActionStyle.default,
                     handler: { _ in
                         //Language.language = language
-                        let name = hitboundingbox.labels.first?.identifier
-                        let picturename = (name)!+UUID().uuidString
-                        let objectBounds = VNImageRectForNormalizedRect((hitboundingbox.boundingBox), Int(self.bufferSize.width), Int(self.bufferSize.height))
-                        var annotation = ""
-                        annotation.append(picturename+".png")
-                        annotation.append(",1,"+name!)
-                        annotation.append(",\(Int(objectBounds.minX)),\(Int(objectBounds.maxX)),\(Int(objectBounds.minY)),\(Int(objectBounds.maxY))")
+                        let picturename = self.correct+UUID().uuidString+".png"
                         if let data = UIImagePNGRepresentation(self.image) {
                             let filename = self.getDocumentsDirectory().appendingPathComponent(picturename)
                             try? data.write(to: filename)
                         }
-                        self.createFile(filename: picturename, content: annotation, savefolder: name!)
-                        self.upload(picturename, saveFolder: name!)
-                        let isCorrect = (answer == data[hitboundingbox.labels[0].identifier]?.title)
-                        let answerkey = data.values.filter{$0.title==answer}.first
-                        self.alertMessage(correct: isCorrect , answer: (answerkey?.key)! )
-                        var sel = "Selected: \(answerkey) options were: \(data[top4[0].identifier]!.key)  ; \(data[top4[1].identifier]!.key); \(data[top4[2].identifier]!.key); \(data[top4[3].identifier]!.key) correct was: \(data[top4[0].identifier]!.title)"
+                        self.upload(picturename, saveFolder: self.correct)
+                        let isCorrect = (answer.key == self.correct)
+                        self.alertMessage(correct: isCorrect , answer: self.correct )
+                        
                         if isCorrect == true
                         {
-                            LRSSender.sendDataToLRS(verbId: LRSSender.VerbIdPassed, verbDisplay: "passed", activityId: LRSSender.ObjectIdMLQuiz, activityName: "quiz", activityDescription: sel)
+                            LRSSender.sendDataToLRS(verbId: LRSSender.VerbIdPassed, verbDisplay: "passed", activityId: LRSSender.ObjectIdMLQuiz, activityName: "quiz", activityDescription: "Selected: " + answer.key + " options were: " + self.top4[0].key + "; " + self.top4[1].key + "; " + self.top4[2].key + "; " + self.top4[3].key + " correct was: " + self.correct)
                         }
                         else
                         {
-                            LRSSender.sendDataToLRS(verbId: LRSSender.VerbIdFailed, verbDisplay: "failed", activityId: LRSSender.ObjectIdMLQuiz, activityName: "quiz", activityDescription: sel)
+                            LRSSender.sendDataToLRS(verbId: LRSSender.VerbIdFailed, verbDisplay: "failed", activityId: LRSSender.ObjectIdMLQuiz, activityName: "quiz", activityDescription: "Selected: " + answer.key + " options were: " + self.top4[0].key + "; " + self.top4[1].key + "; " + self.top4[2].key + "; " + self.top4[3].key + " correct was: " + self.correct)
                         }
                         
                         //LRSSender.sendDataToLRS(verbId: LRSSender.VerbWhatIdIdentified, verbDisplay: "selected", activityId: LRSSender.WhereActivityIdExploreQuizApp, activityName: "explore quiz app", activityDescription: "selected identifier", activityTypeId: LRSSender.TypeActivityIdItem, object: (self.res?[0].identifier)!, success: isCorrect)
@@ -282,10 +274,10 @@ class ObjectQuizViewController: SecondViewController, FileProviderDelegate {
                 })
             )
         }
-        addActionAnswer(answer: (data[top4[0].identifier]?.title)!)
-        addActionAnswer(answer: (data[top4[1].identifier]?.title)!)
-        addActionAnswer(answer: (data[top4[2].identifier]?.title)!)
-        addActionAnswer(answer: (data[top4[3].identifier]?.title)!)
+        addActionAnswer(answer: self.top4[0])
+        addActionAnswer(answer: self.top4[1])
+        addActionAnswer(answer: self.top4[2])
+        addActionAnswer(answer: self.top4[3])
         
         alert.addAction(
             UIAlertAction(
@@ -298,12 +290,6 @@ class ObjectQuizViewController: SecondViewController, FileProviderDelegate {
         )
         present(alert, animated: true, completion: nil)
         
-    }
-    func createFile(filename:String, content:String, savefolder:String) {
-        let data = content.data(using: .utf8)
-        let localURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!.appendingPathComponent(filename)
-        let remotePath = "/GPOCST/"+savefolder+"/annotation/"+filename+".txt"
-        webdav?.writeContents(path: remotePath, contents: data, atomically: true, overwrite: true, completionHandler: nil)
     }
     private func alertMessage(correct: Bool, answer: String)
     {
