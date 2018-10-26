@@ -29,6 +29,7 @@
 "theme_signs" = "الجمع بين النموذج";
 "theme_augmented_signs" = "نموذج معزز";
 "theme_normal_signs" = "نموذج عادي";
+"Confidence" = "الثقة";
 
 "alert_select_quiz_answer" = "اختر الكائن الصحيح";
 "alert_change_language_title" = "تغيير اللغة الى";

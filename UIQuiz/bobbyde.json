@@ -1,8 +1,8 @@
 {
     "ISO_7010_W008": {
-        "description": "Vor einem Tropfen warnen",
+        "description": "Warnung vor Absturzgefahr",
         "correctAnswerDescription": " ",
-        "behaviour": "Vorsicht in der Nähe eines Tropfens",
+        "behaviour": "Vorsicht in der Nähe von vor Sturzgefahr",
         "hazard": "Fallen",
         "key": "ISO_7010_W008",
         "optional": " ",
@@ -16,10 +16,10 @@
         "coreDescription": " "
     },
     "ISO_7010_M009": {
-        "description": "Um anzuzeigen, dass Schutzhandschuhe getragen werden müssen",
+        "description": "Gebot, dass Schutzhandschuhe getragen werden müssen",
         "correctAnswerDescription": " ",
         "behaviour": "Schutzhandschuhe tragen",
-        "hazard": "Hände, die von Gegenständen getroffen oder getroffen werden oder mit thermischen oder chemischen Materialien in Kontakt kommen",
+        "hazard": "Verletzung der Hände, die von Gegenständen getroffen oder getroffen werden oder mit thermischen oder chemischen Materialien in Kontakt kommen",
         "key": "ISO_7010_M009",
         "optional": " ",
         "category": "Obligatorische Maßnahmen",
@@ -32,10 +32,10 @@
         "coreDescription": " "
     },
     "ISO_7010_M008": {
-        "description": "Um anzuzeigen, dass Sicherheitsschuhe getragen werden müssen",
+        "description": "Gebot, dass Sicherheitsschuhe getragen werden müssen",
         "correctAnswerDescription": " ",
         "behaviour": "Sicherheitsschuhe tragen",
-        "hazard": "Füße, die von Gegenständen getroffen oder getroffen werden oder mit thermischen oder chemischen Materialien in Kontakt kommen",
+        "hazard": "Verletzung der Füße, die von Gegenständen getroffen oder getroffen werden oder mit thermischen oder chemischen Materialien in Kontakt kommen",
         "key": "ISO_7010_M008",
         "optional": " ",
         "category": "Obligatorische Maßnahmen",
@@ -48,7 +48,7 @@
         "coreDescription": " "
     },
     "ISO_7010_M005": {
-        "description": "Um anzuzeigen, dass ein Erdungsanschluss angeschlossen werden muss",
+        "description": "Gebot, dass ein Erdungsanschluss angeschlossen werden muss",
         "correctAnswerDescription": " ",
         "behaviour": "Anschließen eines Erdungsanschlusses eines Produkts an den Boden",
         "hazard": "Stromschlag, Explosion, Feuer",
@@ -64,10 +64,10 @@
         "coreDescription": " "
     },
     "ISO_7010_M004": {
-        "description": "Um anzuzeigen, dass Augenschutz verwendet werden muss",
+        "description": "Gebot, dass Augenschutz verwendet werden muss",
         "correctAnswerDescription": " ",
         "behaviour": "Augenschutz tragen",
-        "hazard": "Fliegende Objekte / Partikel",
+        "hazard": "Fliegende Gegenstände / Partikel",
         "key": "ISO_7010_M004",
         "optional": " ",
         "category": "Obligatorische Maßnahmen",
@@ -80,7 +80,7 @@
         "coreDescription": " "
     },
     "ISO_7010_M007": {
-        "description": "Um anzuzeigen, dass ein undurchsichtiger Augenschutz getragen werden muss",
+        "description": "Gebot, dass ein undurchsichtiger Augenschutz getragen werden muss",
         "correctAnswerDescription": " ",
         "behaviour": "Sicherstellen, dass die Personen, die sich einer sichtbaren oder unsichtbaren Bestrahlung unterziehen, einen opaken Augenschutz tragen",
         "hazard": "Sichtbare oder unsichtbare Strahlen",
@@ -96,7 +96,7 @@
         "coreDescription": " "
     },
     "ISO_7010_M006": {
-        "description": "Zu signalisieren, dass der Netzstecker für Wartungsarbeiten an elektrischen Geräten, bei Fehlfunktionen oder unbeaufsichtigt von der Steckdose getrennt werden muss",
+        "description": "Gebot, dass der Netzstecker für Wartungsarbeiten an elektrischen Geräten, bei Fehlfunktionen oder unbeaufsichtigt von der Steckdose getrennt werden muss",
         "correctAnswerDescription": " ",
         "behaviour": "Trennen des Netzsteckers zu Wartungszwecken, bei Fehlfunktion oder unbeaufsichtigt",
         "hazard": "Stromschlag, Feuer",
@@ -112,9 +112,9 @@
         "coreDescription": " "
     },
     "ISO_7010_M001": {
-        "description": "Um eine obligatorische Aktion zu kennzeichnen",
+        "description": "Hinweis auf ein Gebotszeichen",
         "correctAnswerDescription": " ",
-        "behaviour": "Durchführung der obligatorischen Maßnahme, die durch das Zusatzzeichen festgelegt ist",
+        "behaviour": "Durchführung der gebotenen Maßnahme, die durch das Zusatzzeichen festgelegt ist",
         "hazard": "Gefahr für Personen, die die im Zusatzzeichen festgelegte Pflichtmaßnahme nicht befolgen",
         "key": "ISO_7010_M001",
         "optional": " ",
@@ -128,7 +128,7 @@
         "coreDescription": " "
     },
     "ISO_7010_M003": {
-        "description": "Um anzuzeigen, dass der Gehörschutz getragen werden muss",
+        "description": "Gebot, dass der Gehörschutz getragen werden muss",
         "correctAnswerDescription": " ",
         "behaviour": "Gehörschutz tragen",
         "hazard": "Lärm",
@@ -144,7 +144,7 @@
         "coreDescription": " "
     },
     "ISO_7010_M002": {
-        "description": "Um anzuzeigen, dass die Bedienungsanleitung / Broschüre gelesen werden muss",
+        "description": "Gebot, dass die Bedienungsanleitung / Broschüre gelesen werden muss",
         "correctAnswerDescription": " ",
         "behaviour": "Lesen der Bedienungsanleitung / Broschüre vor Beginn der Arbeit oder vor dem Bedienen von Geräten oder Maschinen",
         "hazard": "Lesen Sie vor Beginn der Arbeit oder vor dem Bedienen von Geräten oder Maschinen die Bedienungsanleitung nicht",
@@ -176,7 +176,7 @@
         "coreDescription": " "
     },
     "ISO_7010_M018": {
-        "description": "Um anzuzeigen, dass ein Sicherheitsgurt getragen werden muss",
+        "description": "Gebot, dass ein Sicherheitsgurt getragen werden muss",
         "correctAnswerDescription": " ",
         "behaviour": "Einen Sicherheitsgurt tragen",
         "hazard": "Aus großer Höhe fallen",
@@ -192,7 +192,7 @@
         "coreDescription": " "
     },
     "ISO_7010_M019": {
-        "description": "Um anzuzeigen, dass eine Schweißmaske getragen werden muss",
+        "description": "Gebot, dass eine Schweißmaske getragen werden muss",
         "correctAnswerDescription": " ",
         "behaviour": "Eine Schweißmaske tragen",
         "hazard": "Heiße fliegende Partikel, intensives Licht und UV-Strahlung durch Schweißaktivität",
@@ -208,7 +208,7 @@
         "coreDescription": " "
     },
     "ISO_7010_M016": {
-        "description": "Um anzuzeigen, dass eine Gesichtsmaske getragen werden muss",
+        "description": "Gebot, dass eine Gesichtsmaske getragen werden muss",
         "correctAnswerDescription": " ",
         "behaviour": "Eine Gesichtsmaske tragen",
         "hazard": "Partikel in der Luft",
@@ -224,7 +224,7 @@
         "coreDescription": " "
     },
     "ISO_7010_M017": {
-        "description": "Um anzuzeigen, dass Atemschutz getragen werden muss",
+        "description": "Gebot, dass Atemschutz getragen werden muss",
         "correctAnswerDescription": " ",
         "behaviour": "Atemschutz tragen",
         "hazard": "Schädliche Substanzen (z. B. schädliche Gase)",
@@ -240,10 +240,10 @@
         "coreDescription": " "
     },
     "ISO_7010_M014": {
-        "description": "Um anzuzeigen, dass Kopfschutz getragen werden muss",
+        "description": "Gebot, dass Kopfschutz getragen werden muss",
         "correctAnswerDescription": " ",
         "behaviour": "Kopfschutz tragen",
-        "hazard": "Gegenstände, die auf den Kopf oder den Kopf fallen, die Gegenstände schlagen",
+        "hazard": "Gegenstände, die auf den Kopf fallen oder auf den Kopf schlagen",
         "key": "ISO_7010_M014",
         "optional": " ",
         "category": "Obligatorische Maßnahmen",
@@ -256,10 +256,10 @@
         "coreDescription": " "
     },
     "ISO_7010_M015": {
-        "description": "Um anzuzeigen, dass Warnkleidung getragen werden muss",
+        "description": "Gebot, dass Warnkleidung getragen werden muss",
         "correctAnswerDescription": " ",
         "behaviour": "Warnkleidung tragen",
-        "hazard": "Bewegliche Fahrzeuge oder Ausrüstung",
+        "hazard": "Bewegliche Geräte oder Ausrüstung",
         "key": "ISO_7010_M015",
         "optional": " ",
         "category": "Obligatorische Maßnahmen",
@@ -272,7 +272,7 @@
         "coreDescription": " "
     },
     "ISO_7010_M012": {
-        "description": "Um anzuzeigen, dass der Handlauf verwendet werden muss",
+        "description": "Gebot, dass der Handlauf verwendet werden muss",
         "correctAnswerDescription": " ",
         "behaviour": "Halten des Handlaufs bei der Verwendung von Treppen, Fahrtreppen oder Fahrsteigen",
         "hazard": "Fallen, rutschen oder stolpern",
@@ -448,10 +448,10 @@
         "coreDescription": " "
     },
     "ISO_7010_F004": {
-        "description": "Um den Standort von Feuerwehrausrüstung anzuzeigen",
+        "description": "Anzeige des Standorts von Feuerwehrausrüstung",
         "correctAnswerDescription": " ",
         "behaviour": "Kenntnis des Standorts von Feuerwehrausrüstung",
-        "hazard": "Feuerwehrausrüstung nicht lokalisieren können",
+        "hazard": "Die Feuerwehrausrüstung nicht lokalisieren können",
         "key": "ISO_7010_F004",
         "optional": " ",
         "category": "Feuer-Ausrüstung",
@@ -464,10 +464,10 @@
         "coreDescription": " "
     },
     "ISO_7010_F005": {
-        "description": "Um anzuzeigen, wo sich ein Feueralarm-Anrufpunkt befindet",
+        "description": "Anzeige des Standorts eines Feueralarm-Anrufpunktes",
         "correctAnswerDescription": " ",
         "behaviour": "Kenntnis des Ortes eines Feueralarm-Anrufpunktes",
-        "hazard": "Einen Feueralarm-Anrufpunkt nicht finden können",
+        "hazard": "Einen Feueralarm-Anrufpunkt nicht lokalisieren können",
         "key": "ISO_7010_F005",
         "optional": " ",
         "category": "Feuer-Ausrüstung",
@@ -480,10 +480,10 @@
         "coreDescription": " "
     },
     "ISO_7010_F006": {
-        "description": "Um den Standort eines Feuernotfalltelefons anzuzeigen",
+        "description": "Anzeige des Standorts eines Feuernotfalltelefons",
         "correctAnswerDescription": " ",
         "behaviour": "Den Standort eines Feuernotfalltelefons kennen",
-        "hazard": "Nicht in der Lage, ein Feuernotfalltelefon zu lokalisieren",
+        "hazard": "Ein Feuernotfalltelefon nicht lokalisieren können",
         "key": "ISO_7010_F006",
         "optional": " ",
         "category": "Feuer-Ausrüstung",
@@ -496,7 +496,7 @@
         "coreDescription": " "
     },
     "ISO_7010_F001": {
-        "description": "Um den Standort eines Feuerlöschers anzuzeigen",
+        "description": "Anzeige des Standorts eines Feuerlöschers",
         "correctAnswerDescription": " ",
         "behaviour": "Sich des Ortes eines Feuerlöschers bewusst sein",
         "hazard": "Einen Feuerlöscher nicht lokalisieren können",
@@ -512,10 +512,10 @@
         "coreDescription": " "
     },
     "ISO_7010_F002": {
-        "description": "Um anzuzeigen, wo sich eine Feuerlöschschlauchspule befindet",
+        "description": "Anzeige des Standorts eines Feuerlöschschlauchs",
         "correctAnswerDescription": " ",
-        "behaviour": "Sich der Position einer Feuerlöschschlauchspule bewusst sein",
-        "hazard": "Eine Feuerlöschschlauchspule nicht lokalisieren können",
+        "behaviour": "Sich der Position eines Feuerlöschschlauchs bewusst sein",
+        "hazard": "Einen Feuerlöschschlauch nicht lokalisieren können",
         "key": "ISO_7010_F002",
         "optional": " ",
         "category": "Feuer-Ausrüstung",
@@ -528,10 +528,10 @@
         "coreDescription": " "
     },
     "ISO_7010_F003": {
-        "description": "Um anzuzeigen, wo sich eine Leiter befindet, die ausschließlich für die Brandbekämpfung verwendet werden soll",
+        "description": "Anzeige des Standorts einer Feuerleiter, die ausschließlich für die Brandbekämpfung verwendet werden soll",
         "correctAnswerDescription": " ",
         "behaviour": "Sich der Position einer Feuerleiter bewusst sein und erkennen, dass die Verwendung dieser Leiter nur der Brandbekämpfung gewidmet ist",
-        "hazard": "Nicht in der Lage, eine Feuerleiter zu lokalisieren",
+        "hazard": "Eine Feuerleiter nicht lokalisieren können",
         "key": "ISO_7010_F003",
         "optional": " ",
         "category": "Feuer-Ausrüstung",

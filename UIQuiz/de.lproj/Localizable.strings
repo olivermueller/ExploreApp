@@ -29,6 +29,7 @@
 "theme_signs" = "Kombiniertes Modell";
 "theme_augmented_signs" = "Erweitertes Modell";
 "theme_normal_signs" = "Normales Modell";
+"Confidence" = "Vertrauen";
 
 "alert_select_quiz_answer" = "Wählen Sie das richtige Objekt";
 "alert_change_language_title" = "Sprache ändern zu";

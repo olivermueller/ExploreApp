@@ -95,10 +95,16 @@ class ObjectQuizViewController: SecondViewController, FileProviderDelegate {
             
             let shapeLayer = self.createRoundedRectLayerWithBounds(objectBounds, name: topLabelObservation.identifier)
             
-            let textLayer = self.createTextSubLayerInBounds(objectBounds,
-                                                            identifier: topLabelObservation.identifier,
-                                                            confidence: topLabelObservation.confidence)
-            shapeLayer.addSublayer(textLayer)
+//            let textLayer = self.createTextSubLayerInBounds(objectBounds,
+//                                                            identifier: topLabelObservation.identifier,
+//                                                            confidence: topLabelObservation.confidence)
+            //            let rect = CGRect(x: objectBounds.midX-100, y: objectBounds.midY+25, width: objectBounds.width, height: objectBounds.height)
+            //            let buttonLayer = self.createButton(rect,title: topLabelObservation.identifier.deletingPrefix("ISO_7010_"))
+            //            previewView.addSubview(buttonLayer)
+            let imageLayer = self.createImageSubLayerInBounds(objectBounds, name: topLabelObservation.identifier)
+            let questionImageLayer = self.createImageQuestionSubLayerInBounds(objectBounds, name: topLabelObservation.identifier)
+            shapeLayer.addSublayer(imageLayer)
+            shapeLayer.addSublayer(questionImageLayer)
             detectionOverlay.addSublayer(shapeLayer)
         }
         self.updateLayerGeometry()
@@ -174,12 +180,28 @@ class ObjectQuizViewController: SecondViewController, FileProviderDelegate {
     func createTextSubLayerInBounds(_ bounds: CGRect, identifier: String, confidence: VNConfidence) -> CATextLayer {
         let textLayer = CATextLayer()
         textLayer.name = identifier
-        let formattedString = NSMutableAttributedString(string: String(format: "\(identifier.deletingPrefix("ISO_7010_"))\nConfidence:  %.2f", confidence))
-        let largeFont = UIFont(name: "Helvetica", size: 24.0)!
-        formattedString.addAttributes([NSAttributedString.Key.font: largeFont], range: NSRange(location: 0, length: identifier.count))
-        //textLayer.string = formattedString
-        textLayer.bounds = CGRect(x: 0, y: 0, width: bounds.size.height - 10, height: bounds.size.width - 10)
-        textLayer.position = CGPoint(x: bounds.midX, y: bounds.midY)
+        let modeldata = Theme.GetModelData()
+        let data = modeldata[identifier]
+        
+//        let formattedString = NSMutableAttributedString(string: String(format: "\(data!.title)\nConfidence:  %.2f", confidence).uppercased())
+//        let largeFont = UIFont(name: "Helvetica", size: 12.0)!
+//        formattedString.addAttributes([NSAttributedString.Key.font: largeFont], range: NSRange(location: 0, length: data!.title.count))
+        textLayer.string = "?"
+        var bound = bounds
+        if bounds.width < 100 || bounds.height < 100
+        {
+            bound = CGRect(x: bounds.midX, y: bounds.midY, width: 100, height: 100)
+        }
+        else if bounds.width < bounds.height
+        {
+            bound = CGRect(x: bounds.midX, y: bounds.midY, width: bounds.width, height: bounds.width)
+        }
+        else if bounds.width > bounds.height
+        {
+            bound = CGRect(x: bounds.midX, y: bounds.midY, width: bounds.height, height: bounds.height)
+        }
+        textLayer.bounds = CGRect(x: -10, y: -(bound.height/4), width: bound.width, height: bound.height)
+        textLayer.position = CGPoint(x: bound.midX, y: bound.midY)
         textLayer.shadowOpacity = 0.7
         textLayer.shadowOffset = CGSize(width: 2, height: 2)
         textLayer.foregroundColor = CGColor(colorSpace: CGColorSpaceCreateDeviceRGB(), components: [0.0, 0.0, 0.0, 1.0])
@@ -188,6 +210,58 @@ class ObjectQuizViewController: SecondViewController, FileProviderDelegate {
         textLayer.setAffineTransform(CGAffineTransform(rotationAngle: CGFloat(.pi / 2.0)).scaledBy(x: 1.0, y: -1.0))
         
         return textLayer
+    }
+    func createImageSubLayerInBounds(_ bounds: CGRect, name: String) -> CALayer {
+        let imagelayer = CALayer()
+        imagelayer.name = name
+        let myImage = UIImage(named: "click")?.cgImage
+        imagelayer.contents = myImage
+        var bound = bounds
+        if bounds.width < 100 || bounds.height < 100
+        {
+            bound = CGRect(x: bounds.midX, y: bounds.midY, width: 100, height: 100)
+        }
+        else if bounds.width < bounds.height
+        {
+            bound = CGRect(x: bounds.midX, y: bounds.midY, width: bounds.width, height: bounds.width)
+        }
+        else if bounds.width > bounds.height
+        {
+            bound = CGRect(x: bounds.midX, y: bounds.midY, width: bounds.height, height: bounds.height)
+        }
+        imagelayer.bounds = CGRect(x: -(bound.width/2), y: -(bound.height/2), width: bound.width/3, height: bound.height/3)
+        imagelayer.position = CGPoint(x: bound.midX+(bound.width/4), y: bound.midY+(bound.height/4))
+        imagelayer.contentsScale = 2.0 // retina rendering
+        // rotate the layer into screen orientation and scale and mirror
+        imagelayer.setAffineTransform(CGAffineTransform(rotationAngle: CGFloat(.pi / 2.0)).scaledBy(x: 1.0, y: -1.0))
+        
+        return imagelayer
+    }
+    func createImageQuestionSubLayerInBounds(_ bounds: CGRect, name: String) -> CALayer {
+        let imagelayer = CALayer()
+        imagelayer.name = name
+        let myImage = UIImage(named: "questionmark")?.cgImage
+        imagelayer.contents = myImage
+        var bound = bounds
+        if bounds.width < 100 || bounds.height < 100
+        {
+            bound = CGRect(x: bounds.midX, y: bounds.midY, width: 100, height: 100)
+        }
+        else if bounds.width < bounds.height
+        {
+            bound = CGRect(x: bounds.midX, y: bounds.midY, width: bounds.width, height: bounds.width)
+        }
+        else if bounds.width > bounds.height
+        {
+            bound = CGRect(x: bounds.midX, y: bounds.midY, width: bounds.height, height: bounds.height)
+        }
+        imagelayer.bounds = CGRect(x: -(bound.width/2), y: -(bound.height/2), width: (bound.width/2), height: (bound.height/2))
+        imagelayer.position = CGPoint(x: bound.midX, y: bound.midY)
+        imagelayer.contentsScale = 2.0 // retina rendering
+        // rotate the layer into screen orientation and scale and mirror
+        imagelayer.setAffineTransform(CGAffineTransform(rotationAngle: CGFloat(.pi / 2.0)).scaledBy(x: 1.0, y: -1.0))
+        
+        return imagelayer
     }
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         if let touch = touches.first{
@@ -220,10 +294,17 @@ class ObjectQuizViewController: SecondViewController, FileProviderDelegate {
         {
             bound = CGRect(x: bounds.midX, y: bounds.midY, width: 100, height: 100)
         }
+        else if bounds.width < bounds.height
+        {
+            bound = CGRect(x: bounds.midX, y: bounds.midY, width: bounds.width, height: bounds.width)
+        }
+        else if bounds.width > bounds.height
+        {
+            bound = CGRect(x: bounds.midX, y: bounds.midY, width: bounds.height, height: bounds.height)
+        }
         shapeLayer.bounds = bound
         shapeLayer.position = CGPoint(x: bounds.midX, y: bounds.midY)
-        shapeLayer.name = "Found Object"
-        shapeLayer.backgroundColor = CGColor(colorSpace: CGColorSpaceCreateDeviceRGB(), components: [1.0, 1.0, 0.2, 0.4])
+        shapeLayer.backgroundColor = CGColor(colorSpace: CGColorSpaceCreateDeviceRGB(), components: [0.78, 0.78, 0.8, 0.4])
         shapeLayer.cornerRadius = 7
         return shapeLayer
     }
