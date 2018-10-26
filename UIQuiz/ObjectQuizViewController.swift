@@ -215,7 +215,12 @@ class ObjectQuizViewController: SecondViewController, FileProviderDelegate {
     func createRoundedRectLayerWithBounds(_ bounds: CGRect, name:String) -> CALayer {
         let shapeLayer = CALayer()
         shapeLayer.name = name
-        shapeLayer.bounds = bounds
+        var bound = bounds
+        if bounds.width < 100 || bounds.height < 100
+        {
+            bound = CGRect(x: bounds.midX, y: bounds.midY, width: 100, height: 100)
+        }
+        shapeLayer.bounds = bound
         shapeLayer.position = CGPoint(x: bounds.midX, y: bounds.midY)
         shapeLayer.name = "Found Object"
         shapeLayer.backgroundColor = CGColor(colorSpace: CGColorSpaceCreateDeviceRGB(), components: [1.0, 1.0, 0.2, 0.4])
