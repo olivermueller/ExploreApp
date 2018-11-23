@@ -1295,12 +1295,12 @@
         "type": "Prohibition",
         "coreDescription": " "
     },
-    "danger_sign": {
+    "ISO_7010_W001": {
         "description": "Um eine allgemeine Warnung zu signalisieren",
         "correctAnswerDescription": " ",
         "behaviour": "Auf die durch das Zusatzzeichen angegebene Gefahr achten",
         "hazard": "Gefahr für Personen, die durch das Zusatzzeichen gekennzeichnet sind",
-        "key": "danger_sign",
+        "key": "ISO_7010_W001",
         "optional": " ",
         "category": "Warnung",
         "imageContentDescription": "Ausrufezeichen",
@@ -1583,12 +1583,12 @@
         "type": "Warning",
         "coreDescription": " "
     },
-    "forklift_sign": {
+    "ISO_7010_W014": {
         "description": "Vor einem Gabelstapler und anderen Industriefahrzeugen warnen",
         "correctAnswerDescription": " ",
         "behaviour": "Vermeiden Sie Kollisionen mit Gabelstaplern und anderen Industriefahrzeugen",
         "hazard": "Gabelstapler und andere Industriefahrzeuge bewegen",
-        "key": "forklift_sign",
+        "key": "ISO_7010_W014",
         "optional": " ",
         "category": "Warnung",
         "imageContentDescription": "Gabelstapler (linkes Profil) mit menschlicher Figur",
@@ -1599,12 +1599,12 @@
         "type": "Warning",
         "coreDescription": " "
     },
-    "load_sign": {
+    "ISO_7010_W015": {
         "description": "Um vor einer Überkopflast zu warnen",
         "correctAnswerDescription": " ",
         "behaviour": "Achten Sie darauf, dass Sie nicht von einer Überkopflast getroffen oder in diese hineingehen",
         "hazard": "Überladung",
-        "key": "load_sign",
+        "key": "ISO_7010_W015",
         "optional": " ",
         "category": "Warnung",
         "imageContentDescription": "Die Box hängt in einem Winkel von zwei Seilen, die an einem Haken befestigt sind",
@@ -1679,12 +1679,12 @@
         "type": "Warning",
         "coreDescription": " "
     },
-    "electricity_sign": {
+    "ISO_7010_W012": {
         "description": "Vor Strom warnen",
         "correctAnswerDescription": " ",
         "behaviour": "Achten Sie darauf, dass Sie nicht mit Elektrizität in Berührung kommen",
         "hazard": "Elektrizität",
-        "key": "electricity_sign",
+        "key": "ISO_7010_W012",
         "optional": " ",
         "category": "2011-05-01",
         "imageContentDescription": "Blitz",

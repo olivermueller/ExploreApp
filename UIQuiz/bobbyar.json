@@ -1295,12 +1295,12 @@
         "type": "Prohibition",
         "coreDescription": " "
     },
-    "danger_sign": {
+    "ISO_7010_W001": {
         "description": "للدلالة على تحذير عام",
         "correctAnswerDescription": " ",
         "behaviour": "الاهتمام بالمخاطر التي تحددها العلامة التكميلية",
         "hazard": "خطر على الأشخاص المحددة بالعلامة التكميلية",
-        "key": "danger_sign",
+        "key": "ISO_7010_W001",
         "optional": " ",
         "category": "تحذير",
         "imageContentDescription": "علامة تعجب",
@@ -1583,12 +1583,12 @@
         "type": "Warning",
         "coreDescription": " "
     },
-    "forklift_sign": {
+    "ISO_7010_W014": {
         "description": "للتحذير من شاحنة رافعة شوكية وغيرها من المركبات الصناعية",
         "correctAnswerDescription": " ",
         "behaviour": "الحرص على تجنب الاصطدام مع شاحنات الرافعة الشوكية المتحركة وغيرها من المركبات الصناعية",
         "hazard": "نقل شاحنات رافعة شوكية وغيرها من المركبات الصناعية",
-        "key": "forklift_sign",
+        "key": "ISO_7010_W014",
         "optional": " ",
         "category": "تحذير",
         "imageContentDescription": "شاحنة رافعة شوكية (الملف الشخصي الأيسر) مع الشكل البشري",
@@ -1599,12 +1599,12 @@
         "type": "Warning",
         "coreDescription": " "
     },
-    "load_sign": {
+    "ISO_7010_W015": {
         "description": "للتحذير من الحمل العلوي",
         "correctAnswerDescription": " ",
         "behaviour": "الحرص على تجنب التعرض للضرب أو الحمل في الحمل العلوي",
         "hazard": "الحمل العلوي",
-        "key": "load_sign",
+        "key": "ISO_7010_W015",
         "optional": " ",
         "category": "تحذير",
         "imageContentDescription": "صندوق معلق بزاوية من حبلين مربوطين بخطاف",
@@ -1679,12 +1679,12 @@
         "type": "Warning",
         "coreDescription": " "
     },
-    "electricity_sign": {
+    "ISO_7010_W012": {
         "description": "لتحذير من الكهرباء",
         "correctAnswerDescription": " ",
         "behaviour": "الحرص على تجنب ملامسة الكهرباء",
         "hazard": "كهرباء",
-        "key": "electricity_sign",
+        "key": "ISO_7010_W012",
         "optional": " ",
         "category": "٢٠١١-٠٥-٠١",
         "imageContentDescription": "صاعقة برق",

@@ -1295,12 +1295,12 @@
         "type": "Prohibition",
         "coreDescription": " "
     },
-    "danger_sign": {
+    "ISO_7010_W001": {
         "description": "To signify a general warning",
         "correctAnswerDescription": " ",
         "behaviour": "Taking care regarding the hazard specified by the supplementary sign",
         "hazard": "Risk to people specified by the supplementary sign",
-        "key": "danger_sign",
+        "key": "ISO_7010_W001",
         "optional": " ",
         "category": "Warning",
         "imageContentDescription": "Exclamation mark",
@@ -1583,12 +1583,12 @@
         "type": "Warning",
         "coreDescription": " "
     },
-    "forklift_sign": {
+    "ISO_7010_W014": {
         "description": "To warn of a forklift truck and other industrial vehicles",
         "correctAnswerDescription": " ",
         "behaviour": "Taking care to avoid collision with moving forklift trucks and other industrial vehicles",
         "hazard": "Moving forklift trucks and other industrial vehicles",
-        "key": "forklift_sign",
+        "key": "ISO_7010_W014",
         "optional": " ",
         "category": "Warning",
         "imageContentDescription": "Forklift truck (left-hand profile) with human figure",
@@ -1599,12 +1599,12 @@
         "type": "Warning",
         "coreDescription": " "
     },
-    "load_sign": {
+    "ISO_7010_W015": {
         "description": "To warn of an overhead load",
         "correctAnswerDescription": " ",
         "behaviour": "Taking care to avoid being struck by or walking into an overhead load",
         "hazard": "Overhead load",
-        "key": "load_sign",
+        "key": "ISO_7010_W015",
         "optional": " ",
         "category": "Warning",
         "imageContentDescription": "Box suspended at an angle from two ropes attached to a hook",
@@ -1679,12 +1679,12 @@
         "type": "Warning",
         "coreDescription": " "
     },
-    "electricity_sign": {
+    "ISO_7010_W012": {
         "description": "To warn of electricity",
         "correctAnswerDescription": " ",
         "behaviour": "Taking care to avoid coming into contact with electricity",
         "hazard": "Electricity",
-        "key": "electricity_sign",
+        "key": "ISO_7010_W012",
         "optional": " ",
         "category": "2011-05-01",
         "imageContentDescription": "Lightning bolt",

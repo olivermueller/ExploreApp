@@ -1295,12 +1295,12 @@
         "type": "Prohibition",
         "coreDescription": " "
     },
-    "danger_sign": {
+    "ISO_7010_W001": {
         "description": "At angive en generel advarsel",
         "correctAnswerDescription": " ",
         "behaviour": "Pas på den fare, der er angivet af tillægstegnet",
         "hazard": "Risiko for personer, der er angivet med tillægstegn",
-        "key": "danger_sign",
+        "key": "ISO_7010_W001",
         "optional": " ",
         "category": "Advarsel",
         "imageContentDescription": "Udråbstegn",
@@ -1583,12 +1583,12 @@
         "type": "Warning",
         "coreDescription": " "
     },
-    "forklift_sign": {
+    "ISO_7010_W014": {
         "description": "At advare om en gaffeltruck og andre industrikøretøjer",
         "correctAnswerDescription": " ",
         "behaviour": "Pas på at undgå kollision med at flytte gaffeltrucks og andre industrikøretøjer",
         "hazard": "Flytte gaffeltrucks og andre industrikøretøjer",
-        "key": "forklift_sign",
+        "key": "ISO_7010_W014",
         "optional": " ",
         "category": "Advarsel",
         "imageContentDescription": "Gaffeltruck (venstre profil) med menneskelig figur",
@@ -1599,12 +1599,12 @@
         "type": "Warning",
         "coreDescription": " "
     },
-    "load_sign": {
+    "ISO_7010_W015": {
         "description": "At advare om en overheadbelastning",
         "correctAnswerDescription": " ",
         "behaviour": "Pas på at undgå at blive ramt af eller gå ind i en overheadbelastning",
         "hazard": "Overheadbelastning",
-        "key": "load_sign",
+        "key": "ISO_7010_W015",
         "optional": " ",
         "category": "Advarsel",
         "imageContentDescription": "Boks suspenderet i en vinkel fra to reb fastgjort til en krog",
@@ -1679,12 +1679,12 @@
         "type": "Warning",
         "coreDescription": " "
     },
-    "electricity_sign": {
+    "ISO_7010_W012": {
         "description": "At advare om elektricitet",
         "correctAnswerDescription": " ",
         "behaviour": "Pas på at undgå at komme i kontakt med elektricitet",
         "hazard": "Elektricitet",
-        "key": "electricity_sign",
+        "key": "ISO_7010_W012",
         "optional": " ",
         "category": "2011-05-01",
         "imageContentDescription": "Lynbolt",
