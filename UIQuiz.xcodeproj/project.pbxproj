@@ -32,6 +32,8 @@
 		1578314D21466F7800232063 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1578314C21466F7800232063 /* DetailViewController.swift */; };
 		158A3DA421592C1000583728 /* fir_signs.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 158A3DA321592C1000583728 /* fir_signs.mlmodel */; };
 		158A3DA621592C8A00583728 /* fir_signs.json in Resources */ = {isa = PBXBuildFile; fileRef = 158A3DA521592C8A00583728 /* fir_signs.json */; };
+		15A0A36A21B3C2F400937B33 /* onezeroninesignsv2.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 15A0A36921B3C2F300937B33 /* onezeroninesignsv2.mlmodel */; };
+		15AA118921AA18830086C607 /* onezeroninesignsv1.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 15AA118821AA18830086C607 /* onezeroninesignsv1.mlmodel */; };
 		15CF657B216C91B000A3BD2B /* MyCustomObjectDetector.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 15CF657A216C91B000A3BD2B /* MyCustomObjectDetector.mlmodel */; };
 		15DC447D2158FA24005352C7 /* bobby.json in Resources */ = {isa = PBXBuildFile; fileRef = 15DC447C2158FA24005352C7 /* bobby.json */; };
 		15DC448721590E66005352C7 /* bobby.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 15DC448621590E66005352C7 /* bobby.mlmodel */; };
@@ -90,6 +92,8 @@
 		1578314C21466F7800232063 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		158A3DA321592C1000583728 /* fir_signs.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = fir_signs.mlmodel; sourceTree = "<group>"; };
 		158A3DA521592C8A00583728 /* fir_signs.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = fir_signs.json; sourceTree = "<group>"; };
+		15A0A36921B3C2F300937B33 /* onezeroninesignsv2.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = onezeroninesignsv2.mlmodel; sourceTree = "<group>"; };
+		15AA118821AA18830086C607 /* onezeroninesignsv1.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = onezeroninesignsv1.mlmodel; sourceTree = "<group>"; };
 		15CF657A216C91B000A3BD2B /* MyCustomObjectDetector.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = MyCustomObjectDetector.mlmodel; sourceTree = "<group>"; };
 		15DC447C2158FA24005352C7 /* bobby.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = bobby.json; sourceTree = "<group>"; };
 		15DC448621590E66005352C7 /* bobby.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = bobby.mlmodel; sourceTree = "<group>"; };
@@ -140,6 +144,8 @@
 		8021D4942053E345003CA4DB /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				15A0A36921B3C2F300937B33 /* onezeroninesignsv2.mlmodel */,
+				15AA118821AA18830086C607 /* onezeroninesignsv1.mlmodel */,
 				15CF657A216C91B000A3BD2B /* MyCustomObjectDetector.mlmodel */,
 				1513186121A5398200396A61 /* MyCustomObjectDetectorV2.mlmodel */,
 				1562AE35216BF8DB001BB7AA /* generatedmodel.mlmodel */,
@@ -358,6 +364,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1578314D21466F7800232063 /* DetailViewController.swift in Sources */,
+				15A0A36A21B3C2F400937B33 /* onezeroninesignsv2.mlmodel in Sources */,
 				158A3DA421592C1000583728 /* fir_signs.mlmodel in Sources */,
 				80F136382052BC3400E3E19D /* QuizViewController.swift in Sources */,
 				80334DBC206B71ED00078E64 /* Localizable.swift in Sources */,
@@ -367,6 +374,7 @@
 				80F136342052BC3400E3E19D /* AppDelegate.swift in Sources */,
 				80F136482052C16900E3E19D /* OptionsViewController.swift in Sources */,
 				B5CF086B217F566F00294789 /* signsv2.mlmodel in Sources */,
+				15AA118921AA18830086C607 /* onezeroninesignsv1.mlmodel in Sources */,
 				15350488216B92290073BDCE /* ObjectQuizViewController.swift in Sources */,
 				15350489216B92290073BDCE /* ViewController.swift in Sources */,
 				1513186221A5398200396A61 /* MyCustomObjectDetectorV2.mlmodel in Sources */,
