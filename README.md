@@ -27,6 +27,39 @@ In order to have your trained model compatible with this project, you will have 
 3. Open ```Theme.swift```
 4. In ```GetModel()``` function, change one of the models that is loaded.
   * You could replace ```onezeroninesignsv2().model``` with ``yourimportedmodel().model``
-5. Build and run
+  * The switch statement corresponds to the Theme menu within the app (Options->Change Theme)
 
-**It is very important to have the class names match the name in the .json file! Otherwise, the app will not function properly. I you just want to quick test your model and make sure it works, I would definitely recommend using the <a href="https://developer.apple.com/documentation/vision/recognizing_objects_in_live_capture">object recognition example</a> from Apple; even though it misses the functionality this app has, it is still enough for testing different trained models.**
+**It is very important to have the class names match the name in the .json file! Otherwise, the app will not function properly. If you just want to quick test your model and make sure it works, I would definitely recommend using the <a href="https://developer.apple.com/documentation/vision/recognizing_objects_in_live_capture">object recognition example</a> from Apple; even though it misses the functionality this app has, it is still enough for testing different trained models.**
+
+# App interface
+
+The app consists of four menus: **explore**, **quiz**, **learn** and **options**.
+
+**Explore**
+
+Highlights the position of the signs and gives information about the name of the object as well as its confidence. If the user presses one of the boxes, they will be sent to the **learn** menu, where they will receive more information about the identified object.
+
+<img src ="readme_images/explore.png" width= "50%"></img>
+
+**Quiz**
+
+Highlights the position of the signs but does not give any information about it (left). If the user presses one of the boxes, they will be prompted with a multiple choice question generated based on the object they chose (right).
+
+<img src ="readme_images/quiz.png" width= "40%"></img>
+<img src ="readme_images/quiz_question.png" width= "40%"></img>
+
+
+ **Learn**
+
+ Gives the user the option to browse the 109 signs and get more detailed information about each one of them. All the information contained here is taken straight from the ISO website.
+
+ <img src ="readme_images/learn_menu.png" width= "40%"></img>
+ <img src ="readme_images/learn_item.png" width= "40%"></img>
+
+ **Options**
+* Change contact information: changes the name and email of the user (mostly used for sending the xAPI statements)
+* Change language: changes the language (related to all the bobby json files)
+* Change theme: changes the currently loaded ```mlmodel```
+
+
+ <img src ="readme_images/options_menu.png" width= "50%"></img>
