@@ -38,28 +38,29 @@ The app consists of four menus: **explore**, **quiz**, **learn** and **options**
 **Explore**
 
 Highlights the position of the signs and gives information about the name of the object as well as its confidence. If the user presses one of the boxes, they will be sent to the **learn** menu, where they will receive more information about the identified object.
-
+<p>
 <img src ="readme_images/explore.png" width= "50%"></img>
-
+</p>
 **Quiz**
 
 Highlights the position of the signs but does not give any information about it (left). If the user presses one of the boxes, they will be prompted with a multiple choice question generated based on the object they chose (right).
-
+<p>
 <img src ="readme_images/quiz.png" width= "40%"></img>
 <img src ="readme_images/quiz_question.png" width= "40%"></img>
-
+</p>
 
  **Learn**
 
  Gives the user the option to browse the 109 signs and get more detailed information about each one of them. All the information contained here is taken straight from the ISO website.
-
+<p>
  <img src ="readme_images/learn_menu.png" width= "40%"></img>
  <img src ="readme_images/learn_item.png" width= "40%"></img>
-
+</p>
  **Options**
 * Change contact information: changes the name and email of the user (mostly used for sending the xAPI statements)
 * Change language: changes the language (related to all the bobby json files)
 * Change theme: changes the currently loaded ```mlmodel```
 
-
+ <p>
  <img src ="readme_images/options_menu.png" width= "50%"></img>
+</p>
