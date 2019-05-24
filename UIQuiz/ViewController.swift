@@ -50,6 +50,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         
         session.beginConfiguration()
         session.sessionPreset = .vga640x480 // Model image size is smaller.
+
         
         // Add a video input
         guard session.canAddInput(deviceInput) else {
@@ -83,9 +84,9 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         }
         session.commitConfiguration()
         previewLayer = AVCaptureVideoPreviewLayer(session: session)
-        previewLayer.videoGravity = AVLayerVideoGravity.resizeAspectFill
+        //previewLayer.videoGravity = AVLayerVideoGravity.
         rootLayer = previewView.layer
-        previewLayer.frame = rootLayer.bounds
+        previewLayer.frame = rootLayer.frame
         rootLayer.addSublayer(previewLayer)
     }
     

@@ -8,8 +8,13 @@ Contains the object recognition view controller for the Breakfast Finder.
 import UIKit
 import AVFoundation
 import Vision
+import Foundation
+import Accelerate
+import CoreImage
 
 class VisionObjectRecognitionViewController: ViewController {
+    
+    let MAX_BOUNDS = 125
     override func viewDidLoad() {
         super.viewDidLoad()
         tabBarController?.viewControllers![0].title = "Explore".localized
@@ -113,7 +118,8 @@ class VisionObjectRecognitionViewController: ViewController {
             guard let objectObservation = observation as? VNRecognizedObjectObservation else {
                 continue
             }
-            // Select only the label with the highest confidence.
+            // Select only the label with the highest and decent confidence
+            if(objectObservation.labels[0].confidence < 0.7) {continue}
             let topLabelObservation = objectObservation.labels[0]
             let objectBounds = VNImageRectForNormalizedRect(objectObservation.boundingBox, Int(bufferSize.width), Int(bufferSize.height))
             
@@ -127,20 +133,27 @@ class VisionObjectRecognitionViewController: ViewController {
 //            previewView.addSubview(buttonLayer)
             let imageLayer = self.createImageSubLayerInBounds(objectBounds, name: topLabelObservation.identifier)
             let imageQuestionLayer = self.createImageQuestionSubLayerInBounds(objectBounds, name: topLabelObservation.identifier)
+            shapeLayer.name = topLabelObservation.identifier + "_sublayer"
             shapeLayer.addSublayer(imageLayer)
             shapeLayer.addSublayer(imageQuestionLayer)
             shapeLayer.addSublayer(textLayer)
             detectionOverlay.addSublayer(shapeLayer)
+            
+            //makes sure there are never two of the same predictions on the screen
+            //self.view.layer.sublayers?.forEach { if($0.name == shapeLayer.name) {$0.removeFromSuperlayer()} }
         }
-        self.updateLayerGeometry()
+        //self.updateLayerGeometry()
         CATransaction.commit()
     }
     
     override func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
-        guard let pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else {
+        guard let pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer)
+           else {
             return
         }
-        
+        //connection.videoOrientation = .portrait
+        connection.videoOrientation = .portraitUpsideDown
+        connection.isVideoMirrored = true
         let exifOrientation = exifOrientationFromDeviceOrientation()
         
         let imageRequestHandler = VNImageRequestHandler(cvPixelBuffer: pixelBuffer, orientation: exifOrientation, options: [:])
@@ -150,6 +163,8 @@ class VisionObjectRecognitionViewController: ViewController {
             print(error)
         }
     }
+    
+
     
     override func setupAVCapture() {
         super.setupAVCapture()
@@ -189,7 +204,7 @@ class VisionObjectRecognitionViewController: ViewController {
         CATransaction.setValue(kCFBooleanTrue, forKey: kCATransactionDisableActions)
         
         // rotate the layer into screen orientation and scale and mirror
-        detectionOverlay.setAffineTransform(CGAffineTransform(rotationAngle: CGFloat(.pi / 2.0)).scaledBy(x: scale, y: -scale))
+       // detectionOverlay.setAffineTransform(CGAffineTransform(rotationAngle: CGFloat(.pi / 2.0)).scaledBy(x: scale, y: -scale))
         // center the layer
         detectionOverlay.position = CGPoint (x: bounds.midX, y: bounds.midY)
         
@@ -201,10 +216,10 @@ class VisionObjectRecognitionViewController: ViewController {
         imagelayer.name = name
         let myImage = UIImage(named: name)?.cgImage
         imagelayer.contents = myImage
-        var bound = bounds
-        if bounds.width < 100 || bounds.height < 100
+        var bound = CGRect(x: bounds.midX, y: bounds.midY, width: bounds.height, height: bounds.width)
+        if Int(bounds.width) < MAX_BOUNDS || Int(bounds.height) < MAX_BOUNDS
         {
-            bound = CGRect(x: bounds.midX, y: bounds.midY, width: 100, height: 100)
+            bound = CGRect(x: bounds.midX, y: bounds.midY, width: CGFloat(MAX_BOUNDS), height: CGFloat(MAX_BOUNDS))
         }
         else if bounds.width < bounds.height
         {
@@ -218,7 +233,7 @@ class VisionObjectRecognitionViewController: ViewController {
         imagelayer.position = CGPoint(x: bound.midX+(bound.width/3), y: bound.midY-(bound.height/3))
         imagelayer.contentsScale = 2.0 // retina rendering
         // rotate the layer into screen orientation and scale and mirror
-        imagelayer.setAffineTransform(CGAffineTransform(rotationAngle: CGFloat(.pi / 2.0)).scaledBy(x: 1.0, y: -1.0))
+        //imagelayer.setAffineTransform(CGAffineTransform(rotationAngle: CGFloat(.pi / 2.0)).scaledBy(x: 1.0, y: -1.0))
         
         return imagelayer
     }
@@ -232,10 +247,10 @@ class VisionObjectRecognitionViewController: ViewController {
         let largeFont = UIFont(name: "Helvetica", size: 12.0)!
         formattedString.addAttributes([NSAttributedString.Key.font: largeFont], range: NSRange(location: 0, length: data!.title.count))
         textLayer.string = formattedString
-        var bound = bounds
-        if bounds.width < 100 || bounds.height < 100
+        var bound = CGRect(x: bounds.midX, y: bounds.midY, width: bounds.height, height: bounds.width)
+        if bounds.width < CGFloat(MAX_BOUNDS) || bounds.height < CGFloat(MAX_BOUNDS)
         {
-            bound = CGRect(x: bounds.midX, y: bounds.midY, width: 100, height: 100)
+            bound = CGRect(x: bounds.midX, y: bounds.midY, width: CGFloat(MAX_BOUNDS), height: CGFloat(MAX_BOUNDS))
         }
         else if bounds.width < bounds.height
         {
@@ -252,7 +267,7 @@ class VisionObjectRecognitionViewController: ViewController {
         textLayer.foregroundColor = CGColor(colorSpace: CGColorSpaceCreateDeviceRGB(), components: [0.0, 0.0, 0.0, 1.0])
         textLayer.contentsScale = 2.0 // retina rendering
         // rotate the layer into screen orientation and scale and mirror
-        textLayer.setAffineTransform(CGAffineTransform(rotationAngle: CGFloat(.pi / 2.0)).scaledBy(x: 1.0, y: -1.0))
+        //textLayer.setAffineTransform(CGAffineTransform(rotationAngle: CGFloat(.pi / 2.0)).scaledBy(x: 1.0, y: -1.0))
         
         return textLayer
     }
@@ -284,10 +299,10 @@ class VisionObjectRecognitionViewController: ViewController {
         imagelayer.name = name
         let myImage = UIImage(named: "click")?.cgImage
         imagelayer.contents = myImage
-        var bound = bounds
-        if bounds.width < 100 || bounds.height < 100
+        var bound = CGRect(x: bounds.midX, y: bounds.midY, width: bounds.height, height: bounds.width)
+        if bounds.width < CGFloat(MAX_BOUNDS) || bounds.height < CGFloat(MAX_BOUNDS)
         {
-            bound = CGRect(x: bounds.midX, y: bounds.midY, width: 100, height: 100)
+            bound = CGRect(x: bounds.midX, y: bounds.midY, width: CGFloat(MAX_BOUNDS), height: CGFloat(MAX_BOUNDS))
         }
         else if bounds.width < bounds.height
         {
@@ -301,17 +316,18 @@ class VisionObjectRecognitionViewController: ViewController {
         imagelayer.position = CGPoint(x: bound.midX+(bound.width/4), y: bound.midY+(bound.height/4))
         imagelayer.contentsScale = 2.0 // retina rendering
         // rotate the layer into screen orientation and scale and mirror
-        imagelayer.setAffineTransform(CGAffineTransform(rotationAngle: CGFloat(.pi / 2.0)).scaledBy(x: 1.0, y: -1.0))
+        //imagelayer.setAffineTransform(CGAffineTransform(rotationAngle: CGFloat(.pi / 2.0)).scaledBy(x: 1.0, y: -1.0))
         
         return imagelayer
     }
     func createRoundedRectLayerWithBounds(_ bounds: CGRect, name:String) -> CALayer {
         let shapeLayer = CALayer()
         shapeLayer.name = name
-        var bound = bounds
-        if bounds.width < 100 || bounds.height < 100
+       // var bound = bounds
+        var bound = CGRect(x: bounds.midX, y: bounds.midY, width: bounds.height, height: bounds.width)
+        if bounds.width < CGFloat(MAX_BOUNDS) || bounds.height < CGFloat(MAX_BOUNDS)
         {
-            bound = CGRect(x: bounds.midX, y: bounds.midY, width: 100, height: 100)
+            bound = CGRect(x: bounds.midX, y: bounds.midY, width: CGFloat(MAX_BOUNDS), height: CGFloat(MAX_BOUNDS))
         }
         else if bounds.width < bounds.height
         {
@@ -322,7 +338,7 @@ class VisionObjectRecognitionViewController: ViewController {
             bound = CGRect(x: bounds.midX, y: bounds.midY, width: bounds.height, height: bounds.height)
         }
         shapeLayer.bounds = bound
-        shapeLayer.position = CGPoint(x: bounds.midX, y: bounds.midY)
+        shapeLayer.position = CGPoint(x: bound.midX - bound.width/2, y: bound.midY - bound.height/2)
         shapeLayer.backgroundColor = CGColor(colorSpace: CGColorSpaceCreateDeviceRGB(), components: [0.78, 0.78, 0.8, 0.4])
         shapeLayer.cornerRadius = 7
         return shapeLayer
