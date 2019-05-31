@@ -84,7 +84,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         }
         session.commitConfiguration()
         previewLayer = AVCaptureVideoPreviewLayer(session: session)
-        //previewLayer.videoGravity = AVLayerVideoGravity.
+        previewLayer.videoGravity = AVLayerVideoGravity.resizeAspectFill
         rootLayer = previewView.layer
         previewLayer.frame = rootLayer.frame
         rootLayer.addSublayer(previewLayer)

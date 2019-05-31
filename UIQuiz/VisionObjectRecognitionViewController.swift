@@ -123,7 +123,7 @@ class VisionObjectRecognitionViewController: ViewController {
             let topLabelObservation = objectObservation.labels[0]
             let objectBounds = VNImageRectForNormalizedRect(objectObservation.boundingBox, Int(bufferSize.width), Int(bufferSize.height))
             
-            let shapeLayer = self.createRoundedRectLayerWithBounds(objectBounds, name: topLabelObservation.identifier)
+            let shapeLayer = self.createRoundedRectLayerWithBounds(objectBounds, name: topLabelObservation.identifier + "_sublayer")
             
             let textLayer = self.createTextSubLayerInBounds(objectBounds,
                                                             identifier: topLabelObservation.identifier,
@@ -131,16 +131,21 @@ class VisionObjectRecognitionViewController: ViewController {
 //            let rect = CGRect(x: objectBounds.midX-100, y: objectBounds.midY+25, width: objectBounds.width, height: objectBounds.height)
 //            let buttonLayer = self.createButton(rect,title: topLabelObservation.identifier.deletingPrefix("ISO_7010_"))
 //            previewView.addSubview(buttonLayer)
+            var k = false
+            //self.view.layer.sublayers?.forEach { if($0.name == shapeLayer.name) {k=true} }
+           
+            if k == true {continue}
+            
             let imageLayer = self.createImageSubLayerInBounds(objectBounds, name: topLabelObservation.identifier)
             let imageQuestionLayer = self.createImageQuestionSubLayerInBounds(objectBounds, name: topLabelObservation.identifier)
-            shapeLayer.name = topLabelObservation.identifier + "_sublayer"
+            //shapeLayer.name = topLabelObservation.identifier
             shapeLayer.addSublayer(imageLayer)
             shapeLayer.addSublayer(imageQuestionLayer)
             shapeLayer.addSublayer(textLayer)
             detectionOverlay.addSublayer(shapeLayer)
             
             //makes sure there are never two of the same predictions on the screen
-            //self.view.layer.sublayers?.forEach { if($0.name == shapeLayer.name) {$0.removeFromSuperlayer()} }
+            
         }
         //self.updateLayerGeometry()
         CATransaction.commit()
@@ -151,9 +156,9 @@ class VisionObjectRecognitionViewController: ViewController {
            else {
             return
         }
-        //connection.videoOrientation = .portrait
-        connection.videoOrientation = .portraitUpsideDown
-        connection.isVideoMirrored = true
+        connection.videoOrientation = .portrait
+        //connection.videoOrientation = .portraitUpsideDown
+        //connection.isVideoMirrored = true
         let exifOrientation = exifOrientationFromDeviceOrientation()
         
         let imageRequestHandler = VNImageRequestHandler(cvPixelBuffer: pixelBuffer, orientation: exifOrientation, options: [:])
@@ -338,9 +343,12 @@ class VisionObjectRecognitionViewController: ViewController {
             bound = CGRect(x: bounds.midX, y: bounds.midY, width: bounds.height, height: bounds.height)
         }
         shapeLayer.bounds = bound
-        shapeLayer.position = CGPoint(x: bound.midX - bound.width/2, y: bound.midY - bound.height/2)
+        shapeLayer.position = CGPoint(x: bound.midX - bound.width/2, y: (bufferSize.height - bound.midY))
         shapeLayer.backgroundColor = CGColor(colorSpace: CGColorSpaceCreateDeviceRGB(), components: [0.78, 0.78, 0.8, 0.4])
         shapeLayer.cornerRadius = 7
+        
+        //imagelayer.setAffineTransform(CGAffineTransform(rotationAngle: CGFloat(.pi / 2.0)).scaledBy(x: 1.0, y: -1.0))
+
         return shapeLayer
     }
     
