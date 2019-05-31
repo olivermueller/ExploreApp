@@ -14,7 +14,6 @@ import CoreImage
 
 class VisionObjectRecognitionViewController: ViewController {
     
-    let MAX_BOUNDS = 125
     override func viewDidLoad() {
         super.viewDidLoad()
         tabBarController?.viewControllers![0].title = "Explore".localized
@@ -22,6 +21,7 @@ class VisionObjectRecognitionViewController: ViewController {
         tabBarController?.viewControllers![2].title = "Learn".localized
         tabBarController?.viewControllers![3].title = "Options".localized
     }
+    
     override func viewDidAppear(_ animated: Bool) {
         session.startRunning()
         tabBarController?.viewControllers![0].title = "Explore".localized
@@ -61,6 +61,7 @@ class VisionObjectRecognitionViewController: ViewController {
         }
         
     }
+    
     @objc func alertTextFieldDidChange(_ textField: UITextField) {
         let alertController:UIAlertController = self.presentedViewController as! UIAlertController;
         let nameTextField :UITextField  = alertController.textFields![0];
@@ -68,52 +69,29 @@ class VisionObjectRecognitionViewController: ViewController {
         let addAction: UIAlertAction = alertController.actions[0];
         addAction.isEnabled = (nameTextField.text?.count)! >= 2 && isValidEmail(testStr: emailTextField.text!);
     }
+    
     func isValidEmail(testStr:String) -> Bool {
         let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
         
         let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
         return emailTest.evaluate(with: testStr)
     }
+    
     override func viewDidDisappear(_ animated: Bool) {
         session.stopRunning()
         LRSSender.sendDataToLRS(verbId: LRSSender.VerbIdSuspended, verbDisplay: "stopped", activityId: LRSSender.ObjectIdExplore, activityName: "exploring", activityDescription: "stopped exploring")
     }
-    private var detectionOverlay: CALayer! = nil
     
     // Vision parts
-    private var requests = [VNRequest]()
     
-    @discardableResult
-    func setupVision() -> NSError? {
-        // Setup Vision parts
-        let error: NSError! = nil
-        
-        do {
-            let visionModel = Theme.GetModel()
-            let objectRecognition = VNCoreMLRequest(model: visionModel, completionHandler: { (request, error) in
-                DispatchQueue.main.async(execute: {
-                    // perform all the UI updates on the main queue
-                    if let results = request.results {
-                        self.drawVisionRequestResults(results)
-                    }
-                })
-            })
-            self.requests = [objectRecognition]
-        } catch let error as NSError {
-            print("Model loading went wrong: \(error)")
-        }
-        
-        return error
-    }
-    
-    func drawVisionRequestResults(_ results: [Any]) {
+    override func drawVisionRequestResults(_ results: [Any]) {
         CATransaction.begin()
         CATransaction.setValue(kCFBooleanTrue, forKey: kCATransactionDisableActions)
         detectionOverlay.sublayers = nil // remove all the old recognized objects
-//        for sub in previewView.subviews
-//        {
-//            sub.removeFromSuperview()
-//        }
+        //        for sub in previewView.subviews
+        //        {
+        //            sub.removeFromSuperview()
+        //        }
         for observation in results where observation is VNRecognizedObjectObservation {
             guard let objectObservation = observation as? VNRecognizedObjectObservation else {
                 continue
@@ -123,21 +101,31 @@ class VisionObjectRecognitionViewController: ViewController {
             let topLabelObservation = objectObservation.labels[0]
             let objectBounds = VNImageRectForNormalizedRect(objectObservation.boundingBox, Int(bufferSize.width), Int(bufferSize.height))
             
-            let shapeLayer = self.createRoundedRectLayerWithBounds(objectBounds, name: topLabelObservation.identifier + "_sublayer")
+            let shapeLayer = super.createRoundedRectLayerWithBounds(objectBounds, name: topLabelObservation.identifier + "_sublayer")
             
             let textLayer = self.createTextSubLayerInBounds(objectBounds,
                                                             identifier: topLabelObservation.identifier,
                                                             confidence: topLabelObservation.confidence)
-//            let rect = CGRect(x: objectBounds.midX-100, y: objectBounds.midY+25, width: objectBounds.width, height: objectBounds.height)
-//            let buttonLayer = self.createButton(rect,title: topLabelObservation.identifier.deletingPrefix("ISO_7010_"))
-//            previewView.addSubview(buttonLayer)
-            var k = false
-            //self.view.layer.sublayers?.forEach { if($0.name == shapeLayer.name) {k=true} }
-           
-            if k == true {continue}
             
-            let imageLayer = self.createImageSubLayerInBounds(objectBounds, name: topLabelObservation.identifier)
-            let imageQuestionLayer = self.createImageQuestionSubLayerInBounds(objectBounds, name: topLabelObservation.identifier)
+            //self.view.layer.sublayers?.forEach { if($0.name == shapeLayer.name) {k=true} }
+            
+           //make sure the bounds are always square
+            let clampedBounds = super.clampBounds(bounds: objectBounds, minBounds: CGFloat(super.MAX_BOUNDS))
+            
+            //position the click image in the parent layer
+            let clickImageBounds = CGRect(x: clampedBounds.midX , y: clampedBounds.midY , width: clampedBounds.width/4, height: clampedBounds.height/4)
+            
+            let clickImagePosition = CGPoint(x: clickImageBounds.midX + clickImageBounds.width, y: clickImageBounds.midY + clickImageBounds.height)
+            
+            let imageLayer = super.createImageSubLayerInBounds(clickImageBounds,position: clickImagePosition,imageName: "click", layerName: topLabelObservation.identifier)
+            
+            //position sign image in the parent layer
+            let signImageBounds = CGRect(x: clampedBounds.midX , y: clampedBounds.midY , width: clampedBounds.width/2, height: clampedBounds.height/2)
+            
+            let signImagePosition = CGPoint(x: signImageBounds.midX - signImageBounds.width, y: signImageBounds.midY - signImageBounds.width)
+            
+            let imageQuestionLayer = super.createImageSubLayerInBounds(signImageBounds, position: signImagePosition, imageName: topLabelObservation.identifier, layerName: topLabelObservation.identifier)
+
             //shapeLayer.name = topLabelObservation.identifier
             shapeLayer.addSublayer(imageLayer)
             shapeLayer.addSublayer(imageQuestionLayer)
@@ -151,97 +139,6 @@ class VisionObjectRecognitionViewController: ViewController {
         CATransaction.commit()
     }
     
-    override func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
-        guard let pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer)
-           else {
-            return
-        }
-        connection.videoOrientation = .portrait
-        //connection.videoOrientation = .portraitUpsideDown
-        //connection.isVideoMirrored = true
-        let exifOrientation = exifOrientationFromDeviceOrientation()
-        
-        let imageRequestHandler = VNImageRequestHandler(cvPixelBuffer: pixelBuffer, orientation: exifOrientation, options: [:])
-        do {
-            try imageRequestHandler.perform(self.requests)
-        } catch {
-            print(error)
-        }
-    }
-    
-
-    
-    override func setupAVCapture() {
-        super.setupAVCapture()
-        
-        // setup Vision parts
-        setupLayers()
-        updateLayerGeometry()
-        setupVision()
-        
-        // start the capture
-        startCaptureSession()
-    }
-    
-    func setupLayers() {
-        detectionOverlay = CALayer() // container layer that has all the renderings of the observations
-        detectionOverlay.name = "DetectionOverlay"
-        detectionOverlay.bounds = CGRect(x: 0.0,
-                                         y: 0.0,
-                                         width: bufferSize.width,
-                                         height: bufferSize.height)
-        detectionOverlay.position = CGPoint(x: rootLayer.bounds.midX, y: rootLayer.bounds.midY)
-        rootLayer.addSublayer(detectionOverlay)
-    }
-    
-    func updateLayerGeometry() {
-        let bounds = rootLayer.bounds
-        var scale: CGFloat
-        
-        let xScale: CGFloat = bounds.size.width / bufferSize.height
-        let yScale: CGFloat = bounds.size.height / bufferSize.width
-        
-        scale = fmax(xScale, yScale)
-        if scale.isInfinite {
-            scale = 1.0
-        }
-        CATransaction.begin()
-        CATransaction.setValue(kCFBooleanTrue, forKey: kCATransactionDisableActions)
-        
-        // rotate the layer into screen orientation and scale and mirror
-       // detectionOverlay.setAffineTransform(CGAffineTransform(rotationAngle: CGFloat(.pi / 2.0)).scaledBy(x: scale, y: -scale))
-        // center the layer
-        detectionOverlay.position = CGPoint (x: bounds.midX, y: bounds.midY)
-        
-        CATransaction.commit()
-        
-    }
-    func createImageQuestionSubLayerInBounds(_ bounds: CGRect, name: String) -> CALayer {
-        let imagelayer = CALayer()
-        imagelayer.name = name
-        let myImage = UIImage(named: name)?.cgImage
-        imagelayer.contents = myImage
-        var bound = CGRect(x: bounds.midX, y: bounds.midY, width: bounds.height, height: bounds.width)
-        if Int(bounds.width) < MAX_BOUNDS || Int(bounds.height) < MAX_BOUNDS
-        {
-            bound = CGRect(x: bounds.midX, y: bounds.midY, width: CGFloat(MAX_BOUNDS), height: CGFloat(MAX_BOUNDS))
-        }
-        else if bounds.width < bounds.height
-        {
-            bound = CGRect(x: bounds.midX, y: bounds.midY, width: bounds.width, height: bounds.width)
-        }
-        else if bounds.width > bounds.height
-        {
-            bound = CGRect(x: bounds.midX, y: bounds.midY, width: bounds.height, height: bounds.height)
-        }
-        imagelayer.bounds = CGRect(x: -(bound.width/2), y: -(bound.height/2), width: bound.width/5, height: bound.height/5)
-        imagelayer.position = CGPoint(x: bound.midX+(bound.width/3), y: bound.midY-(bound.height/3))
-        imagelayer.contentsScale = 2.0 // retina rendering
-        // rotate the layer into screen orientation and scale and mirror
-        //imagelayer.setAffineTransform(CGAffineTransform(rotationAngle: CGFloat(.pi / 2.0)).scaledBy(x: 1.0, y: -1.0))
-        
-        return imagelayer
-    }
     func createTextSubLayerInBounds(_ bounds: CGRect, identifier: String, confidence: VNConfidence) -> CATextLayer {
         let textLayer = CATextLayer()
         textLayer.name = identifier
@@ -252,20 +149,10 @@ class VisionObjectRecognitionViewController: ViewController {
         let largeFont = UIFont(name: "Helvetica", size: 12.0)!
         formattedString.addAttributes([NSAttributedString.Key.font: largeFont], range: NSRange(location: 0, length: data!.title.count))
         textLayer.string = formattedString
-        var bound = CGRect(x: bounds.midX, y: bounds.midY, width: bounds.height, height: bounds.width)
-        if bounds.width < CGFloat(MAX_BOUNDS) || bounds.height < CGFloat(MAX_BOUNDS)
-        {
-            bound = CGRect(x: bounds.midX, y: bounds.midY, width: CGFloat(MAX_BOUNDS), height: CGFloat(MAX_BOUNDS))
-        }
-        else if bounds.width < bounds.height
-        {
-            bound = CGRect(x: bounds.midX, y: bounds.midY, width: bounds.width, height: bounds.width)
-        }
-        else if bounds.width > bounds.height
-        {
-            bound = CGRect(x: bounds.midX, y: bounds.midY, width: bounds.height, height: bounds.height)
-        }
-        textLayer.bounds = CGRect(x: -10, y: -(bound.height/4), width: bound.width, height: bound.height)
+        //var bound = CGRect(x: bounds.midX, y: bounds.midY, width: bounds.height, height: bounds.width)
+        
+        var bound = clampBounds(bounds: bounds, minBounds: CGFloat(MAX_BOUNDS))
+        textLayer.bounds = CGRect(x: -10, y: -(bound.height/4), width: bound.width, height: bound.height/2)
         textLayer.position = CGPoint(x: bound.midX, y: bound.midY)
         textLayer.shadowOpacity = 0.7
         textLayer.shadowOffset = CGSize(width: 2, height: 2)
@@ -298,58 +185,6 @@ class VisionObjectRecognitionViewController: ViewController {
         detailViewController.key = name
         
         
-    }
-    func createImageSubLayerInBounds(_ bounds: CGRect, name: String) -> CALayer {
-        let imagelayer = CALayer()
-        imagelayer.name = name
-        let myImage = UIImage(named: "click")?.cgImage
-        imagelayer.contents = myImage
-        var bound = CGRect(x: bounds.midX, y: bounds.midY, width: bounds.height, height: bounds.width)
-        if bounds.width < CGFloat(MAX_BOUNDS) || bounds.height < CGFloat(MAX_BOUNDS)
-        {
-            bound = CGRect(x: bounds.midX, y: bounds.midY, width: CGFloat(MAX_BOUNDS), height: CGFloat(MAX_BOUNDS))
-        }
-        else if bounds.width < bounds.height
-        {
-            bound = CGRect(x: bounds.midX, y: bounds.midY, width: bounds.width, height: bounds.width)
-        }
-        else if bounds.width > bounds.height
-        {
-            bound = CGRect(x: bounds.midX, y: bounds.midY, width: bounds.height, height: bounds.height)
-        }
-        imagelayer.bounds = CGRect(x: -(bound.width/2), y: -(bound.height/2), width: bound.width/2, height: bound.height/2)
-        imagelayer.position = CGPoint(x: bound.midX+(bound.width/4), y: bound.midY+(bound.height/4))
-        imagelayer.contentsScale = 2.0 // retina rendering
-        // rotate the layer into screen orientation and scale and mirror
-        //imagelayer.setAffineTransform(CGAffineTransform(rotationAngle: CGFloat(.pi / 2.0)).scaledBy(x: 1.0, y: -1.0))
-        
-        return imagelayer
-    }
-    func createRoundedRectLayerWithBounds(_ bounds: CGRect, name:String) -> CALayer {
-        let shapeLayer = CALayer()
-        shapeLayer.name = name
-       // var bound = bounds
-        var bound = CGRect(x: bounds.midX, y: bounds.midY, width: bounds.height, height: bounds.width)
-        if bounds.width < CGFloat(MAX_BOUNDS) || bounds.height < CGFloat(MAX_BOUNDS)
-        {
-            bound = CGRect(x: bounds.midX, y: bounds.midY, width: CGFloat(MAX_BOUNDS), height: CGFloat(MAX_BOUNDS))
-        }
-        else if bounds.width < bounds.height
-        {
-            bound = CGRect(x: bounds.midX, y: bounds.midY, width: bounds.width, height: bounds.width)
-        }
-        else if bounds.width > bounds.height
-        {
-            bound = CGRect(x: bounds.midX, y: bounds.midY, width: bounds.height, height: bounds.height)
-        }
-        shapeLayer.bounds = bound
-        shapeLayer.position = CGPoint(x: bound.midX - bound.width/2, y: (bufferSize.height - bound.midY))
-        shapeLayer.backgroundColor = CGColor(colorSpace: CGColorSpaceCreateDeviceRGB(), components: [0.78, 0.78, 0.8, 0.4])
-        shapeLayer.cornerRadius = 7
-        
-        //imagelayer.setAffineTransform(CGAffineTransform(rotationAngle: CGFloat(.pi / 2.0)).scaledBy(x: 1.0, y: -1.0))
-
-        return shapeLayer
     }
     
 }
