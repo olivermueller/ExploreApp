@@ -86,6 +86,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         let myImage = UIImage(named: imageName)?.cgImage
         imagelayer.contents = myImage
         
+        
         imagelayer.bounds = bounds
         imagelayer.position = position
         imagelayer.contentsScale = 2.0 // retina rendering
@@ -95,7 +96,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         return imagelayer
     }
     
-    func createRoundedRectLayerWithBounds(_ bounds: CGRect, name:String) -> CALayer{
+    func createRoundedRectLayerWithBounds(_ bounds: CGRect, name:String, transparency: CGFloat) -> CALayer{
         let shapeLayer = CALayer()
         shapeLayer.name = name
         // var bound = bounds
@@ -114,7 +115,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         }
         shapeLayer.bounds = bound
         shapeLayer.position = CGPoint(x: bound.midX - bound.width/2, y: (bufferSize.height - bound.midY))
-        shapeLayer.backgroundColor = CGColor(colorSpace: CGColorSpaceCreateDeviceRGB(), components: [0.78, 0.78, 0.8, 0.4])
+        shapeLayer.backgroundColor = CGColor(colorSpace: CGColorSpaceCreateDeviceRGB(), components: [0.78, 0.78, 0.8, transparency.map(from: 0...1, to: 0.3...0.6)])
         shapeLayer.cornerRadius = 7
         
         //imagelayer.setAffineTransform(CGAffineTransform(rotationAngle: CGFloat(.pi / 2.0)).scaledBy(x: 1.0, y: -1.0))
@@ -178,7 +179,6 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         rootLayer.addSublayer(previewLayer)
         
         setupLayers()
-        //updateLayerGeometry()
         setupVision()
         
         // start the capture

@@ -12,6 +12,12 @@ import Foundation
 import Accelerate
 import CoreImage
 
+extension CGFloat {
+    func map(from: ClosedRange<CGFloat>, to: ClosedRange<CGFloat>) -> CGFloat {
+        let result = ((self - from.lowerBound) / (from.upperBound - from.lowerBound)) * (to.upperBound - to.lowerBound) + to.lowerBound
+        return result
+    }
+}
 class VisionObjectRecognitionViewController: ViewController {
     
     override func viewDidLoad() {
@@ -101,14 +107,22 @@ class VisionObjectRecognitionViewController: ViewController {
             let topLabelObservation = objectObservation.labels[0]
             let objectBounds = VNImageRectForNormalizedRect(objectObservation.boundingBox, Int(bufferSize.width), Int(bufferSize.height))
             
-            let shapeLayer = super.createRoundedRectLayerWithBounds(objectBounds, name: topLabelObservation.identifier + "_sublayer")
+            let shapeLayer = super.createRoundedRectLayerWithBounds(objectBounds, name: topLabelObservation.identifier + "_sublayer", transparency: CGFloat(objectObservation.labels[0].confidence))
             
             let textLayer = self.createTextSubLayerInBounds(objectBounds,
                                                             identifier: topLabelObservation.identifier,
                                                             confidence: topLabelObservation.confidence)
+            var k = false;
+            detectionOverlay.sublayers?.forEach {
+                
+                if($0.bounds.intersects(shapeLayer.bounds))
+                {
+                    k = true
+                }
+                
+            }
             
-            //self.view.layer.sublayers?.forEach { if($0.name == shapeLayer.name) {k=true} }
-            
+            if(k) {continue}
            //make sure the bounds are always square
             let clampedBounds = super.clampBounds(bounds: objectBounds, minBounds: CGFloat(super.MAX_BOUNDS))
             
@@ -126,7 +140,6 @@ class VisionObjectRecognitionViewController: ViewController {
             
             let imageQuestionLayer = super.createImageSubLayerInBounds(signImageBounds, position: signImagePosition, imageName: topLabelObservation.identifier, layerName: topLabelObservation.identifier)
 
-            //shapeLayer.name = topLabelObservation.identifier
             shapeLayer.addSublayer(imageLayer)
             shapeLayer.addSublayer(imageQuestionLayer)
             shapeLayer.addSublayer(textLayer)
@@ -135,9 +148,10 @@ class VisionObjectRecognitionViewController: ViewController {
             //makes sure there are never two of the same predictions on the screen
             
         }
-        //self.updateLayerGeometry()
         CATransaction.commit()
     }
+    
+    
     
     func createTextSubLayerInBounds(_ bounds: CGRect, identifier: String, confidence: VNConfidence) -> CATextLayer {
         let textLayer = CATextLayer()
@@ -149,7 +163,6 @@ class VisionObjectRecognitionViewController: ViewController {
         let largeFont = UIFont(name: "Helvetica", size: 12.0)!
         formattedString.addAttributes([NSAttributedString.Key.font: largeFont], range: NSRange(location: 0, length: data!.title.count))
         textLayer.string = formattedString
-        //var bound = CGRect(x: bounds.midX, y: bounds.midY, width: bounds.height, height: bounds.width)
         
         var bound = clampBounds(bounds: bounds, minBounds: CGFloat(MAX_BOUNDS))
         textLayer.bounds = CGRect(x: -10, y: -(bound.height/4), width: bound.width, height: bound.height/2)
@@ -158,8 +171,6 @@ class VisionObjectRecognitionViewController: ViewController {
         textLayer.shadowOffset = CGSize(width: 2, height: 2)
         textLayer.foregroundColor = CGColor(colorSpace: CGColorSpaceCreateDeviceRGB(), components: [0.0, 0.0, 0.0, 1.0])
         textLayer.contentsScale = 2.0 // retina rendering
-        // rotate the layer into screen orientation and scale and mirror
-        //textLayer.setAffineTransform(CGAffineTransform(rotationAngle: CGFloat(.pi / 2.0)).scaledBy(x: 1.0, y: -1.0))
         
         return textLayer
     }

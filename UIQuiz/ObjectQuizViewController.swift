@@ -53,7 +53,7 @@ class ObjectQuizViewController: ViewController {
 //            topLabelsObservation.append(objectObservation)
             let objectBounds = VNImageRectForNormalizedRect(objectObservation.boundingBox, Int(bufferSize.width), Int(bufferSize.height))
             
-            let shapeLayer = super.createRoundedRectLayerWithBounds(objectBounds, name: topLabelObservation.identifier)
+            let shapeLayer = super.createRoundedRectLayerWithBounds(objectBounds, name: topLabelObservation.identifier, transparency: CGFloat(objectObservation.labels[0].confidence))
 
             //make sure the bounds are always square
             let clampedBounds = super.clampBounds(bounds: objectBounds, minBounds: CGFloat(super.MAX_BOUNDS))
