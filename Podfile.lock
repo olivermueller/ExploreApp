@@ -17,28 +17,20 @@ PODS:
   - CHIPageControl/Jaloro (0.1.5)
   - CHIPageControl/Paprika (0.1.5)
   - CHIPageControl/Puya (0.1.5)
-  - FilesProvider (0.25.1)
-  - MBCircularProgressBar (0.3.5)
 
 DEPENDENCIES:
   - Alamofire (~> 4.7)
   - CHIPageControl (~> 0.1.3)
-  - FilesProvider
-  - MBCircularProgressBar
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
     - CHIPageControl
-    - FilesProvider
-    - MBCircularProgressBar
 
 SPEC CHECKSUMS:
   Alamofire: 907e0a98eb68cdb7f9d1f541a563d6ac5dc77b25
   CHIPageControl: 79d19a8ee2e35fa3c1da6533adb5364c77b5cfea
-  FilesProvider: f6ab75211d2fd4814720f19b427e43668dc24585
-  MBCircularProgressBar: 0b795b722a5eb5b0923822f90474e2576a1a7855
 
-PODFILE CHECKSUM: 287e91bd85467b7dc420c4a3556a5805f13ad54a
+PODFILE CHECKSUM: 7cfb870cc52ad8955159e9e9d1bc552c84a09cf4
 
 COCOAPODS: 1.5.3

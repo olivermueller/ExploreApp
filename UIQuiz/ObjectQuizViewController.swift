@@ -8,7 +8,6 @@
 import UIKit
 import AVFoundation
 import Vision
-import FilesProvider
 
 class ObjectQuizViewController: ViewController {
     
@@ -38,10 +37,11 @@ class ObjectQuizViewController: ViewController {
         LRSSender.sendDataToLRS(verbId: LRSSender.VerbIdSuspended, verbDisplay: "stopped", activityId: LRSSender.ObjectIdMLQuiz, activityName: "quiz mode", activityDescription: "stopped quiz mode")
     }
     // Vision parts
-    
+    var dic: [String: VisionObjectRecognitionViewController.layerInfo] = [:]
+
     override func drawVisionRequestResults(_ results: [Any]) {
 //        topLabelsObservation.removeAll()
-        CATransaction.begin()
+        /*CATransaction.begin()
         CATransaction.setValue(kCFBooleanTrue, forKey: kCATransactionDisableActions)
         super.detectionOverlay.sublayers = nil // remove all the old recognized objects
         for observation in results where observation is VNRecognizedObjectObservation {
@@ -70,7 +70,117 @@ class ObjectQuizViewController: ViewController {
             shapeLayer.addSublayer(questionImageLayer)
             super.detectionOverlay.addSublayer(shapeLayer)
         }
+        CATransaction.commit()*/
+        
+        CATransaction.begin()
+        CATransaction.setValue(kCFBooleanTrue, forKey: kCATransactionDisableActions)
         CATransaction.commit()
+        
+        /*if(results.count == 0 && detectionOverlay.sublayers != nil)
+         {
+         print("removing all")
+         detectionOverlay.sublayers?.removeAll()
+         }*/
+        
+        for observation in results where observation is VNRecognizedObjectObservation {
+            guard let objectObservation = observation as? VNRecognizedObjectObservation else {
+                continue
+            }
+            
+            // Select only the label with the highest confidence
+            
+            let topLabelObservation = objectObservation.labels[0]
+            
+            
+            if(dic[objectObservation.labels[0].identifier] == nil)
+            {
+                var li = VisionObjectRecognitionViewController.layerInfo(layer: CALayer(), hasUpdated: false, curConfidence: objectObservation.labels[0].confidence, index: -1)
+                dic[objectObservation.labels[0].identifier] = li;
+            }
+            else
+            {
+                dic[objectObservation.labels[0].identifier]?.hasUpdated = false
+                dic[objectObservation.labels[0].identifier]?.curConfidence = objectObservation.labels[0].confidence
+            }
+            
+            
+            if(topLabelObservation.confidence < 0.7) {continue}
+            
+            
+            let objectBounds = VNImageRectForNormalizedRect(objectObservation.boundingBox, Int(bufferSize.width), Int(bufferSize.height))
+            
+            let shapeLayer = super.createRoundedRectLayerWithBounds(objectBounds, name: topLabelObservation.identifier, transparency: CGFloat(objectObservation.labels[0].confidence))
+            
+            //make sure the bounds are always square
+            let clampedBounds = super.clampBounds(bounds: objectBounds, minBounds: CGFloat(super.MAX_BOUNDS))
+            
+            //position the question mark image in the parent layer
+            let questionsImageBounds = CGRect(x: clampedBounds.midX , y: clampedBounds.midY , width: clampedBounds.width, height: clampedBounds.height)
+            
+            let clickImagePosition = CGPoint(x: questionsImageBounds.midX - questionsImageBounds.width/2, y: questionsImageBounds.midY - questionsImageBounds.height/2)
+            
+            
+            var skipLayer = false;
+            detectionOverlay.sublayers?.forEach {
+                
+                //makes sure there are never two predictions overlapping
+                /*if($0.bounds.intersects(shapeLayer.bounds))
+                 {
+                 skipLayer = true
+                 }*/
+                
+                if($0.name == shapeLayer.name)
+                {
+                    $0.bounds = shapeLayer.bounds
+                    var newPos = shapeLayer.position
+                    
+                    var animationWait = 1.0/CGFloat(ViewController.WAIT_FRAMES) - 0.1;
+                    if (animationWait < 0){animationWait = 0}
+                    super.animatePositionAsync(layer: $0, toPosition: newPos, animationTime: animationWait)
+                    //dic[shapeLayer.name!]?.layer = shapeLayer
+                    dic[shapeLayer.name!]?.hasUpdated = true
+                    let clampedBounds = super.clampBounds(bounds: shapeLayer.bounds, minBounds: CGFloat(super.MAX_BOUNDS))
+                    
+                    dic[shapeLayer.name!]?.layer.sublayers![0].position = clickImagePosition
+                    dic[shapeLayer.name!]?.layer.sublayers![0].bounds = questionsImageBounds
+                    //dic[shapeLayer.name!]?.layer.sublayers![2].bounds = textLayerBounds
+                    //$0.position = newPos
+                    skipLayer = true
+                }
+                else{
+                    
+                }
+                
+            }
+            
+            //print("adding layer")
+            if(skipLayer) {continue}
+            
+            
+            
+            let questionImageLayer = super.createImageSubLayerInBounds(questionsImageBounds,position: clickImagePosition,imageName: "questionmark", layerName: topLabelObservation.identifier)
+
+            
+            shapeLayer.addSublayer(questionImageLayer)
+            
+            detectionOverlay.addSublayer(shapeLayer)
+            dic[shapeLayer.name!]?.layer =  shapeLayer
+            dic[shapeLayer.name!]?.hasUpdated = true
+        }
+        for(k, v) in dic{
+            if(v.hasUpdated == true)
+            {
+                //detectionOverlay.addSublayer(v.layer);
+            }
+            else if(dic[k]?.layer.superlayer != nil)
+            {
+                print("removing")
+                dic[k]?.layer.removeFromSuperlayer()
+            }
+            dic[k]?.hasUpdated = false
+        }
+        CATransaction.commit()
+        
     }
     
     private func imageFromSampleBuffer(sampleBuffer: CMSampleBuffer) -> UIImage? {

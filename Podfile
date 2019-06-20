@@ -6,8 +6,9 @@ target 'UIQuiz' do
   use_frameworks!
 
   # Pods for UIQuiz
-  pod "MBCircularProgressBar"
+  #pod "MBCircularProgressBar"
   pod 'CHIPageControl', '~> 0.1.3'
   pod 'Alamofire', '~> 4.7'
-  pod "FilesProvider"
+  #pod "FilesProvider"
+  #pod "WatchdogInspector"
 end

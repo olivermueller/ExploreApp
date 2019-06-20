@@ -8,11 +8,44 @@
 import UIKit
 import AVFoundation
 import Vision
-
+extension AVCaptureDevice {
+    
+    /// http://stackoverflow.com/questions/21612191/set-a-custom-avframeraterange-for-an-avcapturesession#27566730
+    func configureDesiredFrameRate(_ desiredFrameRate: Int) {
+        
+        var isFPSSupported = false
+        
+        do {
+            
+            if let videoSupportedFrameRateRanges = activeFormat.videoSupportedFrameRateRanges as? [AVFrameRateRange] {
+                for range in videoSupportedFrameRateRanges {
+                    print("max fps" + String(range.maxFrameRate) + " min fps " + String(range.minFrameRate) )
+                    if (range.maxFrameRate >= Double(desiredFrameRate) && range.minFrameRate <= Double(desiredFrameRate)) {
+                        isFPSSupported = true
+                        break
+                    }
+                }
+            }
+            
+            if isFPSSupported {
+                try lockForConfiguration()
+                activeVideoMaxFrameDuration = CMTimeMake(1, Int32(desiredFrameRate))
+                activeVideoMinFrameDuration = CMTimeMake(1, Int32(desiredFrameRate))
+                print("=================changed")
+                unlockForConfiguration()
+            }
+            
+        } catch {
+            print("lockForConfiguration error: \(error.localizedDescription)")
+        }
+    }
+    
+}
 class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
     
     //minimum size for the overlay boxes; if they are too small, the user cannot read the text omn the box
     let MAX_BOUNDS = 125
+    let fpsButton = UIButton()
 
     
     public var detectionOverlay: CALayer! = nil
@@ -31,26 +64,47 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         setupAVCapture()
+        //Enable to see fps
+        /*
+        fpsButton.bounds = CGRect(x: 200, y: 200, width: 500, height: 200)
+        
+        fpsButton.setTitleColor(.black, for: .normal)
+        fpsButton.titleEdgeInsets = UIEdgeInsetsMake(100.0, 100.0, 0.0, 0.0)
+        fpsButton.backgroundColor = .red*/
+        //view.bringSubview(toFront: fpsButton)
+
+        view.addSubview(fpsButton)
     }
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+    var i=0
+    var frames:Int = 0
+    static let WAIT_FRAMES = 2;
     @discardableResult
     func setupVision() -> NSError? {
         // Setup Vision parts
         let error: NSError! = nil
-        
         do {
             let visionModel = Theme.GetModel()
             let objectRecognition = VNCoreMLRequest(model: visionModel, completionHandler: { (request, error) in
                 DispatchQueue.main.async(execute: {
                     // perform all the UI updates on the main queue
                     if let results = request.results {
-                        self.drawVisionRequestResults(results)
+                        self.i += 1
+                        if(self.i>ViewController.WAIT_FRAMES)
+                        {
+                            self.i=0;
+                            self.frames = self.frames + 1
+
+                        
+                            self.drawVisionRequestResults(results)
+                        }
                     }
                 })
             })
@@ -62,6 +116,12 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         return error
     }
     
+    @objc func onTimerFires()
+    {
+        
+        self.fpsButton.setTitle(String(self.frames), for: .normal)
+        frames = 0
+    }
     func clampBounds(bounds: CGRect, minBounds: CGFloat)->CGRect
     {
         var bound = bounds; //= CGRect(x: bounds.midX, y: bounds.midY, width: bounds.height, height: bounds.width)
@@ -125,10 +185,11 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     
     func setupAVCapture() {
         var deviceInput: AVCaptureDeviceInput!
-        
         // Select a video device, make an input
         let videoDevice = AVCaptureDevice.DiscoverySession(deviceTypes: [.builtInWideAngleCamera], mediaType: .video, position: .back).devices.first
+        
         do {
+            
             deviceInput = try AVCaptureDeviceInput(device: videoDevice!)
         } catch {
             print("Could not create video device input: \(error)")
@@ -137,7 +198,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         
         session.beginConfiguration()
         session.sessionPreset = .vga640x480 // Model image size is smaller.
-
+        
         // Add a video input
         guard session.canAddInput(deviceInput) else {
             print("Could not add video device input to the session")
@@ -180,7 +241,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         
         setupLayers()
         setupVision()
-        
+        videoDevice?.configureDesiredFrameRate(60)
         // start the capture
         startCaptureSession()
     }
@@ -202,6 +263,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     }
     
     func startCaptureSession() {
+        
         session.startRunning()
     }
     
@@ -245,6 +307,23 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
             exifOrientation = .up
         }
         return exifOrientation
+    }
+    
+    func animatePositionAsync(layer:CALayer, toPosition:CGPoint, animationTime:CGFloat)
+    {
+        //layer.removeAllAnimations()
+        let animation = CABasicAnimation(keyPath: "position")
+        animation.duration = CFTimeInterval(animationTime)
+        animation.fromValue = layer.position
+        animation.toValue = toPosition
+        animation.isRemovedOnCompletion = false
+        animation.fillMode = kCAFillModeBoth
+        
+        // Set the completion value
+        CATransaction.setCompletionBlock({layer.position = toPosition})
+        
+        // Finally, add the animation to the layer
+        layer.add(animation, forKey: "position")
     }
 }
 
